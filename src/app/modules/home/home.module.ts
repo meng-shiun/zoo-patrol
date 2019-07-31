@@ -4,12 +4,12 @@ import { SharedModule } from '../../shared/shared.module';
 import { HomeRoutingModule } from './home-routing.module';
 
 @NgModule({
-  declarations: [
-    HomeRoutingModule.components
-  ],
+  declarations: [],
   imports: [
     SharedModule,
     HomeRoutingModule
   ]
 })
-export class HomeModule { }
+export class HomeModule {
+  static components = HomeRoutingModule.components;
+}
