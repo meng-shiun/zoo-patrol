@@ -7,10 +7,10 @@ import { CustomMaterialModule } from './custom-material.module';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     CustomMaterialModule
   ],
   exports: [
+    CommonModule,
     CustomMaterialModule.exportModules
   ]
 })
