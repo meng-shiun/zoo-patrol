@@ -13,7 +13,11 @@ const homeRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent }
+      { path: 'dashboard', component: DashboardComponent },
+      {
+        path: 'projects',
+        loadChildren: () => import('./features/projects/projects.module').then(mod => mod.ProjectsModule)
+      },
     ]
   }
 ];
