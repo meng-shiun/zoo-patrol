@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ProjectsComponent } from './projects.component';
 
 const routes: Routes = [
@@ -13,4 +14,8 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProjectsRoutingModule { }
+export class ProjectsRoutingModule {
+  static components = [
+    ProjectsComponent
+  ];
+}
