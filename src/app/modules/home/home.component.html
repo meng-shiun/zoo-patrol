@@ -1,29 +1,12 @@
-<p>home works!</p>
-<!-- TODO: remove login button, it's only for testing purpose -->
-<button [routerLink]="['/login']" routerLinkActive="router-link-active" >login</button>
-<button [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >dashboard</button>
-<button [routerLink]="['/projects']" routerLinkActive="router-link-active" >projects</button>
-<button [routerLink]="['/clients']" routerLinkActive="router-link-active" >clients</button>
-
-<section class="mat-typography">
-    <h1>ZOOPATROL</h1>
-    <p>Project tracking, invocing & CRM extravaganza</p>
-
-    <button mat-stroked-button>Basic</button>
-    <button mat-stroked-button color="primary">Primary</button>
-    <mat-icon>visibility</mat-icon>
-
-    <mat-grid-list cols="4" rowHeight="100px">
-      <mat-grid-tile
-          *ngFor="let tile of tiles"
-          [colspan]="tile.cols"
-          [rowspan]="tile.rows"
-          [style.background]="tile.color">
-        {{tile.text}}
-      </mat-grid-tile>
-    </mat-grid-list>
-</section>
-
-<hr>
-
-<router-outlet></router-outlet>
+<header>
+  <mat-toolbar color="primary">
+    <div class="logo"></div>
+    <button mat-button [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Dashboard</button>
+    <button mat-button [routerLink]="['/projects']" routerLinkActive="router-link-active">Projects</button>
+    <button mat-button [routerLink]="['/clients']" routerLinkActive="router-link-active">Clients</button>
+    <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Login(Temp)</button>
+  </mat-toolbar>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
