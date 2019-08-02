@@ -18,6 +18,10 @@ const homeRoutes: Routes = [
         path: 'projects',
         loadChildren: () => import('./features/projects/projects.module').then(mod => mod.ProjectsModule)
       },
+      {
+        path: 'clients',
+        loadChildren: () => import('./features/clients/clients.module').then(mod => mod.ClientsModule)
+      }
     ]
   }
 ];
