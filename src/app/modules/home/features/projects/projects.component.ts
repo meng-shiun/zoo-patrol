@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-interface ITab {
-  name: string;
-  link: string;
-}
+import { ITab } from '@app/shared/interfaces';
 
 @Component({
   selector: 'app-projects',
