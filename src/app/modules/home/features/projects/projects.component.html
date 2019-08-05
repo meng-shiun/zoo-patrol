@@ -1,8 +1,7 @@
-<app-sub-menu>
-  <button mat-button>Running projects</button>
-  <button mat-button>My projects</button>
-  <button mat-button>Archived projects</button>
-  <button mat-button>+ New project</button>
-</app-sub-menu>
+<mat-tab-group>
+  <mat-tab *ngFor="let tab of tabs; index as i" [label]="tab">
+    Load Page - {{tab}}
+  </mat-tab>
+</mat-tab-group>
 <p>projects works!</p>
 <mat-icon>favorite</mat-icon>

@@ -20,7 +20,7 @@ import { LoginComponent } from './auth/login/login.component';
     BrowserModule,
     SharedModule,
     HomeModule,
-    ComponentsModule,
+    // ComponentsModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],

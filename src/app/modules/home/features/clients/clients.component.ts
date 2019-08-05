@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clients.component.scss']
 })
 export class ClientsComponent implements OnInit {
-
+  tabs: string[] = ['Clients', 'Supplier', 'Ratecard', '+ New Client'];
   constructor() { }
 
   ngOnInit() {
