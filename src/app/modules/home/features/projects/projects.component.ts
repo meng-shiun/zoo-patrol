@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Event, NavigationEnd } from '@angular/router';
 
 import { ITab } from '@app/shared/interfaces';
 
@@ -15,9 +16,18 @@ export class ProjectsComponent implements OnInit {
     { name: '+ New projects', link: 'new' }
   ];
 
-  activeTab = this.tabs[0].name;
+  activeTab: string;
 
-  constructor() { }
+  constructor(private router: Router) {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd && event.url.includes('/projects')) {
+        this.tabs.map(tab =>
+          event.url.endsWith(tab.link) && (this.activeTab = tab.name)
+        );
+        event.url.endsWith('/projects') && (this.activeTab = this.tabs[0].name);
+      }
+    });
+  }
 
   ngOnInit() {
   }
