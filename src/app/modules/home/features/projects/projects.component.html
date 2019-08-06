@@ -6,4 +6,9 @@
 </nav>
 
 <mat-icon>favorite</mat-icon>
-<router-outlet></router-outlet>
+
+<h5>routing ID: {{animationState}}</h5>
+
+<section [@slide-left-right]="animationState">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</section>

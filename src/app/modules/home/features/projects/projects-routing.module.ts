@@ -18,10 +18,11 @@ const routes: Routes = [
       {
         path: 'running',
         component: RunningProjectsShellComponent,
+        data: { routeId: 0 },
         children: []
       },
-      { path: 'my_projects', component: MyProjectsComponent },
-      { path: 'archived', component: ArchivedComponent },
+      { path: 'my_projects', component: MyProjectsComponent, data: { routeId: 1 } },
+      { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
       { path: '**', redirectTo: 'running'}
     ]
   }

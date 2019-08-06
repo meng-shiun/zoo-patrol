@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, Event, NavigationEnd } from '@angular/router';
+import { Router, Event, NavigationEnd, ActivatedRoute } from '@angular/router';
 
-import { ITab } from '@app/shared/interfaces';
+import { slideLeftRight, ITab } from '@app/shared';
 
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
+  animations: [slideLeftRight]
 })
 export class ProjectsComponent implements OnInit {
   tabs: ITab[] = [
@@ -18,7 +19,9 @@ export class ProjectsComponent implements OnInit {
 
   activeTab: string;
 
-  constructor(private router: Router) {
+  animationState: number;
+
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd && event.url.includes('/projects')) {
         this.tabs.map(tab =>
@@ -30,5 +33,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onActivate($event) {
+    this.animationState = this.route.firstChild.snapshot.data['routeId'];
   }
 }
