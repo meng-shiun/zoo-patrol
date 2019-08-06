@@ -2,9 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectsComponent } from './projects.component';
-import { RunningComponent } from './running/running.component';
 import { MyProjectsComponent } from './my-projects/my-projects.component';
 import { ArchivedComponent } from './archived/archived.component';
+// TODO: shorten import path
+import { RunningProjectsShellComponent } from './running/containers/running-projects-shell/running-projects-shell.component';
+import { ProjectListComponent } from './running/components/project-list/project-list.component';
+import { ProjectFilterBarComponent } from './running/components/project-filter-bar/project-filter-bar.component';
 
 const routes: Routes = [
   {
@@ -12,7 +15,11 @@ const routes: Routes = [
     component: ProjectsComponent,
     children: [
       { path: '', redirectTo: 'running', pathMatch: 'full' },
-      { path: 'running', component: RunningComponent },
+      {
+        path: 'running',
+        component: RunningProjectsShellComponent,
+        children: []
+      },
       { path: 'my_projects', component: MyProjectsComponent },
       { path: 'archived', component: ArchivedComponent },
       { path: '**', redirectTo: 'running'}
@@ -27,8 +34,10 @@ const routes: Routes = [
 export class ProjectsRoutingModule {
   static components = [
     ProjectsComponent,
-    RunningComponent,
     MyProjectsComponent,
-    ArchivedComponent
+    ArchivedComponent,
+    RunningProjectsShellComponent,
+    ProjectFilterBarComponent,
+    ProjectListComponent
   ];
 }
