@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Imports for loading & configuring the in-memory web api
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './shared/in-memory-data.service';
+
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './modules/home/home.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +22,7 @@ import { LoginComponent } from './auth/login/login.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 0 }),
     SharedModule,
     HomeModule,
     // ComponentsModule,
