@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ProjectService } from '@app/core/services/project.service';
+
 @Component({
   selector: 'app-running-projects-shell',
   templateUrl: './running-projects-shell.component.html',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RunningProjectsShellComponent implements OnInit {
 
-  constructor() { }
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
+    // TODO: refactor with NgRx & unsubscribe
+    this.projectService.getProjects().subscribe(products => console.log(...products));
   }
 
 }
