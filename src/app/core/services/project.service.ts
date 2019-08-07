@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
+import { IProject } from '@app/shared';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +14,7 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
-  getProjects(): Observable<any> {
-    return this.http.get<[]>(this.projectsUrl);
+  getProjects(): Observable<IProject[]> {
+    return this.http.get<IProject[]>(this.projectsUrl);
   }
 }

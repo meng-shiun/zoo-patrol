@@ -2,6 +2,8 @@
 <hr>
 <app-project-filter-bar></app-project-filter-bar>
 <br>
-<app-project-list></app-project-list>
+<app-project-list
+  [projects]="projects$ | async"
+  ></app-project-list>
 <br>
 <div>TODO: Project Pagination Component</div>

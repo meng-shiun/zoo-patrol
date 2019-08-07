@@ -1,3 +1,12 @@
 <b>[project-list]</b>
 <span> TODO: Project List Item Component</span>
+<section *ngIf="projects">
+  <div *ngFor="let item of projects">
+    <!-- TODO: Use Angular mateiral Card or custom list item component -->
+    <strong>Name: {{item.name}}</strong>
+    <hr>
+    <p>Client: {{item.client}}</p>
+    <br>
+  </div>
+</section>
 <br>

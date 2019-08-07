@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Observable, of } from 'rxjs';
+
 import { ProjectService } from '@app/core/services/project.service';
+import { IProject } from '@app/shared';
 
 @Component({
   selector: 'app-running-projects-shell',
@@ -8,12 +11,14 @@ import { ProjectService } from '@app/core/services/project.service';
   styleUrls: ['./running-projects-shell.component.scss']
 })
 export class RunningProjectsShellComponent implements OnInit {
+  projects$: Observable<IProject[]>;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService) {
+    // TODO: refactor with NgRx & unsubscribe
+    this.projects$ = this.projectService.getProjects();
+  }
 
   ngOnInit() {
-    // TODO: refactor with NgRx & unsubscribe
-    this.projectService.getProjects().subscribe(products => console.log(...products));
   }
 
 }
