@@ -1,0 +1,60 @@
+// TODO: move mixin and variables to shared folder
+$large-screen: 75rem; /* 1200 */
+$medium-screen: 64rem; /* 1024 */
+$small-screen: 48rem; /* 768 */
+
+@mixin breakpoint($width) {
+  @media only screen and (min-width: $width) {
+    @content;
+  }
+}
+
+.list-container {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 1rem;
+  margin: 2rem auto 0;
+  .card-wrapper {
+    height: 20rem;
+    width: 100%;
+    position: relative;
+    .card {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: #fff;
+      .card-title {
+        color: #eb1567;
+      }
+      .card-subtitle {
+        color: #0d1891;
+      }
+      .content {
+        margin: 0 1rem;
+        > .info-field {
+          margin: 0 0 1rem;
+          p:first-child {
+            color: #888;
+            font-size: .7rem;
+          }
+          p:last-child {
+            font-size: 1rem;
+            line-height: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+  @include breakpoint($small-screen) {
+    grid-template-columns: auto auto auto;
+  }
+  @include breakpoint($medium-screen) {
+    grid-template-columns: auto auto auto auto;
+    .card-wrapper {
+      height: 22rem;
+    }
+  }
+  @include breakpoint($large-screen) {
+    width: 80rem;
+    grid-gap: 2rem;
+  }
+}

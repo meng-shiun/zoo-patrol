@@ -1,12 +1,28 @@
-<b>[project-list]</b>
-<span> TODO: Project List Item Component</span>
-<section *ngIf="projects">
-  <div *ngFor="let item of projects">
-    <!-- TODO: Use Angular mateiral Card or custom list item component -->
-    <strong>Name: {{item.name}}</strong>
-    <hr>
-    <p>Client: {{item.client}}</p>
-    <br>
+<section class="list-container">
+  <div class="card-wrapper" *ngFor="let project of projects; index as i">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title class="card-title">{{ project.name }}</mat-card-title>
+        <mat-card-subtitle class="card-subtitle">{{ project.id }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="content">
+        <div class="info-field">
+          <p>Client</p>
+          <p>{{ project.client }}</p>
+        </div>
+        <div class="info-field">
+          <p>Status</p>
+          <p>{{ project.status }}</p>
+        </div>
+        <div class="info-field">
+          <p>Deadline</p>
+          <p>{{ project.deadline }}</p>
+        </div>
+        <div class="info-field">
+          <p>Manager</p>
+          <p>{{ project.manager }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </section>
-<br>
