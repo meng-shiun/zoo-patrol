@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
-import { IProject } from '@app/shared';
+import {
+  IProject,
+  CardKeyValue
+} from '@app/shared';
 
 @Component({
   selector: 'app-project-list',
@@ -10,7 +13,14 @@ import { IProject } from '@app/shared';
 export class ProjectListComponent implements OnInit {
   @Input() projects: IProject[];
 
-  constructor() { }
+  @Output() cardInfo = new Map();
+
+  constructor() {
+    this.cardInfo.set(0, CardKeyValue.create('Client', 'client'));
+    this.cardInfo.set(1, CardKeyValue.create('Status', 'status'));
+    this.cardInfo.set(2, CardKeyValue.create('Deadline', 'deadline'));
+    this.cardInfo.set(3, CardKeyValue.create('Manager', 'manager'));
+  }
 
   ngOnInit() {
   }

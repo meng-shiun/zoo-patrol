@@ -1,0 +1,29 @@
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
+.card {
+  background: $color-white;
+  height: 22rem;
+  .card-title {
+    color: $brand-color-red;
+  }
+  .card-subtitle {
+    color: $color-blue;
+  }
+  .content {
+    margin: 0 1rem;
+    > .info-field {
+      margin: 0 0 1rem;
+      height: 3rem;
+      p:first-child {
+        color: $text-grey-light;
+        font-size: .7rem;
+      }
+      p:last-child {
+        font-size: 1rem;
+        padding-top: .3rem;
+        line-height: 1.2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<mat-card class="card" *ngIf="prop">
+  <mat-card-header>
+    <mat-card-title class="card-title">{{ prop?.name }}</mat-card-title>
+    <mat-card-subtitle class="card-subtitle">{{ prop?.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="content" *ngIf="cardInfo">
+    <div class="info-field" *ngFor="let card of cardInfo | keyvalue">
+      <p>{{ card.value.title }}</p>
+      <p>{{ prop[card.value.child] }}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
