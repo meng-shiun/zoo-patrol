@@ -8,7 +8,10 @@ import { MyProjectsComponent, ArchivedComponent } from '.';
 import {
   RunningProjectsShellComponent,
   ProjectFilterBarComponent,
-  ProjectListComponent
+  ProjectListComponent,
+  ProjectDetailsShellComponent,
+  ProjectDetailsComponent,
+  ProjectBudgetComponent
 } from './running';
 
 const routes: Routes = [
@@ -20,8 +23,16 @@ const routes: Routes = [
       {
         path: 'running',
         component: RunningProjectsShellComponent,
-        data: { routeId: 0 },
-        children: []
+        data: { routeId: 0 }
+      },
+      {
+        path: 'running/:id',
+        component: ProjectDetailsShellComponent,
+        children: [
+          { path: '', redirectTo: 'details', pathMatch: 'full' },
+          { path: 'details', component: ProjectDetailsComponent },
+          { path: 'budget', component: ProjectBudgetComponent }
+        ]
       },
       { path: 'my_projects', component: MyProjectsComponent, data: { routeId: 1 } },
       { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },

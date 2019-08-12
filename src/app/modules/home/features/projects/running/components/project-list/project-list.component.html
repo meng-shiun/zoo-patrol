@@ -2,5 +2,7 @@
   <app-card *ngFor="let project of projects"
     [prop]="project"
     [cardInfo]="cardInfo"
+    [routerLink]="project.id"
+    [ngStyle]="{'cursor': 'pointer'}"
     ></app-card>
 </section>
