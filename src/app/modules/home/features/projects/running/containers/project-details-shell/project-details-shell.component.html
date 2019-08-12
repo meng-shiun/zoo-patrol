@@ -1,1 +1,12 @@
-<p>project-details-shell works!</p>
+<h2>{{title}}</h2>
+
+<nav mat-tab-nav-bar *ngIf="tabs">
+  <a mat-tab-link *ngFor="let tab of tabs"
+    (click)="activeTab = tab.name"
+    [active]="activeTab == tab.name"
+    [routerLink]="[tab.link]"> {{tab.name}} </a>
+</nav>
+
+<section [@slide-left-right]="animationState">
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+</section>

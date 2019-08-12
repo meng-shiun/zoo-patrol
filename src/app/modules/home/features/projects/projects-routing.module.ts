@@ -30,8 +30,10 @@ const routes: Routes = [
         component: ProjectDetailsShellComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
-          { path: 'details', component: ProjectDetailsComponent },
-          { path: 'budget', component: ProjectBudgetComponent }
+          { path: 'details', component: ProjectDetailsComponent, data: { routeId: 0 } },
+          { path: 'planning', component: ProjectBudgetComponent, data: { routeId: 1 } },    // TODO: Replce with planning component
+          { path: 'timesheets', component: ProjectBudgetComponent, data: { routeId: 2 } },  // TODO: Replce with timesheets component
+          { path: 'budget', component: ProjectBudgetComponent, data: { routeId: 3 } }
         ]
       },
       { path: 'my_projects', component: MyProjectsComponent, data: { routeId: 1 } },
