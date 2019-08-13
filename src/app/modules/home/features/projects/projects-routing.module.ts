@@ -30,15 +30,35 @@ const routes: Routes = [
         component: ProjectDetailsShellComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
-          { path: 'details', component: ProjectDetailsComponent, data: { routeId: 0 } },
-          { path: 'planning', component: ProjectBudgetComponent, data: { routeId: 1 } },    // TODO: Replce with planning component
-          { path: 'timesheets', component: ProjectBudgetComponent, data: { routeId: 2 } },  // TODO: Replce with timesheets component
-          { path: 'budget', component: ProjectBudgetComponent, data: { routeId: 3 } }
+          {
+            path: 'details',
+            component: ProjectDetailsComponent,
+            data: { routeId: 0 }
+          },
+          {
+            path: 'planning',
+            component: ProjectBudgetComponent,
+            data: { routeId: 1 }
+          }, // TODO: Replce with planning component
+          {
+            path: 'timesheets',
+            component: ProjectBudgetComponent,
+            data: { routeId: 2 }
+          }, // TODO: Replce with timesheets component
+          {
+            path: 'budget',
+            component: ProjectBudgetComponent,
+            data: { routeId: 3 }
+          }
         ]
       },
-      { path: 'my_projects', component: MyProjectsComponent, data: { routeId: 1 } },
+      {
+        path: 'my_projects',
+        component: MyProjectsComponent,
+        data: { routeId: 1 }
+      },
       { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
-      { path: '**', redirectTo: 'running'}
+      { path: '**', redirectTo: 'running' }
     ]
   }
 ];

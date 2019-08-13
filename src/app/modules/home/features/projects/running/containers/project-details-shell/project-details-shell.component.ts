@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
+import { Router, ActivatedRoute, Event, NavigationEnd, ParamMap } from '@angular/router';
+
+import { switchMap } from 'rxjs/operators';
 
 import { ITab, slideLeftRight } from '@app/shared';
+import { ProjectService } from '@app/core/services/project.service';
 
 @Component({
   selector: 'app-project-details-shell',
@@ -10,7 +13,6 @@ import { ITab, slideLeftRight } from '@app/shared';
   animations: [slideLeftRight]
 })
 export class ProjectDetailsShellComponent implements OnInit {
-  title = 'Project id - Project name';
   tabs: ITab[] = [
     { name: 'Project details', link: 'details' },
     { name: 'Planning', link: 'planning' },
@@ -20,7 +22,10 @@ export class ProjectDetailsShellComponent implements OnInit {
   activeTab: string;
   animationState: number;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  // TODO: correct type to Project
+  selectedProject$: any;
+
+  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService) {
     // Update active tab when refreshing page
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
@@ -34,6 +39,12 @@ export class ProjectDetailsShellComponent implements OnInit {
   }
 
   ngOnInit() {
+    // TODO: Rewrite: fetch data with NgRx
+    // Fetch default project data (for project-details page)
+    this.selectedProject$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.projectService.getProject(+params.get('id')))
+    );
   }
 
   onActivate($event) {

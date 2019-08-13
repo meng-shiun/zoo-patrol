@@ -1,4 +1,6 @@
-<h2>{{title}}</h2>
+<div *ngIf="selectedProject$ | async as selectedProject">
+  <h2>{{ selectedProject.id }} - {{ selectedProject.name }}</h2>
+</div>
 
 <nav mat-tab-nav-bar *ngIf="tabs">
   <a mat-tab-link *ngFor="let tab of tabs"
