@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { Observable } from 'rxjs';
+
+import { IProjectDetails } from '@app/shared';
+import { ProjectService } from '@app/core/services/project.service';
+
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
@@ -8,10 +13,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) { }
+  projectDetails$: Observable<IProjectDetails>;
+
+  constructor(
+    private route: ActivatedRoute,
+    private projectService: ProjectService) {
+  }
 
   ngOnInit() {
-    console.log('Project id: ', this.route.parent.snapshot.paramMap.get('id'));
+    const id = +this.route.parent.snapshot.paramMap.get('id');
+
+    this.projectDetails$ = this.projectService.getProjectDetails(id);
   }
 
 }
