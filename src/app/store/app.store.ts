@@ -1,3 +1,5 @@
+import { DashboadState } from '@app/modules/home/dashboard/store/dashboard.reducer';
+
 export interface AppState {
-  // TODO: Load Dashboard store
+  dashboard: DashboadState;
 }
