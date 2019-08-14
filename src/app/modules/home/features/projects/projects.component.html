@@ -2,7 +2,8 @@
   <a mat-tab-link *ngFor="let tab of tabs"
     (click)="activeTab = tab.name"
     [active]="activeTab == tab.name"
-    [routerLink]="[tab.link]"> {{tab.name}} </a>
+    [routerLink]="[tab.link]">
+    <span class="test">{{tab.name}}</span></a>
 </nav>
 
 <section [@slide-left-right]="animationState">

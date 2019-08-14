@@ -1,11 +1,17 @@
-section {
-  text-align: center;
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
+mat-toolbar {
+  background: $bg-grey-dark;
+  button {
+    color: $color-white;
+  }
 }
 
 header {
   padding: 0;
   .logo {
-    background: #3e3d3d;
+    background: $brand-color-red;
     width: 4rem;
     height: 4rem;
     margin-left: -1rem;
