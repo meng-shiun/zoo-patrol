@@ -24,7 +24,7 @@ export class ProjectService {
   // TODO: Rewrite with NgRx effect (remove getProject method in service)
   getProject(id: number): Observable<IProject> {
     return this.http.get<any>(this.projectsUrl).pipe(
-      map(projects => projects.find(p => p['project_id'] === id))
+      map(projects => projects.find(p => p.id === id))
     );
   }
 
