@@ -15,6 +15,9 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +32,9 @@ import { LoginComponent } from './auth/login/login.component';
     HomeModule,
     // ComponentsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
