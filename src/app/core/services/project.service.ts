@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, tap, filter } from 'rxjs/operators';
 
-import { IProject, IProjectDetails } from '@app/shared';
+import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,14 @@ export class ProjectService {
   // TODO: Log error if the id doesn't exist
   getProjectDetails(id: number): Observable<IProjectDetails> {
     return this.http.get<any>(this.projectsDetailsUrl).pipe(
+      map(projects => projects.find(p => p['project_id'] === id))
+    );
+  }
+
+  // TODO: Rewrite with NgRx effect
+  // TODO: Log error if the id doesn't exist
+  getProjectBudgetField(id: number): Observable<IProjectBudgetField> {
+    return this.http.get<any>(this.projectsBudgetUrl).pipe(
       map(projects => projects.find(p => p['project_id'] === id))
     );
   }

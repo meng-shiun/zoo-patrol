@@ -1,1 +1,16 @@
-<p>project-budget works!</p>
+<p>=== Budget ===</p>
+
+<br>
+
+<div *ngIf="projectBudgetField$ | async as projectBudgetField">
+  <p>Id: {{ projectBudgetField.project_id }}</p>
+  <p>**************************</p>
+  <ul *ngIf="projectBudgetField.total as total">
+    <li *ngFor="let item of total">
+      <p>Budget: {{ item.budget }}</p>
+      <p>Type: {{ item.type }}</p>
+      <p *ngIf="item.hour">Hours: {{ item.hour }}</p>
+      <p>**************************</p>
+    </li>
+  </ul>
+</div>
