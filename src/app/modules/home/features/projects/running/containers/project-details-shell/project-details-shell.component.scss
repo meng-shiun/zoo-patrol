@@ -1,0 +1,15 @@
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
+.container {
+  margin: 2rem 1rem;
+  @include breakpoint($small-screen) {
+    margin: 2rem;
+  }
+  @include breakpoint($medium-screen) {
+    margin: 2rem 3rem;
+  }
+  @include breakpoint($large-screen) {
+    margin: 2rem 4rem;
+  }
+}   

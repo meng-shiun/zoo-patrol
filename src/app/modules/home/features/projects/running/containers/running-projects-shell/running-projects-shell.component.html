@@ -1,9 +1,10 @@
-<h1>Running Projects Container</h1>
-<hr>
-<app-project-filter-bar></app-project-filter-bar>
-<br>
-<app-project-list
-  [projects]="projects$ | async"
-  ></app-project-list>
-<br>
-<div>TODO: Project Pagination Component</div>
+<div class="container">
+  <h1>Running Projects Container</h1>
+  <hr>
+  <app-project-filter-bar></app-project-filter-bar>
+  <br>
+  <app-project-list
+    [projects]="projects$ | async"></app-project-list>
+  <br>
+  <div>TODO: Project Pagination Component</div>
+</div>
