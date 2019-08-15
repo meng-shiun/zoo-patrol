@@ -1,5 +1,9 @@
-import { DashboadState } from '@app/modules/home/dashboard/store/dashboard.reducer';
+import * as fromDashboard from '@app/modules/home/dashboard/store/dashboard.reducer';
 
 export interface AppState {
-  dashboard: DashboadState;
+  dashboard: fromDashboard.State;
 }
+
+export const reducers = {
+  dashboard: fromDashboard.reducer
+};

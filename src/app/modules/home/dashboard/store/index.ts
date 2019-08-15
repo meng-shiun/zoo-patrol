@@ -1,12 +1,12 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import { DashboadState } from './dashboard.reducer';
+import * as fromDashboard from './dashboard.reducer';
 
 /* Create Feature Selector */
-const selectDashboardFeature = createFeatureSelector<DashboadState>('dashboard');
+export const selectDashboardFeature = createFeatureSelector<fromDashboard.State>('dashboard');
 
 /* Create Selectors */
 export const selectMessage = createSelector(
   selectDashboardFeature,
-  (state: DashboadState) => state.message
+  (state: fromDashboard.State) => state.message
 );

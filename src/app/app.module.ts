@@ -15,8 +15,10 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 
+/* NgRx */
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import * as fromRoot from './store/app.store';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,7 @@ import { EffectsModule } from '@ngrx/effects';
     // ComponentsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(fromRoot.reducers),
     EffectsModule.forRoot([])
   ],
   providers: [],
