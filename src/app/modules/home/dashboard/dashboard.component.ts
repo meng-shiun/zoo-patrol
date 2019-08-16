@@ -14,7 +14,7 @@ import * as dashboardActions from './store/dashboard.actions';
 })
 export class DashboardComponent implements OnInit {
   tabs:     string[] = ['Zoeken', '+ New project'];
-  
+
   message$: Observable<any>;
   info$:    Observable<any>;
 
