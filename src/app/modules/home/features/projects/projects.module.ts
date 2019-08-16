@@ -7,6 +7,10 @@ import { ProjectDetailsShellComponent } from './running/containers/project-detai
 import { ProjectDetailsComponent } from './running/components/project-details/project-details.component';
 import { ProjectBudgetComponent } from './running/components/project-budget/project-budget.component';
 
+/* NgRx */
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/project.reducer';
+
 @NgModule({
   declarations: [
     ProjectsRoutingModule.components,
@@ -17,7 +21,8 @@ import { ProjectBudgetComponent } from './running/components/project-budget/proj
   imports: [
     SharedModule,
     ComponentsModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    StoreModule.forFeature('projects', reducer)
   ]
 })
 export class ProjectsModule { }
