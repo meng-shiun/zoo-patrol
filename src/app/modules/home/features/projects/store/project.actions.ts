@@ -1,4 +1,10 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
-/* Load Projects */
-export const loadProjects = createAction('[Projects] Load Projects');
+import { IProject } from '@app/shared';
+
+/* Load Projects (Meta data) */
+export const loadAll = createAction('[Projects] Load Projects');
+
+export const loadAllSuccess = createAction('[Projects] Load Projects Success', props<{ payload: IProject[] }>());
+
+export const loadAllFail = createAction('[Projects] Load Projects Fail', props<{ error: string }>());

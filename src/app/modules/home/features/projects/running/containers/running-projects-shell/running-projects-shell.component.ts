@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 
 import { Observable, of } from 'rxjs';
 
-import { ProjectService } from '@app/modules/home/features/projects/project.service';
 import { IProject } from '@app/shared';
+import * as fromProjects from '../../../store';
+import * as ProjectActions from '../../../store/project.actions';
 
 @Component({
   selector: 'app-running-projects-shell',
@@ -13,12 +15,12 @@ import { IProject } from '@app/shared';
 export class RunningProjectsShellComponent implements OnInit {
   projects$: Observable<IProject[]>;
 
-  constructor(private projectService: ProjectService) {
-    // TODO: refactor with NgRx & unsubscribe
-    this.projects$ = this.projectService.getProjects();
-  }
+  constructor(private store: Store<fromProjects.State>) { }
 
   ngOnInit() {
+    this.store.dispatch(ProjectActions.loadAll());
+
+    this.projects$ = this.store.pipe(select(fromProjects.getAllProjects));
   }
 
 }

@@ -18,9 +18,9 @@ export const initialState: State = {
 /* Creating the reducer function */
 const projectReducer = createReducer(
   initialState,
-  // TODO: remove this
-  on(ProjectActions.loadProjects, state => ({
-    ...state
+  on(ProjectActions.loadAllSuccess, (state, { payload }) => ({
+    ...state,
+    projects: payload
   }))
 );
 
