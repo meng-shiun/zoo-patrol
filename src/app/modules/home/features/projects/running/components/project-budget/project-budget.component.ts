@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { IProjectBudgetField } from '@app/shared';
-import { ProjectService } from '@app/core/services/project.service';
+import { ProjectService } from '@app/modules/home/features/projects/project.service';
 
 @Component({
   selector: 'app-project-budget',

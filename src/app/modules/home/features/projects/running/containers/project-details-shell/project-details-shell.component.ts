@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, Event, NavigationEnd, ParamMap } from '@angular
 import { switchMap } from 'rxjs/operators';
 
 import { ITab, slideLeftRight } from '@app/shared';
-import { ProjectService } from '@app/core/services/project.service';
+import { ProjectService } from '@app/modules/home/features/projects/project.service';
 
 @Component({
   selector: 'app-project-details-shell',

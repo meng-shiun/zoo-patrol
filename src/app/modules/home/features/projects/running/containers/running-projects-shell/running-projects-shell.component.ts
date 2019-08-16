@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
-import { ProjectService } from '@app/core/services/project.service';
+import { ProjectService } from '@app/modules/home/features/projects/project.service';
 import { IProject } from '@app/shared';
 
 @Component({
