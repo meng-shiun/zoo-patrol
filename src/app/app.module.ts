@@ -18,6 +18,7 @@ import { LoginComponent } from './auth/login/login.component';
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import * as fromRoot from './store/app.store';
 
 @NgModule({
@@ -36,7 +37,10 @@ import * as fromRoot from './store/app.store';
     BrowserAnimationsModule,
     AppRoutingModule,
     StoreModule.forRoot(fromRoot.reducers),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      name: 'Zoo Patrol'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
