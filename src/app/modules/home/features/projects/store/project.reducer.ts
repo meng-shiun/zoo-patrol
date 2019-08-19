@@ -1,13 +1,14 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-import { IProject } from '@app/shared';
+import { IProject, IProjectDetails } from '@app/shared';
 import * as ProjectActions from './project.actions';
 
 /* Defining the state shape */
 export interface State {
   currentProjectId: number | null;
   projects: IProject[];
+  selectedProject: IProjectDetails;
   error: string;
 }
 
@@ -24,6 +25,7 @@ export interface State {
 export const initialState: State = {
   currentProjectId: 0,
   projects: [],
+  selectedProject: null,
   error: ''
 };
 
@@ -38,6 +40,18 @@ const projectReducer = createReducer(
   on(ProjectActions.loadAllInfoFail, (state, { error }) => ({
     ...state,
     projects: [],
+    error: error
+  })),
+  on(ProjectActions.loadDetailByIdSuccess, (state, { result }) => ({
+    ...state,
+    projects: [],
+    selectedProject: result,
+    error: ''
+  })),
+  on(ProjectActions.loadDetailByIdFail, (state, { error }) => ({
+    ...state,
+    projects: [],
+    selectedProject: null,
     error: error
   }))
 );

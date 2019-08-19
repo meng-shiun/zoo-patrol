@@ -17,6 +17,11 @@ export const getAllProjects = createSelector(
   (state: fromProjects.State) => state.projects
 );
 
+export const getProjectDetail = createSelector(
+  selectProjectsFeature,
+  (state: fromProjects.State) => state.selectedProject
+);
+
 export const getError = createSelector(
   selectProjectsFeature,
   (state: fromProjects.State) => state.error

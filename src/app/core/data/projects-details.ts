@@ -5,7 +5,7 @@ import { IProjectDetails } from '@app/shared';
 
 export const projectsDetailsData: IProjectDetails[] = [
   {
-    project_id: 1,
+    id: 1,
     client: 'Lueilwitz Group',
     sub_clinet: 'Bekker',
     name: 'Cam.ac.uk',
@@ -13,7 +13,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: 'L'
   },
   {
-    project_id: 2,
+    id: 2,
     client: 'Frami-Ledner',
     sub_clinet: 'Bekker',
     name: 'Over-blog.com',
@@ -21,7 +21,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: 'S'
   },
   {
-    project_id: 3,
+    id: 3,
     client: 'Ledner-Bergstrom',
     sub_clinet: 'Bekker',
     name: 'Businessweek.com',
@@ -29,7 +29,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: 'S'
   },
   {
-    project_id: 4,
+    id: 4,
     client: 'Wilderman, Armstrong and Bashirian',
     sub_clinet: 'Bekker',
     name: 'Ox.ac.uk',
@@ -37,7 +37,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: '3XL'
   },
   {
-    project_id: 5,
+    id: 5,
     client: 'Pacocha, Hintz and Roob',
     sub_clinet: 'Bekker',
     name: 'Reverbnation.com',
@@ -45,7 +45,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: '3XL'
   },
   {
-    project_id: 6,
+    id: 6,
     client: 'Nolan, Schowalter and Wolff',
     sub_clinet: 'Bekker',
     name: '163.com',
@@ -53,7 +53,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: 'M'
   },
   {
-    project_id: 7,
+    id: 7,
     client: 'Veum Inc',
     sub_clinet: 'Bekker',
     name: 'State.gov',
@@ -61,7 +61,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: 'S'
   },
   {
-    project_id: 8,
+    id: 8,
     client: 'Hayes LLC',
     sub_clinet: 'Bekker',
     name: 'Cocolog-nifty.com',
@@ -69,7 +69,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: '3XL'
   },
   {
-    project_id: 9,
+    id: 9,
     client: 'Kiehn, Okuneva and Huel',
     sub_clinet: 'Bekker',
     name: 'Un.org',
@@ -77,7 +77,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     status: '2XL'
   },
   {
-    project_id: 10,
+    id: 10,
     client: 'Watsica LLC',
     sub_clinet: 'Bekker',
     name: 'Mediafire.com',

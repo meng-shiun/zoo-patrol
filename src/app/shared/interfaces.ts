@@ -15,8 +15,11 @@ export interface IProject {
   budget_field?: IProjectBudgetField;
 }
 
+/**
+ * @param id: Need to be identical to IProject ID
+ */
 export interface IProjectDetails {
-  project_id: number;
+  id: number;
   client: string;
   sub_clinet: string;
   name: string;
