@@ -1,4 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 import { IProject } from '@app/shared';
 import * as ProjectActions from './project.actions';
@@ -7,20 +8,37 @@ import * as ProjectActions from './project.actions';
 export interface State {
   currentProjectId: number | null;
   projects: IProject[];
+  error: string;
 }
+
+// TODO: Implement ngrx/entity
+// Example...
+// export interface ProjectState extends EntityState<IProject> {
+//   // additional entities state property
+//   selectedProjectId: number | null;
+//   loading: boolean;
+//   error: string;
+// }
 
 /* Setting the initial state */
 export const initialState: State = {
   currentProjectId: 0,
-  projects: []
+  projects: [],
+  error: ''
 };
 
 /* Creating the reducer function */
 const projectReducer = createReducer(
   initialState,
-  on(ProjectActions.loadAllSuccess, (state, { payload }) => ({
+  on(ProjectActions.loadAllInfoSuccess, (state, { result }) => ({
     ...state,
-    projects: payload
+    projects: result,
+    error: ''
+  })),
+  on(ProjectActions.loadAllInfoFail, (state, { error }) => ({
+    ...state,
+    projects: [],
+    error: error
   }))
 );
 

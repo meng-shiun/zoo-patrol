@@ -14,13 +14,15 @@ import * as ProjectActions from '../../../store/project.actions';
 })
 export class RunningProjectsShellComponent implements OnInit {
   projects$: Observable<IProject[]>;
+  errorMessage$: Observable<string>;
 
   constructor(private store: Store<fromProjects.State>) { }
 
   ngOnInit() {
-    this.store.dispatch(ProjectActions.loadAll());
+    this.store.dispatch(ProjectActions.loadAllInfo());
 
-    this.projects$ = this.store.pipe(select(fromProjects.getAllProjects));
+    this.projects$      = this.store.pipe(select(fromProjects.getAllProjects));
+    this.errorMessage$  = this.store.pipe(select(fromProjects.getError));
   }
 
 }

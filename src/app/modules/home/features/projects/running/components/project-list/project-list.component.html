@@ -1,4 +1,5 @@
 <section class="list-container">
+  <p *ngIf="errorMessage">Load Projects Fail</p>
   <app-card *ngFor="let project of projects"
     [prop]="project"
     [cardInfo]="cardInfo"

@@ -4,7 +4,8 @@
   <app-project-filter-bar></app-project-filter-bar>
   <br>
   <app-project-list
-    [projects]="projects$ | async"></app-project-list>
+    [projects]="projects$ | async"
+    [errorMessage]="errorMessage$ | async"></app-project-list>
   <br>
   <div>TODO: Project Pagination Component</div>
 </div>
