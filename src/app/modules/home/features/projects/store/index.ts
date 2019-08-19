@@ -22,6 +22,11 @@ export const getProjectDetail = createSelector(
   (state: fromProjects.State) => state.selectedProject
 );
 
+export const getProjectBudgetField = createSelector(
+  selectProjectsFeature,
+  (state: fromProjects.State) => state.selectedBudgetField
+);
+
 export const getError = createSelector(
   selectProjectsFeature,
   (state: fromProjects.State) => state.error

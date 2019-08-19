@@ -5,7 +5,6 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { IProjectDetails } from '@app/shared';
-import { ProjectService } from '@app/modules/home/features/projects/project.service';
 import * as fromProjects from '../../../store';
 import * as ProjectActions from '../../../store/project.actions';
 

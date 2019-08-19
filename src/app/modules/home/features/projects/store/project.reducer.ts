@@ -1,7 +1,7 @@
 import { createReducer, on, Action } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
-import { IProject, IProjectDetails } from '@app/shared';
+import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
 import * as ProjectActions from './project.actions';
 
 /* Defining the state shape */
@@ -9,6 +9,7 @@ export interface State {
   currentProjectId: number | null;
   projects: IProject[];
   selectedProject: IProjectDetails;
+  selectedBudgetField: IProjectBudgetField;
   error: string;
 }
 
@@ -26,6 +27,7 @@ export const initialState: State = {
   currentProjectId: 0,
   projects: [],
   selectedProject: null,
+  selectedBudgetField: null,
   error: ''
 };
 
@@ -52,6 +54,18 @@ const projectReducer = createReducer(
     ...state,
     projects: [],
     selectedProject: null,
+    error: error
+  })),
+  on(ProjectActions.loadBudgetFieldByIdSuccess, (state, { result }) => ({
+    ...state,
+    projects: [],
+    selectedBudgetField: result,
+    error: ''
+  })),
+  on(ProjectActions.loadBudgetFieldByIdFail, (state, { error }) => ({
+    ...state,
+    projects: [],
+    selectedBudgetField: null,
     error: error
   }))
 );

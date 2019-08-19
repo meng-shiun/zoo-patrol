@@ -39,8 +39,7 @@ export class ProjectService {
   // TODO: Rewrite with NgRx effect
   // TODO: Log error if the id doesn't exist
   getProjectBudgetField(id: number): Observable<IProjectBudgetField> {
-    return this.http.get<any>(this.projectsBudgetUrl).pipe(
-      map(projects => projects.find(p => p['project_id'] === id))
-    );
+    const url = `${this.projectsBudgetUrl}/${id}`;
+    return this.http.get<IProjectBudgetField>(url);
   }
 }
