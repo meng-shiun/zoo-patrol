@@ -3,7 +3,7 @@
 <br>
 
 <div *ngIf="projectBudgetField$ | async as projectBudgetField">
-  <p>Id: {{ projectBudgetField.project_id }}</p>
+  <p>Id: {{ projectBudgetField.id }}</p>
   <p>**************************</p>
   <ul *ngIf="projectBudgetField.total as total">
     <li *ngFor="let item of total">

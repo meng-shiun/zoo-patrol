@@ -3,7 +3,7 @@ import { Actions, ofType, createEffect, act } from '@ngrx/effects';
 import { switchMap, map, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
-import { IProject, IProjectDetails } from '@app/shared';
+import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
 import * as ProjectActions from './project.actions';
 import { ProjectService } from '../project.service';
 
@@ -25,8 +25,20 @@ export class ProjectEffects {
       ofType(ProjectActions.loadDetailById),
       switchMap(action =>
         this.projectService.getProjectDetails(action.id).pipe(
-          map((project: IProjectDetails) => ProjectActions.loadDetailByIdSuccess({ result: project })),
+          map((details: IProjectDetails) => ProjectActions.loadDetailByIdSuccess({ result: details })),
           catchError(err => of(ProjectActions.loadDetailByIdFail({ error: err })))
+        )
+      )
+    )
+  );
+
+  loadProjectBudget$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.loadBudgetFieldById),
+      switchMap(action =>
+        this.projectService.getProjectBudgetField(action.id).pipe(
+          map((budgetField: IProjectBudgetField) => ProjectActions.loadBudgetFieldByIdSuccess({ result: budgetField })),
+          catchError(err => of(ProjectActions.loadBudgetFieldByIdFail({ error: err })))
         )
       )
     )

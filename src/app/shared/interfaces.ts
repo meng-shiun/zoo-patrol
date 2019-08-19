@@ -38,7 +38,10 @@ export interface IBudgetItem {
   hours: number;
 }
 
+/**
+ * @param id: Need to be identical to IProject ID
+ */
 export interface IProjectBudgetField {
-  project_id: number;
+  id: number;
   total?: IBudgetItem[];
 }
