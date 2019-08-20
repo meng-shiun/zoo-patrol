@@ -9,7 +9,7 @@ import { ProjectBudgetComponent } from './running/components/project-budget/proj
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './store/project.reducer';
+import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './store/project.effects';
 
@@ -24,7 +24,7 @@ import { ProjectEffects } from './store/project.effects';
     SharedModule,
     ComponentsModule,
     ProjectsRoutingModule,
-    StoreModule.forFeature('projects', reducer),
+    StoreModule.forFeature('projectModule', reducers),
     EffectsModule.forFeature([ProjectEffects])
   ]
 })

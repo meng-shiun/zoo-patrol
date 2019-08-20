@@ -16,13 +16,13 @@ export class RunningProjectsShellComponent implements OnInit {
   projects$: Observable<IProject[]>;
   errorMessage$: Observable<string>;
 
-  constructor(private store: Store<fromProjects.State>) { }
+  constructor(private store: Store<fromProjects.ProjectState>) { }
 
   ngOnInit() {
     this.store.dispatch(ProjectActions.loadAllInfo());
 
     this.projects$      = this.store.pipe(select(fromProjects.getAllProjects));
-    this.errorMessage$  = this.store.pipe(select(fromProjects.getError));
+    this.errorMessage$  = this.store.pipe(select(fromProjects.loadAllProjectsError));
   }
 
 }

@@ -18,7 +18,7 @@ export class ProjectBudgetComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromProjects.State>) { }
+    private store: Store<fromProjects.ProjectState>) { }
 
   ngOnInit() {
     const id = +this.route.parent.snapshot.paramMap.get('id');

@@ -19,7 +19,7 @@ export class ProjectDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromProjects.State>) {
+    private store: Store<fromProjects.ProjectState>) {
   }
 
   ngOnInit() {
