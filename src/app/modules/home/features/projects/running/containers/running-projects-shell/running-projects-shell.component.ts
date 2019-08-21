@@ -21,8 +21,8 @@ export class RunningProjectsShellComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(ProjectActions.loadAllInfo());
 
-    this.projects$      = this.store.pipe(select(fromProjects.getAllProjects));
-    this.errorMessage$  = this.store.pipe(select(fromProjects.loadAllProjectsError));
+    this.projects$      = this.store.pipe(select(fromProjects.selectAllProjects));
+    this.errorMessage$  = this.store.pipe(select(fromProjects.selectAllProjectsError));
   }
 
   addProject(): void {

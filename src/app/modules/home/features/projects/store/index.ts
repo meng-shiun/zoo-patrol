@@ -1,15 +1,18 @@
 import { createFeatureSelector, createSelector, ActionReducerMap } from '@ngrx/store';
 
 import * as fromRoot from '@app/store/app.store';
-import * as fromProjects from './project.reducers';
+
+import * as fromAllProjects from './project-all.reducer';
+import * as fromProjectDetails from './project-details.reducer';
+import * as fromProjectBudgetField from './project-budgetField.reducer';
 
 /* ===============================================
     Setting up State for lazing loading module
    =============================================== */
 interface ProjectModuleState {
-  projects: fromProjects.AllProjectState;
-  details: fromProjects.ProjectDetailState;
-  budgetField: fromProjects.ProjectBudgetFieldState;
+  projects: fromAllProjects.AllProjectState;
+  details: fromProjectDetails.ProjectDetailState;
+  budgetField: fromProjectBudgetField.ProjectBudgetFieldState;
 }
 
 export interface ProjectState extends fromRoot.AppState {
@@ -48,33 +51,33 @@ export const selectProjectBudgetFieldState = createSelector(
    ================================================ */
 
 // Create Child Selectors in All Projects
-export const getAllProjects = createSelector(
+export const selectAllProjects = createSelector(
   selectAllProjectsState,
-  (state: fromProjects.AllProjectState) => state.projects
+  fromAllProjects.selectAllProjects
 );
 
-export const loadAllProjectsError = createSelector(
+export const selectAllProjectsError = createSelector(
   selectAllProjectsState,
-  (state: fromProjects.AllProjectState) => state.error
+  fromAllProjects.getError
 );
 
 // Create Child Selectors in Project Details
 export const getProjectDetail = createSelector(
   selectProjectDetailState,
-  (state: fromProjects.ProjectDetailState) => state.details
+  (state: fromProjectDetails.ProjectDetailState) => state.details
 );
 
 // Create Child Selectors in Project Budget Field
 export const getProjectBudgetField = createSelector(
   selectProjectBudgetFieldState,
-  (state: fromProjects.ProjectBudgetFieldState) => state.budgetField
+  (state: fromProjectBudgetField.ProjectBudgetFieldState) => state.budgetField
 );
 
 /* ================================================
                       Reducers
    ================================================ */
 export const reducers: ActionReducerMap<ProjectModuleState> = {
-  projects: fromProjects.projectAllReducer,
-  details: fromProjects.detaildReducer,
-  budgetField: fromProjects.budgetFieldReducer
+  projects: fromAllProjects.projectAllReducer,
+  details: fromProjectDetails.detaildReducer,
+  budgetField: fromProjectBudgetField.budgetFieldReducer
 };
