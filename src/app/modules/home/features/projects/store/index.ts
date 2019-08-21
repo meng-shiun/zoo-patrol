@@ -3,7 +3,9 @@ import { createFeatureSelector, createSelector, ActionReducerMap } from '@ngrx/s
 import * as fromRoot from '@app/store/app.store';
 import * as fromProjects from './project.reducers';
 
-/* ============ Setting up State for lazing loading module ============== */
+/* ===============================================
+    Setting up State for lazing loading module
+   =============================================== */
 interface ProjectModuleState {
   projects: fromProjects.AllProjectState;
   details: fromProjects.ProjectDetailState;
@@ -18,9 +20,9 @@ export interface ProjectState extends fromRoot.AppState {
 export const selectProjectModuleState = createFeatureSelector<ProjectModuleState>('projectModule');
 
 
-/**
- * ============ Root Selectors ==============
- */
+/* ================================================
+                  Root Selectors
+   ================================================ */
 
 // Create Root Selector: All Projects
 export const selectAllProjectsState = createSelector(
@@ -41,9 +43,9 @@ export const selectProjectBudgetFieldState = createSelector(
 );
 
 
-/**
- * ============ Child Selectors ==============
- */
+/* ================================================
+                  Child Selectors
+   ================================================ */
 
 // Create Child Selectors in All Projects
 export const getAllProjects = createSelector(
@@ -68,7 +70,9 @@ export const getProjectBudgetField = createSelector(
   (state: fromProjects.ProjectBudgetFieldState) => state.budgetField
 );
 
-/* ============ Reducers ============== */
+/* ================================================
+                      Reducers
+   ================================================ */
 export const reducers: ActionReducerMap<ProjectModuleState> = {
   projects: fromProjects.projectAllReducer,
   details: fromProjects.detaildReducer,

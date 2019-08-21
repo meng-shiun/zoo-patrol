@@ -25,4 +25,12 @@ export class RunningProjectsShellComponent implements OnInit {
     this.errorMessage$  = this.store.pipe(select(fromProjects.loadAllProjectsError));
   }
 
+  addProject(): void {
+    console.log('add a new project');
+  }
+
+  deleteProject(id: number) {
+    console.log('delete project 4');
+  }
+
 }
