@@ -26,7 +26,16 @@ export class RunningProjectsShellComponent implements OnInit {
   }
 
   addProject(): void {
-    console.log('add a new project');
+    const newProject: IProject = {
+      id: null,
+      client: 'New Client',
+      name: 'New Client Name',
+      manager: 'Manager',
+      status: 'L',
+      deadline: '11/6/2000'
+    };
+
+    this.store.dispatch(ProjectActions.createProject({ result: newProject }));
   }
 
   deleteProject(id: number) {

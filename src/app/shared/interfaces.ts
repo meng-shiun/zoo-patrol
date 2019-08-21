@@ -5,7 +5,7 @@ export interface ITab {
 
 // Meta data of a project
 export interface IProject {
-  id: number;
+  id: number | null;
   client: string;
   name: string;
   manager: string;

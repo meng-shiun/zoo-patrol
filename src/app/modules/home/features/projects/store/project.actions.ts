@@ -26,3 +26,10 @@ export const loadBudgetFieldByIdSuccess = createAction(
 
 export const loadBudgetFieldByIdFail = createAction('[Project] Load Project BudgetField By Id Fail', props<{ error: string }>());
 
+
+/* ============= Create Project ============= */
+export const createProject = createAction('[Project] Create Project', props<{ result: IProject }>());
+
+export const createProjectSuccess = createAction('[Project] Create Project Success', props<{ result: IProject }>());
+
+export const createProjectFail = createAction('[Project] Create Project Fail', props<{ error: string }>());

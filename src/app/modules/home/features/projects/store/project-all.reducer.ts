@@ -12,7 +12,7 @@ export interface AllProjectState extends EntityState<IProject> {
 }
 
 export function sortById(a: IProject, b: IProject) {
-  return a.id - a.id;
+  return b.id - a.id;
 }
 
 export const adapter: EntityAdapter<IProject> = createEntityAdapter<IProject>({
@@ -34,6 +34,13 @@ const allProjectsReducer = createReducer(
   on(ProjectActions.loadAllInfoFail, (state, { error }) => ({
     ...state,
     error: 'Load Projects failed' + error
+  })),
+  on(ProjectActions.createProjectSuccess, (state, { result }) => {
+    return adapter.addOne(result, state);
+  }),
+  on(ProjectActions.createProjectFail, (state, { error }) => ({
+    ...state,
+    error: 'Create Project failed' + error
   }))
 );
 
