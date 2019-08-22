@@ -32,6 +32,6 @@ const projectDetailsReducer = createReducer(
   }))
 );
 
-export function detaildReducer(state: ProjectDetailState | undefined, action: Action) {
+export function detailsReducer(state: ProjectDetailState | undefined, action: Action) {
   return projectDetailsReducer(state, action);
 }

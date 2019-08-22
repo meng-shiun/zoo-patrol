@@ -19,7 +19,7 @@ export interface IProject {
  * @param id: Need to be identical to IProject ID
  */
 export interface IProjectDetails {
-  id: number;
+  id: number | null;
   client: string;
   sub_clinet: string;
   name: string;
@@ -42,6 +42,6 @@ export interface IBudgetItem {
  * @param id: Need to be identical to IProject ID
  */
 export interface IProjectBudgetField {
-  id: number;
+  id: number | null;
   total?: IBudgetItem[];
 }

@@ -78,6 +78,6 @@ export const getProjectBudgetField = createSelector(
    ================================================ */
 export const reducers: ActionReducerMap<ProjectModuleState> = {
   projects: fromAllProjects.projectAllReducer,
-  details: fromProjectDetails.detaildReducer,
+  details: fromProjectDetails.detailsReducer,
   budgetField: fromProjectBudgetField.budgetFieldReducer
 };

@@ -41,6 +41,11 @@ export class ProjectService {
     );
   }
 
+  // Project details will be created once a project is created
+  createProjectDetails(projectDetails: IProjectDetails): Observable<IProjectDetails> {
+    return this.http.post<IProjectDetails>(this.projectsDetailsUrl, projectDetails, this.httpOptions);
+  }
+
   // TODO: Log error if the id doesn't exist
   getProjectDetails(id: number): Observable<IProjectDetails> {
     const url = `${this.projectsDetailsUrl}/${id}`;
