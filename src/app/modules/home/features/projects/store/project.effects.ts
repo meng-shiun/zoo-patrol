@@ -49,7 +49,13 @@ export class ProjectEffects {
       ofType(ProjectActions.createProject),
       switchMap(action =>
         this.projectService.createProject(action.result).pipe(
-          map((project: IProject) => ProjectActions.createProjectSuccess({ result: project })),
+          switchMap((project: IProject) => {
+            return [
+              ProjectActions.createProjectSuccess({ result: project }),
+              ProjectActions.creatProjectDetails({ result: project })
+              // TODO: Trigger budget/planning...actions
+            ];
+          }),
           catchError(err => of(ProjectActions.createProjectFail({ error: err })))
         )
       )

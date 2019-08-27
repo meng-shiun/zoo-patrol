@@ -42,8 +42,23 @@ export class ProjectService {
   }
 
   // Project details will be created once a project is created
-  createProjectDetails(projectDetails: IProjectDetails): Observable<IProjectDetails> {
+  createProjectDetails(project: IProject): Observable<IProjectDetails> {
+    const projectDetails: IProjectDetails = {
+      id: project.id,
+      client: project.client,
+      sub_clinet: 'enter sub client',
+      name: project.name,
+      manager: project.manager,
+      status: project.status
+    };
+
     return this.http.post<IProjectDetails>(this.projectsDetailsUrl, projectDetails, this.httpOptions);
+  }
+
+  // TODO: when projectDetails is updated, project info also need to be updated
+  updateProjectDetails(projectDetails: IProjectDetails): Observable<IProjectDetails> {
+    const url = `${this.projectsDetailsUrl}/${projectDetails.id}`;
+    return this.http.put<IProjectDetails>(url, projectDetails, this.httpOptions);
   }
 
   // TODO: Log error if the id doesn't exist

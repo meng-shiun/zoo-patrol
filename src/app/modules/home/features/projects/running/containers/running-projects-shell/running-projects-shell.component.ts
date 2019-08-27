@@ -26,6 +26,8 @@ export class RunningProjectsShellComponent implements OnInit {
   }
 
   addProject(): void {
+    // TODO: move create projects/projectDetails to sub nav
+    // When a new project is created, details/budget/planning ... are also created
     const newProject: IProject = {
       id: null,
       client: 'New Client',
