@@ -26,7 +26,7 @@ export class ProjectDetailsComponent implements OnInit {
     const id = +this.route.parent.snapshot.paramMap.get('id');
     this.store.dispatch(ProjectActions.loadDetailById({id: id}));
 
-    this.projectDetails$ = this.store.pipe(select(fromProjects.getProjectDetail));
+    this.projectDetails$ = this.store.pipe(select(fromProjects.selectProjectDetails));
   }
 
 }

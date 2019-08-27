@@ -7,7 +7,7 @@ import * as fromProjectDetails from './project-details.reducer';
 import * as fromProjectBudgetField from './project-budgetField.reducer';
 
 /* ===============================================
-    Setting up State for lazing loading module
+    Setting up State for lazy loading module
    =============================================== */
 interface ProjectModuleState {
   projects: fromAllProjects.AllProjectState;
@@ -50,7 +50,7 @@ export const selectProjectBudgetFieldState = createSelector(
                   Child Selectors
    ================================================ */
 
-// Create Child Selectors in All Projects
+/* Create Child Selectors in All Projects */
 export const selectAllProjects = createSelector(
   selectAllProjectsState,
   fromAllProjects.selectAllProjects
@@ -61,13 +61,25 @@ export const selectAllProjectsError = createSelector(
   fromAllProjects.getError
 );
 
-// Create Child Selectors in Project Details
-export const getProjectDetail = createSelector(
+
+/* Create Child Selectors in Project Details */
+export const selectDetailEntities = createSelector(
   selectProjectDetailState,
-  (state: fromProjectDetails.ProjectDetailState) => state.details
+  fromProjectDetails.selectEntities
 );
 
-// Create Child Selectors in Project Budget Field
+export const selectDetailSelectedId = createSelector(
+  selectProjectDetailState,
+  fromProjectDetails.getSelectedId
+);
+
+export const selectProjectDetails = createSelector(
+  selectDetailEntities,
+  selectDetailSelectedId,
+  (entities, id) => entities[id]
+);
+
+/* Create Child Selectors in Project Budget Field */
 export const getProjectBudgetField = createSelector(
   selectProjectBudgetFieldState,
   (state: fromProjectBudgetField.ProjectBudgetFieldState) => state.budgetField
