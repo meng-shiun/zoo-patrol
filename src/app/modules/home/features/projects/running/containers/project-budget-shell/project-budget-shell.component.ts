@@ -27,4 +27,8 @@ export class ProjectBudgetShellComponent implements OnInit {
     this.projectBudgetField$ = this.store.pipe(select(fromProjects.getProjectBudgetField));
   }
 
+  addBudgetItem(): void {
+    console.log('Add budget item');
+  }
+
 }

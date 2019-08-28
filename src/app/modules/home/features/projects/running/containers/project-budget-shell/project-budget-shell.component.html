@@ -1,9 +1,12 @@
-
 <p>=== Budget ===</p>
 
 <br>
 
 <div *ngIf="projectBudgetField$ | async as projectBudgetField">
+  <app-budget-list></app-budget-list>
+  <app-budget-list-item></app-budget-list-item>
+  <app-budget-total></app-budget-total>
+
   <p>Id: {{ projectBudgetField.id }}</p>
   <p>**************************</p>
   <ul *ngIf="projectBudgetField.total as total">
@@ -15,3 +18,7 @@
     </li>
   </ul>
 </div>
+
+<button mat-mini-fab aria-label="Add a budget item" (click)="addBudgetItem()">
+  <mat-icon>add</mat-icon>
+</button>

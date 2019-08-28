@@ -73,6 +73,8 @@ export class ProjectsRoutingModule {
     MyProjectsComponent,
     ArchivedComponent,
     RunningProjectsShellComponent,
+    ProjectDetailsShellComponent,
+    ProjectBudgetShellComponent,
     ProjectFilterBarComponent,
     ProjectListComponent
   ];
