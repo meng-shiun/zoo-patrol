@@ -9,11 +9,11 @@ import * as fromProjects from '../../../store';
 import * as ProjectActions from '../../../store/project.actions';
 
 @Component({
-  selector: 'app-project-budget',
-  templateUrl: './project-budget.component.html',
-  styleUrls: ['./project-budget.component.scss']
+  selector: 'app-project-budget-shell',
+  templateUrl: './project-budget-shell.component.html',
+  styleUrls: ['./project-budget-shell.component.scss']
 })
-export class ProjectBudgetComponent implements OnInit {
+export class ProjectBudgetShellComponent implements OnInit {
   projectBudgetField$: Observable<IProjectBudgetField>;
 
   constructor(

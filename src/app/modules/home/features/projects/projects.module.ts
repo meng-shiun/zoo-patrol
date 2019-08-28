@@ -5,7 +5,7 @@ import { ComponentsModule } from '@app/components/components.module';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectDetailsShellComponent } from './running/containers/project-details-shell/project-details-shell.component';
 import { ProjectDetailsComponent } from './running/components/project-details/project-details.component';
-import { ProjectBudgetComponent } from './running/components/project-budget/project-budget.component';
+import { ProjectBudgetShellComponent } from './running/containers/project-budget-shell/project-budget-shell.component';
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';
@@ -17,8 +17,8 @@ import { ProjectEffects } from './store/project.effects';
   declarations: [
     ProjectsRoutingModule.components,
     ProjectDetailsShellComponent,
+    ProjectBudgetShellComponent,
     ProjectDetailsComponent,
-    ProjectBudgetComponent
   ],
   imports: [
     SharedModule,

@@ -11,7 +11,7 @@ import {
   ProjectListComponent,
   ProjectDetailsShellComponent,
   ProjectDetailsComponent,
-  ProjectBudgetComponent
+  ProjectBudgetShellComponent
 } from './running';
 
 const routes: Routes = [
@@ -37,17 +37,17 @@ const routes: Routes = [
           },
           {
             path: 'planning',
-            component: ProjectBudgetComponent,
+            component: ProjectBudgetShellComponent,
             data: { routeId: 1 }
           }, // TODO: Replce with planning component
           {
             path: 'timesheets',
-            component: ProjectBudgetComponent,
+            component: ProjectBudgetShellComponent,
             data: { routeId: 2 }
           }, // TODO: Replce with timesheets component
           {
             path: 'budget',
-            component: ProjectBudgetComponent,
+            component: ProjectBudgetShellComponent,
             data: { routeId: 3 }
           }
         ]
