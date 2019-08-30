@@ -9,7 +9,7 @@ export const projectsBudgetData: IProjectBudgetField[] = [
     total: [
       {
         budget: 2000,
-        type: 'Design',
+        type: 'Marketing',
         hours: 20
       },
       {
@@ -72,7 +72,7 @@ export const projectsBudgetData: IProjectBudgetField[] = [
     total: [
       {
         budget: 8000,
-        type: 'Development',
+        type: 'Marketing',
         hours: 80
       }
     ]

@@ -1,1 +1,6 @@
-<p>budget-list works!</p>
+<div class="budget-list-container">
+  <app-budget-list-item
+    *ngFor="let item of budgetList"
+    [budgetItem]="item">
+  </app-budget-list-item>
+</div>

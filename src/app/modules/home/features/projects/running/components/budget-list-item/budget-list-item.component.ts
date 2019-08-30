@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { IBudgetItem } from '@app/shared';
 
 @Component({
   selector: 'app-budget-list-item',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./budget-list-item.component.scss']
 })
 export class BudgetListItemComponent implements OnInit {
+  @Input() budgetItem: IBudgetItem;
+
   tasks: string[] = [
     'Design',
     'Development',

@@ -1,10 +1,15 @@
-app-budget-total {
-  float: right;
-  margin-right: 25%;
-}
+.budget-budget-shell-container {
+  margin-top: 2rem;
+  position: relative;
+  app-budget-total {
+    position: absolute;
+    right: 25%;
+    top: 0;
+  }
 
-button {
-  float: right;
-  margin-right: 20%;
-  margin-top: 5rem;
+  button {
+    position: absolute;
+    right: 25%;
+    bottom: 0;
+  }
 }

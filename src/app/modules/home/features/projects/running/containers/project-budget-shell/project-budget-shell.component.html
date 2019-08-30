@@ -1,24 +1,17 @@
-<p>=== Budget ===</p>
+<div class="budget-budget-shell-container">
+  <div *ngIf="projectBudgetField$ | async as projectBudgetField">
+    <p>Id: {{ projectBudgetField.id }}</p>
 
-<br>
+    <app-budget-list
+      [budgetList]="projectBudgetField.total">
+    </app-budget-list>
 
-<div *ngIf="projectBudgetField$ | async as projectBudgetField">
-  <app-budget-list></app-budget-list>
-  <app-budget-list-item></app-budget-list-item>
-  <app-budget-total></app-budget-total>
+    <app-budget-total></app-budget-total>
+  </div>
 
-  <p>Id: {{ projectBudgetField.id }}</p>
-  <p>**************************</p>
-  <ul *ngIf="projectBudgetField.total as total">
-    <li *ngFor="let item of total">
-      <p>Budget: {{ item.budget }}</p>
-      <p>Type: {{ item.type }}</p>
-      <p *ngIf="item.hours">Hours: {{ item.hours }}</p>
-      <p>**************************</p>
-    </li>
-  </ul>
+  <button
+    (click)="addBudgetItem()"
+    mat-mini-fab aria-label="Add a budget item">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
-
-<button mat-mini-fab aria-label="Add a budget item" (click)="addBudgetItem()">
-  <mat-icon>add</mat-icon>
-</button>
