@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./budget-list-item.component.scss']
 })
 export class BudgetListItemComponent implements OnInit {
+  tasks: string[] = [
+    'Design',
+    'Development',
+    'Marketing'
+  ];
 
   constructor() { }
 

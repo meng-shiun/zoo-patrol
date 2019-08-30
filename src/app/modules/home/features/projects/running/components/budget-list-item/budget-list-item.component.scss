@@ -1,0 +1,32 @@
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
+.budget-list-item-container {
+  width: 70%;
+  margin: .5rem 0 -1rem 0;
+  mat-form-field {
+    width: 12rem;
+    margin-right: 1rem;
+    &.hour-field {
+      width: 8rem;
+    }
+
+    mat-icon {
+      color: $brand-color-red;
+    }
+
+    .currency {
+      position: absolute;
+      bottom: .1em;
+      color: $text-grey-light;
+    }
+
+    input {
+      margin-left: 1em;
+    }
+
+    mat-icon {
+      cursor: pointer;
+    }
+  }
+}
