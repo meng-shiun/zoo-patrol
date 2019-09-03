@@ -1,27 +1,27 @@
 <div class="budget-list-item-container" *ngIf="budgetItem">
-  <mat-form-field appearance="outline">
-    <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;Budget</mat-label>
-    <span matPrefix class="currency">€&nbsp;</span>
-    <input matInput type="number" [value]="budgetItem.budget">
-    <mat-icon matSuffix>edit</mat-icon>
-  </mat-form-field>
+  <form [formGroup]="budgetItemForm">
+    <mat-form-field appearance="outline">
+      <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;Budget</mat-label>
+      <span matPrefix class="currency">€&nbsp;</span>
+      <input matInput type="number" [value]="budgetItem.budget" formControlName="budget">
+      <mat-icon matSuffix>edit</mat-icon>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Type</mat-label>
-    <mat-select [value]="budgetItem.type ? budgetItem.type : ''">
-      <mat-option *ngFor="let task of tasks" [value]="task">{{ task }}</mat-option>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let task of taskTypes" [value]="task">{{ task }}</mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field appearance="outline" class="hour-field">
-    <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;Hour</mat-label>
-    <input matInput type="number" [value]="budgetItem.hours">
-    <mat-icon matSuffix>edit</mat-icon>
-  </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;Hour</mat-label>
+      <input matInput type="number" [value]="budgetItem.hours" formControlName="hours">
+      <mat-icon matSuffix>edit</mat-icon>
+    </mat-form-field>
 
-  <button
-    (click)="removeBudgetItem()"
-    mat-mini-fab aria-label="Remove a budget item">
-    <mat-icon>remove</mat-icon>
-  </button>
+    <button type="button" (click)="deleteItem()" mat-mini-fab aria-label="Remove a budget item">
+      <mat-icon>remove</mat-icon>
+    </button>
+  </form>
 </div>

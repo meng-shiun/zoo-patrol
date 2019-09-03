@@ -3,7 +3,9 @@
     <p>Id: {{ projectBudgetField.id }}</p>
 
     <app-budget-list
-      [budgetList]="projectBudgetField.budgetItems">
+      [budgetList]="projectBudgetField.budgetItems"
+      (updateItem)="updateBudgetItem($event)"
+      (deleteItem)="deleteBudgetItem($event)">
     </app-budget-list>
 
     <app-budget-total></app-budget-total>

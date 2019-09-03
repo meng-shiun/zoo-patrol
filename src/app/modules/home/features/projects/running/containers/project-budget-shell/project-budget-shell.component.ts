@@ -31,4 +31,11 @@ export class ProjectBudgetShellComponent implements OnInit {
     console.log('Add budget item');
   }
 
+  updateBudgetItem(item) {
+    console.log(item);
+  }
+
+  deleteBudgetItem(item) {
+    console.log(item);
+  }
 }
