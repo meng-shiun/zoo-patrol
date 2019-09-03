@@ -6,7 +6,7 @@ import { IProjectBudgetField } from '@app/shared';
 export const projectsBudgetData: IProjectBudgetField[] = [
   {
     id: 1,
-    total: [
+    budgetItems: [
       {
         budget: 2000,
         type: 'Marketing',
@@ -21,7 +21,7 @@ export const projectsBudgetData: IProjectBudgetField[] = [
   },
   {
     id: 2,
-    total: [
+    budgetItems: [
       {
         budget: 5000,
         type: 'Development',
@@ -31,7 +31,7 @@ export const projectsBudgetData: IProjectBudgetField[] = [
   },
   {
     id: 3,
-    total: [
+    budgetItems: [
       {
         budget: 4000,
         type: 'Design',
@@ -46,11 +46,11 @@ export const projectsBudgetData: IProjectBudgetField[] = [
   },
   {
     id: 4,
-    total: []
+    budgetItems: []
   },
   {
     id: 5,
-    total: [
+    budgetItems: [
       {
         budget: 2000,
         type: 'Design',
@@ -65,11 +65,11 @@ export const projectsBudgetData: IProjectBudgetField[] = [
   },
   {
     id: 6,
-    total: []
+    budgetItems: []
   },
   {
     id: 7,
-    total: [
+    budgetItems: [
       {
         budget: 8000,
         type: 'Marketing',
@@ -79,15 +79,15 @@ export const projectsBudgetData: IProjectBudgetField[] = [
   },
   {
     id: 8,
-    total: []
+    budgetItems: []
   },
   {
     id: 9,
-    total: []
+    budgetItems: []
   },
   {
     id: 10,
-    total: [
+    budgetItems: [
       {
         budget: 2000,
         type: 'Design',
