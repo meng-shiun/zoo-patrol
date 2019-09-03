@@ -29,4 +29,13 @@
       cursor: pointer;
     }
   }
+
+  button {
+    width: 2rem;
+    height: 2rem;
+    background: $btn-red;
+    mat-icon {
+      font-size: 1rem;
+    }
+  }
 }

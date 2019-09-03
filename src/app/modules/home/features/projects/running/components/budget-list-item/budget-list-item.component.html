@@ -18,4 +18,10 @@
     <input matInput type="number" [value]="budgetItem.hours">
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
+
+  <button
+    (click)="removeBudgetItem()"
+    mat-mini-fab aria-label="Remove a budget item">
+    <mat-icon>remove</mat-icon>
+  </button>
 </div>

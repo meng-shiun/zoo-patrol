@@ -22,4 +22,7 @@ export class BudgetListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  removeBudgetItem(): void {
+    console.log('remove item:');    
+  }
 }
