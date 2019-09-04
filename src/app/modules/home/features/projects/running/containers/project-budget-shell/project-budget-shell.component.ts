@@ -15,6 +15,7 @@ import * as ProjectActions from '../../../store/project.actions';
 })
 export class ProjectBudgetShellComponent implements OnInit {
   projectBudgetField$: Observable<IProjectBudgetField>;
+  totalHours$: Observable<number>;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class ProjectBudgetShellComponent implements OnInit {
     this.store.dispatch(ProjectActions.loadBudgetFieldById({ id }));
 
     this.projectBudgetField$ = this.store.pipe(select(fromProjects.getProjectBudgetField));
+    this.totalHours$ = this.store.pipe(select(fromProjects.getBudgetFieldTotalHours));
   }
 
   addBudgetItem(): void {

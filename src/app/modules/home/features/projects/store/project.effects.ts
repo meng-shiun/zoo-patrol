@@ -37,7 +37,12 @@ export class ProjectEffects {
       ofType(ProjectActions.loadBudgetFieldById),
       switchMap(action =>
         this.projectService.getProjectBudgetField(action.id).pipe(
-          map((budgetField: IProjectBudgetField) => ProjectActions.loadBudgetFieldByIdSuccess({ result: budgetField })),
+          switchMap((budgetField: IProjectBudgetField) => {
+            return [
+              ProjectActions.loadBudgetFieldByIdSuccess({ result: budgetField }),
+              ProjectActions.loadTotalHours({ hoursArr: budgetField.budgetItems })
+            ];
+          }),
           catchError(err => of(ProjectActions.loadBudgetFieldByIdFail({ error: err })))
         )
       )

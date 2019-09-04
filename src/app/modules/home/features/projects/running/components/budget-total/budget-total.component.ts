@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-budget-total',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./budget-total.component.scss']
 })
 export class BudgetTotalComponent implements OnInit {
+  @Input() totalHours;
 
   constructor() { }
 

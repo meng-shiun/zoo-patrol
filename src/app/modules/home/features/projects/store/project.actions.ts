@@ -27,6 +27,10 @@ export const loadBudgetFieldByIdSuccess = createAction(
 export const loadBudgetFieldByIdFail = createAction('[Project] Load Project BudgetField By Id Fail', props<{ error: string }>());
 
 
+/* ============= Load Project BudgetField Total hours ============= */
+export const loadTotalHours = createAction('[Project] Load Project BudgetField Total Hours', props<{ hoursArr: any }>());
+
+
 /* ============= Create Project ============= */
 export const createProject = createAction('[Project] Create Project', props<{ result: IProject }>());
 
@@ -53,6 +57,3 @@ export const updateBudgetItem = createAction('[Project] Update Budget Item', pro
 
 /* ============= Delete Budget Item ============= */
 export const deleteBudgetItem = createAction('[Project] Delete Budget Item', props<{ id: number }>());
-
-
-

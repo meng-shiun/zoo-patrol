@@ -7,8 +7,12 @@
       (updateItem)="updateBudgetItem($event)"
       (deleteItem)="deleteBudgetItem($event)">
     </app-budget-list>
+  </div>
 
-    <app-budget-total></app-budget-total>
+  <div *ngIf="totalHours$ | async as hours">
+    <app-budget-total
+      [totalHours]="hours">
+    </app-budget-total>
   </div>
 
   <button
