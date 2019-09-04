@@ -56,4 +56,4 @@ export const updateBudgetItem = createAction('[Project] Update Budget Item', pro
 
 
 /* ============= Delete Budget Item ============= */
-export const deleteBudgetItem = createAction('[Project] Delete Budget Item', props<{ id: number }>());
+export const deleteBudgetItem = createAction('[Project] Delete Budget Item', props<{ budgetItem: IBudgetItem }>());

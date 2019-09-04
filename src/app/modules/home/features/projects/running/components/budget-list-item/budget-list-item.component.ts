@@ -11,7 +11,7 @@ import { IBudgetItem } from '@app/shared';
 export class BudgetListItemComponent implements OnInit {
   @Input() budgetItem: IBudgetItem;
   @Input() itemId: number;
-  @Output() delete: EventEmitter<number> = new EventEmitter();
+  @Output() delete: EventEmitter<IBudgetItem> = new EventEmitter();
   @Output() update: EventEmitter<{id: number, budgetItem: IBudgetItem}> = new EventEmitter();
 
   // TODO: Define edit mode
@@ -42,6 +42,6 @@ export class BudgetListItemComponent implements OnInit {
   }
 
   deleteItem(): void {
-    this.delete.emit(this.itemId);
+    this.delete.emit(this.budgetItem);
   }
 }

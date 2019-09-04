@@ -44,8 +44,8 @@ export class ProjectBudgetShellComponent implements OnInit {
     this.store.dispatch(ProjectActions.updateBudgetItem({ id, budgetItem }));
   }
 
-  deleteBudgetItem(id: number) {
-    console.log('[delete]', id);
-    this.store.dispatch(ProjectActions.deleteBudgetItem({ id }));
+  deleteBudgetItem(item: IBudgetItem) {
+    console.log('[delete]', item);
+    this.store.dispatch(ProjectActions.deleteBudgetItem({ budgetItem: item }));
   }
 }

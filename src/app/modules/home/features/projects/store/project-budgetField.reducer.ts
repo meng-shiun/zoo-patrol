@@ -44,6 +44,15 @@ const projectBudgetFieldReducer = createReducer(
       }
     };
   }),
+  on(ProjectActions.deleteBudgetItem, (state, { budgetItem }) => {
+    return {
+      ...state,
+      budgetField: {
+        id: state.budgetField.id,
+        budgetItems: state.budgetField.budgetItems.filter(item => item !== budgetItem)
+      }
+    };
+  }),
   on(ProjectActions.loadTotalHours, (state, { hoursArr }) => {
     const total =
       (hoursArr.length > 1) ? hoursArr.reduce((accum, cur) => (accum.hours + cur.hours)) :

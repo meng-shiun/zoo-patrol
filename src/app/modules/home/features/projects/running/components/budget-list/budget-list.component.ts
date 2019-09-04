@@ -9,7 +9,7 @@ import { IBudgetItem } from '@app/shared';
 })
 export class BudgetListComponent implements OnInit {
   @Input() budgetList: IBudgetItem[];
-  @Output() deleteItem: EventEmitter<number> = new EventEmitter();
+  @Output() deleteItem: EventEmitter<IBudgetItem> = new EventEmitter();
   @Output() updateItem: EventEmitter<{id: number, budgetItem: IBudgetItem}> = new EventEmitter();
 
   constructor() { }
@@ -18,8 +18,8 @@ export class BudgetListComponent implements OnInit {
     console.log(this.budgetList);
   }
 
-  delete(id: number) {
-    this.deleteItem.emit(id);
+  delete(item: IBudgetItem) {
+    this.deleteItem.emit(item);
   }
 
   update({ id, budgetItem }) {
