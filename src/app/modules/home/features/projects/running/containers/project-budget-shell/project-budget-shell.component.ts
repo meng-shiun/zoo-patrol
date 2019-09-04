@@ -28,14 +28,22 @@ export class ProjectBudgetShellComponent implements OnInit {
   }
 
   addBudgetItem(): void {
-    console.log('Add budget item');
+    const tempItem: IBudgetItem = {
+      budget: 0,
+      type: '',
+      hours: 0
+    };
+
+    this.store.dispatch(ProjectActions.createBudgetItem({ budgetItem: tempItem }));
   }
 
-  updateBudgetItem(budgetItem: IBudgetItem) {
-    console.log(budgetItem);
+  updateBudgetItem({ id, budgetItem }) {
+    console.log('[update]', id, budgetItem);
+    this.store.dispatch(ProjectActions.updateBudgetItem({ id, budgetItem }));
   }
 
-  deleteBudgetItem(budgetItem: IBudgetItem) {
-    console.log(budgetItem);
+  deleteBudgetItem(id: number) {
+    console.log('[delete]', id);
+    this.store.dispatch(ProjectActions.deleteBudgetItem({ id }));
   }
 }

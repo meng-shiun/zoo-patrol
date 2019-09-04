@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 
-import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
+import { IProject, IProjectDetails, IProjectBudgetField, IBudgetItem } from '@app/shared';
 
 /* ============= Load Projects ============= */
 export const loadAllInfo = createAction('[Projects] Load Projects Info');
@@ -41,3 +41,18 @@ export const createProjectDetails = createAction('[Project] Create Project Detai
 export const createProjectDetailsSuccess = createAction('[Project] Create Project Details Success', props<{ result: IProjectDetails }>());
 
 export const createProjectDetailsFail = createAction('[Project] Create Project Details Fail', props<{ error: string }>());
+
+
+/* ============= Create Budget Item ============= */
+export const createBudgetItem = createAction('[Project] Create Budget Item', props<{ budgetItem: IBudgetItem }>());
+
+
+/* ============= Update Budget Item ============= */
+export const updateBudgetItem = createAction('[Project] Update Budget Item', props<{ id: number, budgetItem: IBudgetItem }>());
+
+
+/* ============= Delete Budget Item ============= */
+export const deleteBudgetItem = createAction('[Project] Delete Budget Item', props<{ id: number }>());
+
+
+
