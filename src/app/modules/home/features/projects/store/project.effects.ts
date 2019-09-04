@@ -52,7 +52,7 @@ export class ProjectEffects {
           switchMap((project: IProject) => {
             return [
               ProjectActions.createProjectSuccess({ result: project }),
-              ProjectActions.creatProjectDetails({ result: project })
+              ProjectActions.createProjectDetails({ result: project })
               // TODO: Trigger budget/planning...actions
             ];
           }),
@@ -64,11 +64,11 @@ export class ProjectEffects {
 
   createProjectDetails$ = createEffect(
     () => this.actions$.pipe(
-      ofType(ProjectActions.creatProjectDetails),
+      ofType(ProjectActions.createProjectDetails),
       switchMap(action =>
         this.projectService.createProjectDetails(action.result).pipe(
-          map((projectDetails: IProjectDetails) => ProjectActions.creatProjectDetailsSuccess({ result: projectDetails })),
-          catchError(err => of(ProjectActions.creatProjectDetailsFail({ error: err })))
+          map((projectDetails: IProjectDetails) => ProjectActions.createProjectDetailsSuccess({ result: projectDetails })),
+          catchError(err => of(ProjectActions.createProjectDetailsFail({ error: err })))
         )
       )
     )

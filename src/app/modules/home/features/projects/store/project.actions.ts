@@ -36,8 +36,8 @@ export const createProjectFail = createAction('[Project] Create Project Fail', p
 
 
 /* ============= Create Project Details ============= */
-export const creatProjectDetails = createAction('[Project] Create Project Details', props<{ result: IProject }>());
+export const createProjectDetails = createAction('[Project] Create Project Details', props<{ result: IProject }>());
 
-export const creatProjectDetailsSuccess = createAction('[Project] Create Project Details Success', props<{ result: IProjectDetails }>());
+export const createProjectDetailsSuccess = createAction('[Project] Create Project Details Success', props<{ result: IProjectDetails }>());
 
-export const creatProjectDetailsFail = createAction('[Project] Create Project Details Fail', props<{ error: string }>());
+export const createProjectDetailsFail = createAction('[Project] Create Project Details Fail', props<{ error: string }>());
