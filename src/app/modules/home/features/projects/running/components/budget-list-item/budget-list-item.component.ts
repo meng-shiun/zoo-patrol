@@ -10,12 +10,11 @@ import { IBudgetItem } from '@app/shared';
 })
 export class BudgetListItemComponent implements OnInit {
   @Input() budgetItem: IBudgetItem;
-  // TODO: Change emit value type to iBudgetItem
-  @Output() delete: EventEmitter<any> = new EventEmitter();
-  @Output() update: EventEmitter<any> = new EventEmitter();
+  @Input() itemId: number;
+  @Output() delete: EventEmitter<IBudgetItem> = new EventEmitter();
+  @Output() update: EventEmitter<IBudgetItem> = new EventEmitter();
 
   // TODO: Define edit mode
-
   taskTypes: string[] = [
     'Design',
     'Development',
@@ -38,11 +37,13 @@ export class BudgetListItemComponent implements OnInit {
 
   onChange(): void {
     this.budgetItemForm.valueChanges.subscribe((val: IBudgetItem) => {
-      this.update.emit(`changes: ${val.budget}, ${val.type}, ${val.hours}`);
+      console.log('update item ID:', this.itemId);
+      this.update.emit(val);
     });
   }
 
   deleteItem(): void {
-    this.delete.emit('remove item');
+    console.log('delete item ID:', this.itemId);
+    this.delete.emit(this.budgetItem);
   }
 }

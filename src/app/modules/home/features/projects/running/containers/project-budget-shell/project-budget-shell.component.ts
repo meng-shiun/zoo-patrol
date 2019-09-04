@@ -4,7 +4,7 @@ import { Store, select } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
-import { IProjectBudgetField } from '@app/shared';
+import { IProjectBudgetField, IBudgetItem } from '@app/shared';
 import * as fromProjects from '../../../store';
 import * as ProjectActions from '../../../store/project.actions';
 
@@ -31,11 +31,11 @@ export class ProjectBudgetShellComponent implements OnInit {
     console.log('Add budget item');
   }
 
-  updateBudgetItem(item) {
-    console.log(item);
+  updateBudgetItem(budgetItem: IBudgetItem) {
+    console.log(budgetItem);
   }
 
-  deleteBudgetItem(item) {
-    console.log(item);
+  deleteBudgetItem(budgetItem: IBudgetItem) {
+    console.log(budgetItem);
   }
 }

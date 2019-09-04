@@ -1,6 +1,7 @@
 <div class="budget-list-container">
   <app-budget-list-item
-    *ngFor="let item of budgetList"
+    *ngFor="let item of budgetList; index as i"
+    [itemId]="i"
     [budgetItem]="item"
     (delete)="delete($event)"
     (update)="update($event)">
