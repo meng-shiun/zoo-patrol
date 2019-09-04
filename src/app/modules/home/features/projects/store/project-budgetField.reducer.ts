@@ -1,4 +1,4 @@
-import { IProjectBudgetField } from '@app/shared';
+import { IProjectBudgetField, IBudgetItem } from '@app/shared';
 import { createReducer, on, Action } from '@ngrx/store';
 
 import * as ProjectActions from './project.actions';
@@ -45,11 +45,27 @@ const projectBudgetFieldReducer = createReducer(
     };
   }),
   on(ProjectActions.deleteBudgetItem, (state, { budgetItem }) => {
+    const updatedItems = state.budgetField.budgetItems.filter(item => item !== budgetItem);
+
     return {
       ...state,
       budgetField: {
         id: state.budgetField.id,
-        budgetItems: state.budgetField.budgetItems.filter(item => item !== budgetItem)
+        budgetItems: updatedItems
+      }
+    };
+  }),
+  on(ProjectActions.updateBudgetItem, (state, { id, budgetItem}) => {
+    const updatedBudgetItem = state.budgetField.budgetItems.filter((item, i) => {
+      const arr = Object.entries(budgetItem);
+      return (i === id) ? arr.map(([key, val]) => (item[key] = val)) : item;
+    });
+
+    return {
+      ...state,
+      budgetField: {
+        id: state.budgetField.id,
+        budgetItems: updatedBudgetItem
       }
     };
   }),
