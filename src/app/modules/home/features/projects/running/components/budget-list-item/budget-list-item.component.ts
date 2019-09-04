@@ -15,7 +15,7 @@ export class BudgetListItemComponent implements OnInit {
   @Output() update: EventEmitter<any> = new EventEmitter();
 
   // TODO: Define edit mode
-  
+
   taskTypes: string[] = [
     'Design',
     'Development',
@@ -26,12 +26,12 @@ export class BudgetListItemComponent implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.budgetItemForm = this.fb.group({
       budget: [this.budgetItem.budget, [Validators.required]],
       type: [this.budgetItem.type, [Validators.required]],
       hours: [this.budgetItem.hours, [Validators.required]]
-    })
+    });
 
     this.onChange();
   }
@@ -39,7 +39,7 @@ export class BudgetListItemComponent implements OnInit {
   onChange(): void {
     this.budgetItemForm.valueChanges.subscribe((val: IBudgetItem) => {
       this.update.emit(`changes: ${val.budget}, ${val.type}, ${val.hours}`);
-    })
+    });
   }
 
   deleteItem(): void {

@@ -23,6 +23,6 @@ export class BudgetListComponent implements OnInit {
   }
 
   update(item) {
-    this.updateItem.emit(item); 
+    this.updateItem.emit(item);
   }
 }
