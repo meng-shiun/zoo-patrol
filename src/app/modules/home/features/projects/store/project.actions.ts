@@ -58,7 +58,7 @@ export const createProjectDetailsFail = createAction('[Project] Create Project D
 
 
 /* ============= Create Budget Item ============= */
-export const createBudgetItem = createAction('[Project] Create Budget Item', props<{ budgetItem: IBudgetItem }>());
+export const createBudgetItem = createAction('[Project] Create Budget Item');
 
 
 /* ============= Update Budget Item ============= */

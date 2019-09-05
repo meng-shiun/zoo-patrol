@@ -32,13 +32,7 @@ export class ProjectBudgetShellComponent implements OnInit {
   }
 
   addBudgetItem(): void {
-    const tempItem: IBudgetItem = {
-      budget: 0,
-      type: '',
-      hours: 0
-    };
-
-    this.store.dispatch(ProjectActions.createBudgetItem({ budgetItem: tempItem }));
+    this.store.dispatch(ProjectActions.createBudgetItem());
   }
 
   updateBudgetItem({ id, budgetItem }) {

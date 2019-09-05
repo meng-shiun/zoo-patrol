@@ -35,12 +35,18 @@ const projectBudgetFieldReducer = createReducer(
     budgetField: null,
     error: error
   })),
-  on(ProjectActions.createBudgetItem, (state, { budgetItem }) => {
+  on(ProjectActions.createBudgetItem, state => {
+    const newItem: IBudgetItem = {
+      budget: 0,
+      type: '',
+      hours: 0
+    };
+
     return {
       ...state,
       budgetField: {
         id: state.budgetField.id,
-        budgetItems: [...state.budgetField.budgetItems, budgetItem]
+        budgetItems: [...state.budgetField.budgetItems, newItem]
       }
     };
   }),
