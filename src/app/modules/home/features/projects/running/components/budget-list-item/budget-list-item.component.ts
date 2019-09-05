@@ -30,7 +30,7 @@ export class BudgetListItemComponent implements OnInit {
       budget: [this.budgetItem.budget, [Validators.required]],
       type: [this.budgetItem.type, [Validators.required]],
       hours: [this.budgetItem.hours, [Validators.required]]
-    });
+    }, { updateOn: 'blur' });
 
     this.onChange();
   }

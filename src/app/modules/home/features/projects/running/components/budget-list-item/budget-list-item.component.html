@@ -3,7 +3,11 @@
     <mat-form-field appearance="outline">
       <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;Budget</mat-label>
       <span matPrefix class="currency">€&nbsp;</span>
-      <input matInput type="number" [value]="budgetItem.budget" formControlName="budget">
+      <input
+        matInput
+        type="number"
+        [value]="budgetItem.budget"
+        formControlName="budget">
       <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field>
 
@@ -16,7 +20,11 @@
 
     <mat-form-field appearance="outline">
       <mat-label>&nbsp;&nbsp;&nbsp;&nbsp;Hour</mat-label>
-      <input matInput type="number" [value]="budgetItem.hours" formControlName="hours">
+      <input
+        matInput
+        type="number"
+        [value]="budgetItem.hours"
+        formControlName="hours">
       <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field>
 
