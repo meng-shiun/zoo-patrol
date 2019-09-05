@@ -90,6 +90,11 @@ export const getBudgetFieldTotalHours = createSelector(
   (state: fromProjectBudgetField.ProjectBudgetFieldState) => state.totalHours
 );
 
+export const getBudgetFieldTotalBudget = createSelector(
+  selectProjectBudgetFieldState,
+  (state: fromProjectBudgetField.ProjectBudgetFieldState) => state.totalBudget
+);
+
 /* ================================================
                       Reducers
    ================================================ */

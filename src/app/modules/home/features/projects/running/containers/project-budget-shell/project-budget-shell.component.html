@@ -6,15 +6,15 @@
       [budgetList]="projectBudgetField.budgetItems"
       (updateItem)="updateBudgetItem($event)"
       (deleteItem)="deleteBudgetItem($event)"
-      (hoursChanged)="updateTotalHours($event)">
+      (hoursChanged)="updateTotalHours($event)"
+      (budgetChanged)="updateTotalBudget($event)">
     </app-budget-list>
   </div>
 
-  <div *ngIf="totalHours$ | async as hours">
-    <app-budget-total
-      [totalHours]="hours">
-    </app-budget-total>
-  </div>
+  <app-budget-total
+    [totalHours]="totalHours$ | async"
+    [totalBudget]="totalBudget$ | async">
+  </app-budget-total>
 
   <button
     (click)="addBudgetItem()"

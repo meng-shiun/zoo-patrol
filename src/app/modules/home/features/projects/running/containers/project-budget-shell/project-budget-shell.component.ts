@@ -16,6 +16,7 @@ import * as ProjectActions from '../../../store/project.actions';
 export class ProjectBudgetShellComponent implements OnInit {
   projectBudgetField$: Observable<IProjectBudgetField>;
   totalHours$: Observable<number>;
+  totalBudget$: Observable<number>;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class ProjectBudgetShellComponent implements OnInit {
 
     this.projectBudgetField$ = this.store.pipe(select(fromProjects.getProjectBudgetField));
     this.totalHours$ = this.store.pipe(select(fromProjects.getBudgetFieldTotalHours));
+    this.totalBudget$ = this.store.pipe(select(fromProjects.getBudgetFieldTotalBudget));
   }
 
   addBudgetItem(): void {
@@ -48,9 +50,14 @@ export class ProjectBudgetShellComponent implements OnInit {
     console.log('[delete]', item);
     this.store.dispatch(ProjectActions.deleteBudgetItem({ budgetItem: item }));
     this.store.dispatch(ProjectActions.updateTotalHours({ preHours: item.hours, curHours: 0 }));
+    this.store.dispatch(ProjectActions.updateTotalBudget({ preBudget: item.budget, curBudget: 0 }));
   }
 
   updateTotalHours({ pre, cur }): void {
     this.store.dispatch(ProjectActions.updateTotalHours({ preHours: pre, curHours: cur }));
+  }
+
+  updateTotalBudget({ pre, cur }): void {
+    this.store.dispatch(ProjectActions.updateTotalBudget({ preBudget: pre, curBudget: cur }));
   }
 }

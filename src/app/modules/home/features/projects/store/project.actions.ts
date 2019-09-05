@@ -34,6 +34,13 @@ export const updateTotalHours = createAction(
   '[Project] Update Project BudgetField Total Hours', props<{ preHours: number, curHours: number }>());
 
 
+/* ============= Project BudgetField Total budget ============= */
+export const loadTotalBudget = createAction('[Project] Load Project BudgetField Total Budget', props<{ budgetArr: any }>());
+
+export const updateTotalBudget = createAction(
+  '[Project] Update Project BudgetField Total Budget', props<{ preBudget: number, curBudget: number }>());
+
+
 /* ============= Create Project ============= */
 export const createProject = createAction('[Project] Create Project', props<{ result: IProject }>());
 

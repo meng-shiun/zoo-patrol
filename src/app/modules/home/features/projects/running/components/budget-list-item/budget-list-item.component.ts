@@ -14,6 +14,7 @@ export class BudgetListItemComponent implements OnInit {
   @Output() delete: EventEmitter<IBudgetItem> = new EventEmitter();
   @Output() update: EventEmitter<{id: number, budgetItem: IBudgetItem}> = new EventEmitter();
   @Output() hoursChanged: EventEmitter<{pre: number, cur: number}> = new EventEmitter();
+  @Output() budgetChanged: EventEmitter<{pre: number, cur: number}> = new EventEmitter();
 
   // TODO: Define edit mode
   taskTypes: string[] = [
@@ -40,6 +41,9 @@ export class BudgetListItemComponent implements OnInit {
     this.budgetItemForm.valueChanges.subscribe((val: IBudgetItem) => {
       if (val.hours !== this.budgetItem.hours) {
         this.hoursChanged.emit({ pre: this.budgetItem.hours, cur: val.hours });
+      }
+      if (val.budget !== this.budgetItem.budget) {
+        this.budgetChanged.emit({ pre: this.budgetItem.budget, cur: val.budget });
       }
       this.update.emit({ id: this.itemId, budgetItem: val });
     });

@@ -56,7 +56,7 @@ const projectBudgetFieldReducer = createReducer(
     };
   }),
   on(ProjectActions.updateBudgetItem, (state, { id, budgetItem}) => {
-    const updatedBudgetItem = state.budgetField.budgetItems.filter((item, i) => {
+    const updatedBudgetItems = state.budgetField.budgetItems.filter((item, i) => {
       const arr = Object.entries(budgetItem);
       return (i === id) ? arr.map(([key, val]) => (item[key] = val)) : item;
     });
@@ -65,7 +65,7 @@ const projectBudgetFieldReducer = createReducer(
       ...state,
       budgetField: {
         id: state.budgetField.id,
-        budgetItems: updatedBudgetItem
+        budgetItems: updatedBudgetItems
       }
     };
   }),
@@ -82,6 +82,20 @@ const projectBudgetFieldReducer = createReducer(
   on(ProjectActions.updateTotalHours, (state, { preHours, curHours }) => ({
       ...state,
       totalHours: state.totalHours - preHours + curHours
+  })),
+  on(ProjectActions.loadTotalBudget, (state, { budgetArr }) => {
+    const total =
+      (budgetArr.length > 1) ? budgetArr.reduce((accum, cur) => (accum.budget + cur.budget)) :
+      (budgetArr.length === 1) ? budgetArr[0].budget : 0;
+
+    return {
+      ...state,
+      totalBudget: total
+    };
+  }),
+  on(ProjectActions.updateTotalBudget, (state, { preBudget, curBudget }) => ({
+    ...state,
+    totalBudget: state.totalBudget - preBudget + curBudget
   }))
 );
 
