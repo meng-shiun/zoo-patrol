@@ -5,7 +5,8 @@
     <app-budget-list
       [budgetList]="projectBudgetField.budgetItems"
       (updateItem)="updateBudgetItem($event)"
-      (deleteItem)="deleteBudgetItem($event)">
+      (deleteItem)="deleteBudgetItem($event)"
+      (hoursChanged)="updateTotalHours($event)">
     </app-budget-list>
   </div>
 

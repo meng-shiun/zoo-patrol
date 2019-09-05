@@ -4,6 +4,7 @@
     [itemId]="i"
     [budgetItem]="item"
     (delete)="delete($event)"
-    (update)="update($event)">
+    (update)="update($event)"
+    (hoursChanged)="updateHours($event)">
   </app-budget-list-item>
 </div>

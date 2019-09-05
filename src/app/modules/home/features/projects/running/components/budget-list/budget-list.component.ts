@@ -11,6 +11,8 @@ export class BudgetListComponent implements OnInit {
   @Input() budgetList: IBudgetItem[];
   @Output() deleteItem: EventEmitter<IBudgetItem> = new EventEmitter();
   @Output() updateItem: EventEmitter<{id: number, budgetItem: IBudgetItem}> = new EventEmitter();
+  @Output() hoursChanged: EventEmitter<{pre: number, cur: number}> = new EventEmitter();
+
 
   constructor() { }
 
@@ -24,5 +26,9 @@ export class BudgetListComponent implements OnInit {
 
   update({ id, budgetItem }) {
     this.updateItem.emit({ id, budgetItem });
+  }
+
+  updateHours({ pre, cur }) {
+    this.hoursChanged.emit({ pre, cur });
   }
 }

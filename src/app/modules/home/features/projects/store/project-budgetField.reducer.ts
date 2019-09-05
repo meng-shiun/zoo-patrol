@@ -79,6 +79,10 @@ const projectBudgetFieldReducer = createReducer(
       totalHours: total
     };
   }),
+  on(ProjectActions.updateTotalHours, (state, { preHours, curHours }) => ({
+      ...state,
+      totalHours: state.totalHours - preHours + curHours
+  }))
 );
 
 export function budgetFieldReducer(state: ProjectBudgetFieldState | undefined, action: Action) {
