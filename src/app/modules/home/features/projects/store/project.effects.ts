@@ -58,7 +58,8 @@ export class ProjectEffects {
           switchMap((project: IProject) => {
             return [
               ProjectActions.createProjectSuccess({ result: project }),
-              ProjectActions.createProjectDetails({ result: project })
+              ProjectActions.createProjectDetails({ result: project }),
+              ProjectActions.createBudgetField({ id: project.id })
               // TODO: Trigger budget/planning...actions
             ];
           }),
@@ -75,6 +76,18 @@ export class ProjectEffects {
         this.projectService.createProjectDetails(action.result).pipe(
           map((projectDetails: IProjectDetails) => ProjectActions.createProjectDetailsSuccess({ result: projectDetails })),
           catchError(err => of(ProjectActions.createProjectDetailsFail({ error: err })))
+        )
+      )
+    )
+  );
+
+  createBudgetField$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.createBudgetField),
+      switchMap(action =>
+        this.projectService.createBudgetField(action.id).pipe(
+          map((budgetField: IProjectBudgetField) => ProjectActions.createBudgetFieldSuccess({ budgetField })),
+          catchError(err => of(ProjectActions.createBudgetFieldFail({ error: err })))
         )
       )
     )

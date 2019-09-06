@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, tap, filter, catchError } from 'rxjs/operators';
 
-import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
+import { IProject, IProjectDetails, IProjectBudgetField, IBudgetItem } from '@app/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +74,14 @@ export class ProjectService {
   getProjectBudgetField(id: number): Observable<IProjectBudgetField> {
     const url = `${this.projectsBudgetUrl}/${id}`;
     return this.http.get<IProjectBudgetField>(url);
+  }
+
+  createBudgetField(id: number): Observable<IProjectBudgetField> {
+    const newBudgetField = {
+      id,
+      budgetItems: []
+    };
+
+    return this.http.post<IProjectBudgetField>(this.projectsBudgetUrl, newBudgetField, this.httpOptions);
   }
 }

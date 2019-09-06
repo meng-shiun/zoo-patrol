@@ -35,6 +35,15 @@ const projectBudgetFieldReducer = createReducer(
     budgetField: null,
     error: error
   })),
+  on(ProjectActions.createBudgetFieldSuccess, (state, { budgetField }) => ({
+    ...state,
+    budgetField: budgetField,
+    error: ''
+  })),
+  on(ProjectActions.createBudgetFieldFail, (state, { error }) => ({
+    ...state,
+    error: error
+  })),
   on(ProjectActions.createBudgetItem, state => {
     const newItem: IBudgetItem = {
       budget: 0,

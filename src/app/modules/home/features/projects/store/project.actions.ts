@@ -57,6 +57,15 @@ export const createProjectDetailsSuccess = createAction('[Project] Create Projec
 export const createProjectDetailsFail = createAction('[Project] Create Project Details Fail', props<{ error: string }>());
 
 
+/* ============= Create Budget Field ============= */
+export const createBudgetField = createAction('[Project] Create Budget Field', props<{ id: number }>());
+
+export const createBudgetFieldSuccess = createAction(
+  '[Project] Create Budget Field Success', props<{ budgetField: IProjectBudgetField }>());
+
+export const createBudgetFieldFail = createAction('[Project] Create Budget Field Fail',  props<{ error: string }>());
+
+
 /* ============= Create Budget Item ============= */
 export const createBudgetItem = createAction('[Project] Create Budget Item');
 
