@@ -41,11 +41,7 @@ export class ProjectBudgetShellComponent implements OnInit {
   }
 
   deleteBudgetItem(item: IBudgetItem) {
-    console.log('[delete]', item);
-    this.store.dispatch(ProjectActions.deleteBudgetItem({ budgetItem: item }));
-    this.store.dispatch(ProjectActions.updateTotalHours({ preHours: item.hours, curHours: 0 }));
-    this.store.dispatch(ProjectActions.updateTotalBudget({ preBudget: item.budget, curBudget: 0 }));
-  }
+    this.store.dispatch(ProjectActions.deleteBudgetItem({ budgetItem: item }));  }
 
   updateTotalHours({ pre, cur }): void {
     this.store.dispatch(ProjectActions.updateTotalHours({ preHours: pre, curHours: cur }));

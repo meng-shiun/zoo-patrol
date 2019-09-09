@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { switchMap, map, tap, catchError, withLatestFrom } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { switchMap, map, tap, catchError, withLatestFrom, mergeMap } from 'rxjs/operators';
+import { of, pipe } from 'rxjs';
 
 import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
 import * as fromProjects from './';
@@ -34,6 +34,7 @@ export class ProjectEffects {
     )
   );
 
+  // Load budget field / total hours / total budget
   loadProjectBudgetField$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.loadBudgetFieldById),
@@ -52,6 +53,7 @@ export class ProjectEffects {
     )
   );
 
+  // Create budget details/planning/budgetField... when a project is created
   createProject$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.createProject),
@@ -99,12 +101,25 @@ export class ProjectEffects {
     () => this.actions$.pipe(
       ofType(ProjectActions.updateBudgetField),
       withLatestFrom(this.store.pipe(select(fromProjects.getProjectBudgetField))),
-      switchMap( ([action, budgetField])  =>
+      switchMap(([action, budgetField]) =>
         this.projectService.updateBudgetField(budgetField.id, budgetField).pipe(
          map((field: IProjectBudgetField) => ProjectActions.updateBudgetFieldSuccess({ id: field.id, budgetItems: field.budgetItems })),
          catchError(err => of(ProjectActions.updateBudgetFieldFail({ error: err })))
         )
       )
+    )
+  );
+
+  // Update total hours and total budget when deleting a budget item
+  deleteBudgetItem$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.deleteBudgetItem),
+      mergeMap(target => {
+        return [
+          ProjectActions.updateTotalHours({ preHours: target.budgetItem.hours, curHours: 0 }),
+          ProjectActions.updateTotalBudget({ preBudget: target.budgetItem.budget, curBudget: 0 })
+        ];
+      })
     )
   );
 
