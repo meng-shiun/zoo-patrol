@@ -43,7 +43,5 @@ export interface IBudgetItem {
  */
 export interface IProjectBudgetField {
   id: number | null;
-  budgetItems: {
-    [key: number]: IBudgetItem
-  };
+  budgetItems: IBudgetItem[];
 }

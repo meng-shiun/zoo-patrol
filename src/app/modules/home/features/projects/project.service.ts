@@ -84,4 +84,14 @@ export class ProjectService {
 
     return this.http.post<IProjectBudgetField>(this.projectsBudgetUrl, newBudgetField, this.httpOptions);
   }
+
+  updateBudgetField(id: number, field: IProjectBudgetField): Observable<IProjectBudgetField> {
+    const url = `${this.projectsBudgetUrl}/${id}`;
+    return this.http.put<IProjectBudgetField>(url, field, this.httpOptions);
+  }
+
+  // TODO: handleError
+  handleError(err) {
+    return of(err);
+  }
 }

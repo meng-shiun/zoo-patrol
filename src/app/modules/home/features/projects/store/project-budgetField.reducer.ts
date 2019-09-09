@@ -33,7 +33,7 @@ const projectBudgetFieldReducer = createReducer(
   on(ProjectActions.loadBudgetFieldByIdFail, (state, { error }) => ({
     ...state,
     budgetField: null,
-    error: error
+    error
   })),
   on(ProjectActions.createBudgetFieldSuccess, (state, { budgetField }) => ({
     ...state,
@@ -42,7 +42,19 @@ const projectBudgetFieldReducer = createReducer(
   })),
   on(ProjectActions.createBudgetFieldFail, (state, { error }) => ({
     ...state,
-    error: error
+    error
+  })),
+  on(ProjectActions.updateBudgetFieldSuccess, (state, { id, budgetItems }) => ({
+    ...state,
+    budgetField: {
+      id,
+      budgetItems
+    },
+    error: ''
+  })),
+  on(ProjectActions.updateBudgetFieldFail, (state, { error }) => ({
+    ...state,
+    error
   })),
   on(ProjectActions.createBudgetItem, state => {
     const newItem: IBudgetItem = {

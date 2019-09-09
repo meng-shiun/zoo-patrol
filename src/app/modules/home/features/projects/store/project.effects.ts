@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Actions, ofType, createEffect, act } from '@ngrx/effects';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { Store, select } from '@ngrx/store';
+import { Actions, ofType, createEffect } from '@ngrx/effects';
+import { switchMap, map, tap, catchError, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
+import * as fromProjects from './';
 import * as ProjectActions from './project.actions';
 import { ProjectService } from '../project.service';
 
@@ -93,8 +95,22 @@ export class ProjectEffects {
     )
   );
 
+  updateBudgetField$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.updateBudgetField),
+      withLatestFrom(this.store.pipe(select(fromProjects.getProjectBudgetField))),
+      switchMap( ([action, budgetField])  =>
+        this.projectService.updateBudgetField(budgetField.id, budgetField).pipe(
+         map((field: IProjectBudgetField) => ProjectActions.updateBudgetFieldSuccess({ id: field.id, budgetItems: field.budgetItems })),
+         catchError(err => of(ProjectActions.updateBudgetFieldFail({ error: err })))
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private store: Store<fromProjects.ProjectState>
   ) {}
 }

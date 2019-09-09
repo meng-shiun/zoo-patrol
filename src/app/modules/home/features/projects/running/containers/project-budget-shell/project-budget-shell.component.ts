@@ -54,4 +54,8 @@ export class ProjectBudgetShellComponent implements OnInit {
   updateTotalBudget({ pre, cur }): void {
     this.store.dispatch(ProjectActions.updateTotalBudget({ preBudget: pre, curBudget: cur }));
   }
+
+  save(): void {
+    this.store.dispatch(ProjectActions.updateBudgetField());
+  }
 }
