@@ -1,21 +1,25 @@
-<div class="budget-budget-shell-container">
-  <div *ngIf="projectBudgetField$ | async as projectBudgetField">
-    <p>Id: {{ projectBudgetField.id }}</p>
+<div
+  *ngIf="projectBudgetField$ | async as projectBudgetField"
+  class="budget-budget-shell-container">
 
-    <app-budget-list
-      [budgetList]="projectBudgetField.budgetItems"
-      (updateItem)="updateBudgetItem($event)"
-      (deleteItem)="deleteBudgetItem($event)"
-      (hoursChanged)="updateTotalHours($event)"
-      (budgetChanged)="updateTotalBudget($event)">
-    </app-budget-list>
+  <p>Id: {{ projectBudgetField.id }}</p>
 
+  <app-budget-list
+    [budgetList]="projectBudgetField.budgetItems"
+    (updateItem)="updateBudgetItem($event)"
+    (deleteItem)="deleteBudgetItem($event)"
+    (hoursChanged)="updateTotalHours($event)"
+    (budgetChanged)="updateTotalBudget($event)">
+  </app-budget-list>
+
+  <div class="side-container">
     <app-budget-total
       [totalHours]="totalHours$ | async"
       [totalBudget]="totalBudget$ | async">
     </app-budget-total>
 
     <button
+      class="add-btn"
       (click)="addBudgetItem()"
       mat-mini-fab aria-label="Add a budget item">
       <mat-icon>add</mat-icon>

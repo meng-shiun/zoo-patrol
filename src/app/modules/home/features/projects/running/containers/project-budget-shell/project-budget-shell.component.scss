@@ -1,15 +1,37 @@
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
 .budget-budget-shell-container {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-gap: 1rem;
   margin-top: 2rem;
-  position: relative;
-  app-budget-total {
-    position: absolute;
-    right: 25%;
-    top: 0;
+  padding: 2rem;
+  border-radius: 4px;
+  background: $color-white;
+
+  app-budget-list {
+    grid-column: 1 / span 6;
   }
 
-  button {
-    position: absolute;
-    right: 25%;
-    bottom: 0;
+  .side-container {
+    grid-column: 7 / span 2;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+
+    app-budget-total {
+      grid-row: 1 / span 3;
+      justify-self: end;
+    }
+
+    button {
+      grid-row: 4;
+      justify-self: end;
+      align-self: end;
+    }
+
+    .add-btn {
+      background: $brand-color-red;
+    }
   }
 }

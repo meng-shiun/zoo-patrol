@@ -1,2 +1,5 @@
-<p>Total hours: {{ totalHours }} hours</p>
-<p>Total budget: {{ totalBudget | currency : 'EUR' : 'symbol' : '1.0'}}</p>
+<div class="budget-total-container">
+  <p class="budget-title">Total budget</p>
+  <p class="budget-content">{{ totalBudget | currency : 'EUR' : 'symbol' : '1.0'}}</p>
+  <p class="hours">{{ totalHours }} hours</p>
+</div>
