@@ -41,7 +41,8 @@ export class ProjectBudgetShellComponent implements OnInit, OnDestroy {
   }
 
   deleteBudgetItem(item: IBudgetItem) {
-    this.store.dispatch(ProjectActions.deleteBudgetItem({ budgetItem: item }));  }
+    this.store.dispatch(ProjectActions.deleteBudgetItem({ budgetItem: item }));
+  }
 
   updateTotalHours({ pre, cur }): void {
     this.store.dispatch(ProjectActions.updateTotalHours({ preHours: pre, curHours: cur }));
@@ -49,10 +50,6 @@ export class ProjectBudgetShellComponent implements OnInit, OnDestroy {
 
   updateTotalBudget({ pre, cur }): void {
     this.store.dispatch(ProjectActions.updateTotalBudget({ preBudget: pre, curBudget: cur }));
-  }
-
-  save(): void {
-    this.store.dispatch(ProjectActions.updateBudgetField());
   }
 
   ngOnDestroy(): void {

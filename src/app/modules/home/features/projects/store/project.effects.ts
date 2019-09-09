@@ -110,16 +110,33 @@ export class ProjectEffects {
     )
   );
 
-  // Update total hours and total budget when deleting a budget item
+  // Update total hours / total budget / budget field after deleting a budget item
   deleteBudgetItem$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.deleteBudgetItem),
       mergeMap(target => {
         return [
           ProjectActions.updateTotalHours({ preHours: target.budgetItem.hours, curHours: 0 }),
-          ProjectActions.updateTotalBudget({ preBudget: target.budgetItem.budget, curBudget: 0 })
+          ProjectActions.updateTotalBudget({ preBudget: target.budgetItem.budget, curBudget: 0 }),
+          ProjectActions.updateBudgetField()
         ];
       })
+    )
+  );
+
+  // Update budget field after updating a budget item
+  updateBudgetItem$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.updateBudgetItem),
+      map(() => ProjectActions.updateBudgetField())
+    )
+  );
+
+  // Update budget field after creating a budget item
+  createBudgetItem$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.createBudgetItem),
+      map(() => ProjectActions.updateBudgetField())
     )
   );
 
