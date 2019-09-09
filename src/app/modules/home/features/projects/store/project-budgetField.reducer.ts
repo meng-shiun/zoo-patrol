@@ -96,10 +96,10 @@ const projectBudgetFieldReducer = createReducer(
       }
     };
   }),
-  on(ProjectActions.loadTotalHours, (state, { hoursArr }) => {
-    const total =
-      (hoursArr.length > 1) ? hoursArr.reduce((accum, cur) => (accum.hours + cur.hours)) :
-      (hoursArr.length === 1) ? hoursArr[0].hours : 0;
+  on(ProjectActions.loadTotalHours, (state) => {
+    const total = state.budgetField.budgetItems
+      .map(item => item.hours)
+      .reduce((accum, cur) => (accum + cur), 0);
 
     return {
       ...state,
@@ -110,10 +110,10 @@ const projectBudgetFieldReducer = createReducer(
       ...state,
       totalHours: state.totalHours - preHours + curHours
   })),
-  on(ProjectActions.loadTotalBudget, (state, { budgetArr }) => {
-    const total =
-      (budgetArr.length > 1) ? budgetArr.reduce((accum, cur) => (accum.budget + cur.budget)) :
-      (budgetArr.length === 1) ? budgetArr[0].budget : 0;
+  on(ProjectActions.loadTotalBudget, (state) => {
+    const total = state.budgetField.budgetItems
+    .map(item => item.budget)
+    .reduce((accum, cur) => (accum + cur), 0);
 
     return {
       ...state,

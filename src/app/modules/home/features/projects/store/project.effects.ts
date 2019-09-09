@@ -42,8 +42,8 @@ export class ProjectEffects {
           switchMap((budgetField: IProjectBudgetField) => {
             return [
               ProjectActions.loadBudgetFieldByIdSuccess({ result: budgetField }),
-              ProjectActions.loadTotalHours({ hoursArr: budgetField.budgetItems }),
-              ProjectActions.loadTotalBudget({ budgetArr: budgetField.budgetItems })
+              ProjectActions.loadTotalHours(),
+              ProjectActions.loadTotalBudget()
             ];
           }),
           catchError(err => of(ProjectActions.loadBudgetFieldByIdFail({ error: err })))

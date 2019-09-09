@@ -28,14 +28,14 @@ export const loadBudgetFieldByIdFail = createAction('[Project] Load Project Budg
 
 
 /* ============= Project BudgetField Total hours ============= */
-export const loadTotalHours = createAction('[Project] Load Project BudgetField Total Hours', props<{ hoursArr: any }>());
+export const loadTotalHours = createAction('[Project] Load Project BudgetField Total Hours');
 
 export const updateTotalHours = createAction(
   '[Project] Update Project BudgetField Total Hours', props<{ preHours: number, curHours: number }>());
 
 
 /* ============= Project BudgetField Total budget ============= */
-export const loadTotalBudget = createAction('[Project] Load Project BudgetField Total Budget', props<{ budgetArr: any }>());
+export const loadTotalBudget = createAction('[Project] Load Project BudgetField Total Budget');
 
 export const updateTotalBudget = createAction(
   '[Project] Update Project BudgetField Total Budget', props<{ preBudget: number, curBudget: number }>());
