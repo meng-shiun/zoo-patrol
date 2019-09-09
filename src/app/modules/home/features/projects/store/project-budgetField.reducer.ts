@@ -123,6 +123,9 @@ const projectBudgetFieldReducer = createReducer(
   on(ProjectActions.updateTotalBudget, (state, { preBudget, curBudget }) => ({
     ...state,
     totalBudget: state.totalBudget - preBudget + curBudget
+  })),
+  on(ProjectActions.resetBudgetField, state => ({
+    ...initialBudgetFieldState
   }))
 );
 

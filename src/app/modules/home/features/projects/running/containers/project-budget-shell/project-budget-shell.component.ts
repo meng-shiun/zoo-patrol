@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
@@ -13,7 +13,7 @@ import * as ProjectActions from '../../../store/project.actions';
   templateUrl: './project-budget-shell.component.html',
   styleUrls: ['./project-budget-shell.component.scss']
 })
-export class ProjectBudgetShellComponent implements OnInit {
+export class ProjectBudgetShellComponent implements OnInit, OnDestroy {
   projectBudgetField$: Observable<IProjectBudgetField>;
   totalHours$: Observable<number>;
   totalBudget$: Observable<number>;
@@ -53,5 +53,9 @@ export class ProjectBudgetShellComponent implements OnInit {
 
   save(): void {
     this.store.dispatch(ProjectActions.updateBudgetField());
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(ProjectActions.resetBudgetField());
   }
 }

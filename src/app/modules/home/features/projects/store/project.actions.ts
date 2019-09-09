@@ -86,3 +86,7 @@ export const updateBudgetItem = createAction('[Project] Update Budget Item', pro
 
 /* ============= Delete Budget Item ============= */
 export const deleteBudgetItem = createAction('[Project] Delete Budget Item', props<{ budgetItem: IBudgetItem }>());
+
+
+/* ============= Reset Budget Field ============= */
+export const resetBudgetField = createAction('[Project] Reset Budget Field');

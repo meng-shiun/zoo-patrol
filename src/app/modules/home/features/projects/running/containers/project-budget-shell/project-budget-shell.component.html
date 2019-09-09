@@ -9,18 +9,18 @@
       (hoursChanged)="updateTotalHours($event)"
       (budgetChanged)="updateTotalBudget($event)">
     </app-budget-list>
+
+    <app-budget-total
+      [totalHours]="totalHours$ | async"
+      [totalBudget]="totalBudget$ | async">
+    </app-budget-total>
+
+    <button
+      (click)="addBudgetItem()"
+      mat-mini-fab aria-label="Add a budget item">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
-
-  <app-budget-total
-    [totalHours]="totalHours$ | async"
-    [totalBudget]="totalBudget$ | async">
-  </app-budget-total>
-
-  <button
-    (click)="addBudgetItem()"
-    mat-mini-fab aria-label="Add a budget item">
-    <mat-icon>add</mat-icon>
-  </button>
 
   <h3 (click)="save()">Save</h3>
 </div>
