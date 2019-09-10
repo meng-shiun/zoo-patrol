@@ -4,7 +4,7 @@ import { SharedModule } from '@shared/shared.module';
 import { ComponentsModule } from '@app/components/components.module';
 import { ProjectsRoutingModule } from './projects-routing.module';
 import {
-  ProjectDetailsComponent,
+  DetailsEditComponent,
   BudgetListComponent,
   BudgetListItemComponent,
   BudgetTotalComponent
@@ -19,7 +19,7 @@ import { ProjectEffects } from './store/project.effects';
 @NgModule({
   declarations: [
     ProjectsRoutingModule.components,
-    ProjectDetailsComponent,
+    DetailsEditComponent,
     BudgetListComponent,
     BudgetListItemComponent,
     BudgetTotalComponent,

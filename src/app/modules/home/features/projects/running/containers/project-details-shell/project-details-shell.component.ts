@@ -9,12 +9,11 @@ import * as fromProjects from '../../../store';
 import * as ProjectActions from '../../../store/project.actions';
 
 @Component({
-  selector: 'app-project-details',
-  templateUrl: './project-details.component.html',
-  styleUrls: ['./project-details.component.scss']
+  selector: 'app-project-details-shell',
+  templateUrl: './project-details-shell.component.html',
+  styleUrls: ['./project-details-shell.component.scss']
 })
-export class ProjectDetailsComponent implements OnInit {
-
+export class ProjectDetailsShellComponent implements OnInit {
   projectDetails$: Observable<IProjectDetails>;
 
   constructor(
