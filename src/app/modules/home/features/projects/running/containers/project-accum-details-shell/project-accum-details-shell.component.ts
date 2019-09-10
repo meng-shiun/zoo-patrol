@@ -7,12 +7,12 @@ import { ITab, slideLeftRight } from '@app/shared';
 import { ProjectService } from '@app/modules/home/features/projects/project.service';
 
 @Component({
-  selector: 'app-project-details-shell',
-  templateUrl: './project-details-shell.component.html',
-  styleUrls: ['./project-details-shell.component.scss'],
+  selector: 'app-project-accum-details-shell',
+  templateUrl: './project-accum-details-shell.component.html',
+  styleUrls: ['./project-accum-details-shell.component.scss'],
   animations: [slideLeftRight]
 })
-export class ProjectDetailsShellComponent implements OnInit {
+export class ProjectAccumDetailsShellComponent implements OnInit {
   tabs: ITab[] = [
     { name: 'Project details', link: 'details' },
     { name: 'Planning', link: 'planning' },

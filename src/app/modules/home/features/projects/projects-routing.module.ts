@@ -9,7 +9,7 @@ import {
   RunningProjectsShellComponent,
   ProjectFilterBarComponent,
   ProjectListComponent,
-  ProjectDetailsShellComponent,
+  ProjectAccumDetailsShellComponent,
   ProjectDetailsComponent,
   ProjectBudgetShellComponent
 } from './running';
@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'running/:id',
-        component: ProjectDetailsShellComponent,
+        component: ProjectAccumDetailsShellComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
           {
@@ -73,7 +73,7 @@ export class ProjectsRoutingModule {
     MyProjectsComponent,
     ArchivedComponent,
     RunningProjectsShellComponent,
-    ProjectDetailsShellComponent,
+    ProjectAccumDetailsShellComponent,
     ProjectBudgetShellComponent,
     ProjectFilterBarComponent,
     ProjectListComponent
