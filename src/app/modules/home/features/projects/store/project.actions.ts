@@ -70,14 +70,14 @@ export const createBudgetFieldFail = createAction('[Project] Create Budget Field
 export const updateBudgetField = createAction('[Project] Update Budget Field');
 
 export const updateBudgetFieldSuccess = createAction(
-  '[Project] Update Budget Field Success', props<{ id: number, budgetItems: IBudgetItem[] }>() );
+  '[Project] Update Budget Field Success', props<{ id: number, budgetItems: IBudgetItem[] }>());
 
 export const updateBudgetFieldFail = createAction(
-  '[Project] Update Budget Field Fail', props<{ error: string }>() );
+  '[Project] Update Budget Field Fail', props<{ error: string }>());
 
 
 /* ============= Create Budget Item ============= */
-export const createBudgetItem = createAction('[Project] Create Budget Item');
+export const createBudgetItem = createAction('[Project] Create Budget Item', props<{ budgetItem: IBudgetItem }>());
 
 
 /* ============= Update Budget Item ============= */

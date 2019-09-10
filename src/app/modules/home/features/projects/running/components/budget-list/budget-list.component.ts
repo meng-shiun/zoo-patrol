@@ -18,7 +18,6 @@ export class BudgetListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.budgetList);
   }
 
   delete(item: IBudgetItem) {

@@ -32,11 +32,10 @@ export class ProjectBudgetShellComponent implements OnInit, OnDestroy {
   }
 
   addBudgetItem(): void {
-    this.store.dispatch(ProjectActions.createBudgetItem());
+    this.store.dispatch(ProjectActions.createBudgetItem({ budgetItem: { budget: 0, type: '', hours: 0 } }));
   }
 
   updateBudgetItem({ id, budgetItem }) {
-    console.log('[update]', id, budgetItem);
     this.store.dispatch(ProjectActions.updateBudgetItem({ id, budgetItem }));
   }
 
