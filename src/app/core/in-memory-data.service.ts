@@ -3,7 +3,10 @@ import { InMemoryDbService } from 'angular-in-memory-web-api';
 import {
   projectsData,
   projectsDetailsData,
-  projectsBudgetData
+  projectsBudgetData,
+  clientsData,
+  projectManagersData,
+  projectStatusData
 } from './data';
 
 export class InMemoryDataService implements InMemoryDbService {
@@ -11,19 +14,19 @@ export class InMemoryDataService implements InMemoryDbService {
     const projects = projectsData;
     const projectsDetails = projectsDetailsData;
     const projectsBudget = projectsBudgetData;
+    const projectStatus = projectStatusData;
+    const projectManagers = projectManagersData;
     // TODO:
     // const projectPlanning = projectPlanningData;
 
-    // TODO: create clients data
-    const clients = [
-      { id: 1, name: 'Client 1'},
-      { id: 2, name: 'Client 2'},
-      { id: 3, name: 'Client 3'}
-    ];
+    const clients = clientsData;
+
     return {
       projects,
       projectsDetails,
       projectsBudget,
+      projectStatus,
+      projectManagers,
       clients
     };
   }

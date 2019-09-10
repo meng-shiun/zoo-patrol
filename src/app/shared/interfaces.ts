@@ -45,3 +45,18 @@ export interface IProjectBudgetField {
   id: number | null;
   budgetItems: IBudgetItem[];
 }
+
+export interface IClient {
+  id: number;
+  name: string;
+}
+
+export interface IProjectManager {
+  id: number;
+  name: string;
+}
+
+export interface IProjectStatus {
+  id: number;
+  status: string;
+}
