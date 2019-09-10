@@ -6,3 +6,59 @@
   <p>Status: {{ details.status }}</p>
   <p>Manager: {{ details.manager }}</p>
 </div>
+<hr>
+
+<div class="details-edit-container" *ngIf="details">
+  <form [formGroup]="editDetailsForm">
+    <mat-form-field>
+      <label>Client</label>
+      <div class="label-space"></div>
+      <mat-select>
+        <mat-option [value]="details.client">
+          {{details.client}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Sub-client</label>
+      <div class="label-space"></div>
+      <mat-select>
+        <mat-option [value]="details.sub_clinet">
+          {{details.sub_clinet}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Project name</label>
+      <div class="label-space"></div>
+      <input
+        matInput
+        [value]="details.name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Status</label>
+      <div class="label-space"></div>
+      <mat-select>
+        <mat-option [value]="details.status">
+          {{details.status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Project manager</label>
+      <div class="label-space"></div>
+      <mat-select>
+        <mat-option [value]="details.manager">
+          {{details.manager}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button type="submit" mat-flat-button>Save
+    </button>
+  </form>
+</div>

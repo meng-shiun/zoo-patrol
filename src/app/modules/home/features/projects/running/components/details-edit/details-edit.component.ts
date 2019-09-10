@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { IProjectDetails } from '@app/shared';
 
@@ -10,9 +11,14 @@ import { IProjectDetails } from '@app/shared';
 export class DetailsEditComponent implements OnInit {
   @Input() details: IProjectDetails;
 
-  constructor() {}
+  editDetailsForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
+    this.editDetailsForm = this.fb.group({
+
+    });
   }
 
 }

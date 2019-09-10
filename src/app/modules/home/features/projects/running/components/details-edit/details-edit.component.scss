@@ -1,0 +1,34 @@
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
+.details-edit-container {
+  background: $color-white;
+  position: relative;
+  width: 35rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 4px;
+  background: $color-white;
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: -0.5rem;
+
+    label {
+      font-size: .875rem;
+      color: $text-grey-light;
+    }
+
+    .label-space {
+      height: .6rem;
+    }
+  }
+
+  button {
+    background: $brand-color-red;
+    color: $color-white;
+    padding: .5rem 2rem;
+    margin-top: 2rem;
+    left: calc(100% - 6rem);
+  }
+}
