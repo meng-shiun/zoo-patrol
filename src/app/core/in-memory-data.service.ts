@@ -4,9 +4,10 @@ import {
   projectsData,
   projectsDetailsData,
   projectsBudgetData,
-  clientsData,
   projectManagersData,
-  projectStatusData
+  projectStatusData,
+  projectTaskTypeData,
+  clientsData,
 } from './data';
 
 export class InMemoryDataService implements InMemoryDbService {
@@ -16,6 +17,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const projectsBudget = projectsBudgetData;
     const projectStatus = projectStatusData;
     const projectManagers = projectManagersData;
+    const projectTaskTypes = projectTaskTypeData;
     // TODO:
     // const projectPlanning = projectPlanningData;
 
@@ -27,6 +29,7 @@ export class InMemoryDataService implements InMemoryDbService {
       projectsBudget,
       projectStatus,
       projectManagers,
+      projectTaskTypes,
       clients
     };
   }

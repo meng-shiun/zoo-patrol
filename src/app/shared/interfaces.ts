@@ -60,3 +60,8 @@ export interface IProjectStatus {
   id: number;
   status: string;
 }
+
+export interface IProjectTaskType {
+  id: number;
+  type: string;
+}

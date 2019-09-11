@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IBudgetItem } from '@app/shared';
+import { projectTaskTypeData } from '@app/core/data';
 
 @Component({
   selector: 'app-budget-list-item',
@@ -17,12 +18,7 @@ export class BudgetListItemComponent implements OnInit {
   @Output() budgetChanged: EventEmitter<{pre: number, cur: number}> = new EventEmitter();
 
   // TODO: Define edit mode
-  taskTypes: string[] = [
-    'Design',
-    'Development',
-    'Marketing'
-  ];
-
+  taskList: string[] = projectTaskTypeData.map(task => task.type);
   budgetItemForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
