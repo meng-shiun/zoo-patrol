@@ -10,10 +10,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Cam.ac.uk',
     manager: 'Kristof',
-    status: {
-      id: 510,
-      status: 'Cancelled'
-    }
+    status: 510
   },
   {
     id: 2,
@@ -21,10 +18,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Over-blog.com',
     manager: 'Tom',
-    status: {
-      id: 200,
-      status: 'Approved'
-    }
+    status: 200
   },
   {
     id: 3,
@@ -32,10 +26,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Businessweek.com',
     manager: 'Kristof',
-    status: {
-      id: 605,
-      status: 'Completed'
-    }
+    status: 605
   },
   {
     id: 4,
@@ -43,10 +34,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Ox.ac.uk',
     manager: 'Kristof',
-    status: {
-      id: 310,
-      status: 'In Progress'
-    }
+    status: 310
   },
   {
     id: 5,
@@ -54,10 +42,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Reverbnation.com',
     manager: 'Kristof',
-    status: {
-      id: 213,
-      status: 'Pending'
-    }
+    status: 213
   },
   {
     id: 6,
@@ -65,10 +50,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: '163.com',
     manager: 'Tom',
-    status: {
-      id: 140,
-      status: 'Proposed'
-    }
+    status: 140
   },
   {
     id: 7,
@@ -76,10 +58,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'State.gov',
     manager: 'Chelsey',
-    status: {
-      id: 510,
-      status: 'Cancelled'
-    }
+    status: 510
   },
   {
     id: 8,
@@ -87,10 +66,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Cocolog-nifty.com',
     manager: 'Kristof',
-    status: {
-      id: 213,
-      status: 'Pending'
-    }
+    status: 213
   },
   {
     id: 9,
@@ -98,10 +74,7 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Un.org',
     manager: 'Tom',
-    status: {
-      id: 310,
-      status: 'In Progress'
-    }
+    status: 310
   },
   {
     id: 10,
@@ -109,9 +82,6 @@ export const projectsDetailsData: IProjectDetails[] = [
     sub_clinet: 'Bekker',
     name: 'Mediafire.com',
     manager: 'Chelsey',
-    status: {
-      id: 605,
-      status: 'Completed'
-    }
+    status: 605
   }
 ];

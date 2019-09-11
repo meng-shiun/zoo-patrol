@@ -9,7 +9,7 @@ export interface IProject {
   client: string;
   name: string;
   manager: string;
-  status: IProjectStatus;
+  status: number;
   deadline: string;
   details?: IProjectDetails;
   budget_field?: IProjectBudgetField;
@@ -24,7 +24,7 @@ export interface IProjectDetails {
   sub_clinet: string;
   name: string;
   manager: string;
-  status: IProjectStatus;
+  status: number;
 }
 
 export interface IProjectPlanning {

@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
     *
     * cardInfo = new Map([
     *   [0, {'title': 'Client', 'child': 'client'}],
-    *   [1, {'title': 'Status', 'child': 'status', 'subParam1': 'id', 'subParam2': 'status'}}]
+    *   [1, {'title': 'Status', 'child': 'status', 'pipe': 'projectStatus' }}]
     * ]);
   **/
 

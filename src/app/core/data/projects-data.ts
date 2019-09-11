@@ -9,10 +9,7 @@ export const projectsData: IProject[] = [
     client: 'Lueilwitz Group',
     name: 'Cam.ac.uk',
     manager: 'Kristof',
-    status: {
-      id: 510,
-      status: 'Cancelled'
-    },
+    status: 510,
     deadline: '5/6/2019'
   },
   {
@@ -20,10 +17,7 @@ export const projectsData: IProject[] = [
     client: 'Frami-Ledner',
     name: 'Over-blog.com',
     manager: 'Tom',
-    status: {
-      id: 200,
-      status: 'Approved'
-    },
+    status: 200,
     deadline: '8/4/2018'
   },
   {
@@ -31,10 +25,7 @@ export const projectsData: IProject[] = [
     client: 'Ledner-Bergstrom',
     name: 'Businessweek.com',
     manager: 'Kristof',
-    status: {
-      id: 605,
-      status: 'Completed'
-    },
+    status: 605,
     deadline: '6/28/2019'
   },
   {
@@ -42,10 +33,7 @@ export const projectsData: IProject[] = [
     client: 'Wilderman, Armstrong and Bashirian',
     name: 'Ox.ac.uk',
     manager: 'Kristof',
-    status: {
-      id: 310,
-      status: 'In Progress'
-    },
+    status: 310,
     deadline: '10/20/2018'
   },
   {
@@ -53,10 +41,7 @@ export const projectsData: IProject[] = [
     client: 'Pacocha, Hintz and Roob',
     name: 'Reverbnation.com',
     manager: 'Kristof',
-    status: {
-      id: 213,
-      status: 'Pending'
-    },
+    status: 213,
     deadline: '9/21/2018'
   },
   {
@@ -64,10 +49,7 @@ export const projectsData: IProject[] = [
     client: 'Nolan, Schowalter and Wolff',
     name: '163.com',
     manager: 'Tom',
-    status: {
-      id: 140,
-      status: 'Proposed'
-    },
+    status: 140,
     deadline: '1/15/2019'
   },
   {
@@ -75,10 +57,7 @@ export const projectsData: IProject[] = [
     client: 'Veum Inc',
     name: 'State.gov',
     manager: 'Chelsey',
-    status: {
-      id: 510,
-      status: 'Cancelled'
-    },
+    status: 510,
     deadline: '8/23/2018'
   },
   {
@@ -86,10 +65,7 @@ export const projectsData: IProject[] = [
     client: 'Hayes LLC',
     name: 'Cocolog-nifty.com',
     manager: 'Kristof',
-    status: {
-      id: 213,
-      status: 'Pending'
-    },
+    status: 213,
     deadline: '4/16/2019'
   },
   {
@@ -97,10 +73,7 @@ export const projectsData: IProject[] = [
     client: 'Kiehn, Okuneva and Huel',
     name: 'Un.org',
     manager: 'Tom',
-    status: {
-      id: 310,
-      status: 'In Progress'
-    },
+    status: 310,
     deadline: '3/6/2019'
   },
   {
@@ -108,10 +81,7 @@ export const projectsData: IProject[] = [
     client: 'Watsica LLC',
     name: 'Mediafire.com',
     manager: 'Chelsey',
-    status: {
-      id: 605,
-      status: 'Completed'
-    },
+    status: 605,
     deadline: '8/1/2018'
   }
 ];

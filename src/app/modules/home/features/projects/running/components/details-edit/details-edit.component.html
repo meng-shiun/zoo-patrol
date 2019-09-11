@@ -9,7 +9,7 @@
 <hr>
 
 <div class="details-edit-container" *ngIf="details">
-  <form [formGroup]="editDetailsForm">
+  <form [formGroup]="editDetailsForm" (submit)="save()">
     <mat-form-field>
       <label>Client</label>
       <div class="label-space"></div>
@@ -34,6 +34,7 @@
       <label>Project name</label>
       <div class="label-space"></div>
       <input
+        formControlName="name"
         matInput
         [value]="details.name">
     </mat-form-field>
@@ -42,8 +43,8 @@
       <label>Status</label>
       <div class="label-space"></div>
       <mat-select formControlName="projectStatus">
-        <mat-option *ngFor="let status of statusList" [value]="status">
-          {{ status }}
+        <mat-option *ngFor="let statusId of statusList" [value]="statusId">
+          {{ statusId | projectStatus }}
         </mat-option>
       </mat-select>
     </mat-form-field>

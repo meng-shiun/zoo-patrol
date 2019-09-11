@@ -33,10 +33,7 @@ export class RunningProjectsShellComponent implements OnInit {
       client: 'New Client',
       name: 'New Client Name',
       manager: 'Manager',
-      status: {
-        id: 140,
-        status: 'Proposed'
-      },
+      status: 140,
       deadline: '11/6/2000'
     };
 

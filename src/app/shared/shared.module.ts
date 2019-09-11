@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomMaterialModule } from './custom-material.module';
+import { ProjectStatusPipe } from './project-status.pipe';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ProjectStatusPipe
+  ],
   imports: [
     CustomMaterialModule,
     FormsModule,
@@ -16,6 +19,7 @@ import { CustomMaterialModule } from './custom-material.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    ProjectStatusPipe,
     CustomMaterialModule.exportModules
   ]
 })

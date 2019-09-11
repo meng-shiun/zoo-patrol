@@ -6,13 +6,12 @@
   <mat-card-content class="content" *ngIf="cardInfo">
     <div class="info-field" *ngFor="let card of cardInfo | keyvalue">
       <p>{{ card.value.title }}</p>
-      <p *ngIf="!card.value.subParam1">
+      <p *ngIf="!card.value.pipe">
         {{ prop[card.value.child] }}
       </p>
-      <!-- If child has nested values -->
-      <p *ngIf="!!card.value.subParam1">
-        {{ prop[card.value.child][card.value.subParam1] }}.
-        {{ prop[card.value.child][card.value.subParam2] }}
+      <!-- If child has pipe -->
+      <p *ngIf="!!card.value.pipe && card.value.pipe === 'projectStatus'">
+        {{ prop[card.value.child] | projectStatus }}
       </p>
     </div>
   </mat-card-content>
