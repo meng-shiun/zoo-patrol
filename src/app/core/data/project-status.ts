@@ -24,9 +24,5 @@ export const projectStatusData: IProjectStatus[] = [
   {
     id: 605,
     status: 'Completed'
-  },
-  {
-    id: 310,
-    status: 'In Progress'
-  },
+  }
 ];

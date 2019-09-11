@@ -6,7 +6,14 @@
   <mat-card-content class="content" *ngIf="cardInfo">
     <div class="info-field" *ngFor="let card of cardInfo | keyvalue">
       <p>{{ card.value.title }}</p>
-      <p>{{ prop[card.value.child] }}</p>
+      <p *ngIf="!card.value.subParam1">
+        {{ prop[card.value.child] }}
+      </p>
+      <!-- If child has nested values -->
+      <p *ngIf="!!card.value.subParam1">
+        {{ prop[card.value.child][card.value.subParam1] }}.
+        {{ prop[card.value.child][card.value.subParam2] }}
+      </p>
     </div>
   </mat-card-content>
 </mat-card>

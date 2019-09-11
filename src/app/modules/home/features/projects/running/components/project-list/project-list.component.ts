@@ -14,11 +14,11 @@ export class ProjectListComponent implements OnInit {
   @Input() projects: IProject[];
   @Input() errorMessage: string;
 
-  @Output() cardInfo = new Map();
+  cardInfo = new Map();
 
   constructor() {
     this.cardInfo.set(0, CardKeyValue.create('Client', 'client'));
-    this.cardInfo.set(1, CardKeyValue.create('Status', 'status'));
+    this.cardInfo.set(1, CardKeyValue.create('Status', 'status', 'id', 'status'));
     this.cardInfo.set(2, CardKeyValue.create('Deadline', 'deadline'));
     this.cardInfo.set(3, CardKeyValue.create('Manager', 'manager'));
   }

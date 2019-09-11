@@ -3,7 +3,7 @@
   <p>Client: {{ details.client }}</p>
   <p>Sub Client: {{ details.sub_clinet }}</p>
   <p>Name: {{ details.name }}</p>
-  <p>Status: {{ details.status }}</p>
+  <p>Status: {{ details.status.status }}</p>
   <p>Manager: {{ details.manager }}</p>
 </div>
 <hr>
@@ -13,9 +13,9 @@
     <mat-form-field>
       <label>Client</label>
       <div class="label-space"></div>
-      <mat-select>
-        <mat-option [value]="details.client">
-          {{details.client}}
+      <mat-select formControlName="client">
+        <mat-option *ngFor="let client of clientList" [value]="client">
+          {{ client }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -23,9 +23,9 @@
     <mat-form-field>
       <label>Sub-client</label>
       <div class="label-space"></div>
-      <mat-select>
-        <mat-option [value]="details.sub_clinet">
-          {{details.sub_clinet}}
+      <mat-select formControlName="subClient">
+        <mat-option *ngFor="let subClient of clientList" [value]="subClient">
+          {{ subClient }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -41,9 +41,9 @@
     <mat-form-field>
       <label>Status</label>
       <div class="label-space"></div>
-      <mat-select>
-        <mat-option [value]="details.status">
-          {{details.status}}
+      <mat-select formControlName="projectStatus">
+        <mat-option *ngFor="let status of statusList" [value]="status">
+          {{ status }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -51,14 +51,13 @@
     <mat-form-field>
       <label>Project manager</label>
       <div class="label-space"></div>
-      <mat-select>
-        <mat-option [value]="details.manager">
-          {{details.manager}}
+      <mat-select formControlName="manager">
+        <mat-option *ngFor="let manager of managerList; index as i " [value]="manager">
+          {{ manager }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button type="submit" mat-flat-button>Save
-    </button>
+    <button type="submit" mat-flat-button>Save</button>
   </form>
 </div>
