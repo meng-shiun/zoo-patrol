@@ -30,11 +30,11 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
     // When a new project is created, details/budget/planning ... are also created
     const newProject: IProject = {
       id: null,
-      client: 'New Client',
-      name: 'New Client Name',
-      manager: 'Manager',
-      status: 140,
-      deadline: '11/6/2000'
+      client: null,
+      name: null,
+      manager: null,
+      status: null,
+      deadline: null
     };
 
     this.store.dispatch(ProjectActions.createProject({ result: newProject }));

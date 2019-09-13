@@ -11,7 +11,7 @@
       </p>
       <!-- If child has pipe -->
       <p *ngIf="!!card.value.pipe && card.value.pipe === 'projectStatus'">
-        {{ prop[card.value.child] | projectStatus }}
+        {{ !!prop[card.value.child] ? (prop[card.value.child] | projectStatus) : null }}
       </p>
     </div>
   </mat-card-content>
