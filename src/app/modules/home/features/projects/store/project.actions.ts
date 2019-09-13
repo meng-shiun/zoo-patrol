@@ -83,6 +83,10 @@ export const updateProjectDetailsSuccess = createAction(
 export const updateProjectDetailsFail = createAction('[Project] Update Project Details Fail', props<{ error: string }>());
 
 
+/* ============= Reset Project Details ============= */
+export const resetProjectDetails = createAction('[Projects] Reset Project Details');
+
+
 /* ============= Create Budget Field ============= */
 export const createBudgetField = createAction('[Project] Create Budget Field', props<{ id: number }>());
 

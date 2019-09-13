@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
@@ -13,7 +13,7 @@ import * as ProjectActions from '../../../store/project.actions';
   templateUrl: './project-details-shell.component.html',
   styleUrls: ['./project-details-shell.component.scss']
 })
-export class ProjectDetailsShellComponent implements OnInit {
+export class ProjectDetailsShellComponent implements OnInit, OnDestroy {
   projectDetails$: Observable<IProjectDetails>;
 
   constructor(
@@ -30,6 +30,10 @@ export class ProjectDetailsShellComponent implements OnInit {
 
   update(details: IProjectDetails): void {
     this.store.dispatch(ProjectActions.updateProjectDetails({ projectDetails: details }));
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(ProjectActions.resetProjectDetails());
   }
 
 }

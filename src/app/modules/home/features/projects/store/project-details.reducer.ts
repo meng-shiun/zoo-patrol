@@ -38,6 +38,9 @@ const projectDetailsReducer = createReducer(
   }),
   on(ProjectActions.updateProjectDetailsFail, (state, { error }) => {
     return { ...state, error: error };
+  }),
+  on(ProjectActions.resetProjectDetails, state => {
+    return adapter.removeAll(state);
   })
 );
 
