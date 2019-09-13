@@ -22,13 +22,63 @@ export class ProjectEffects {
     )
   );
 
+
+  loadProject$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.loadProject),
+      switchMap(action => this.projectService.getProject(action.id)
+        .pipe(
+          map((project: IProject) => ProjectActions.loadProjectSuccess({ project })),
+          catchError(err => of(ProjectActions.loadProjectFail({ error: err })))
+        ))
+    )
+  );
+
+  // Update project
+  updateProject$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.updateProject),
+      switchMap(action => this.projectService.updateProject(action.project))
+    ), { dispatch: false }
+  );
+
+  // Load project details & project info
   loadProjectDetail$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.loadDetailById),
       switchMap(action =>
         this.projectService.getProjectDetails(action.id).pipe(
-          map((details: IProjectDetails) => ProjectActions.loadDetailByIdSuccess({ result: details })),
+          mergeMap((details: IProjectDetails) => {
+            return [
+              ProjectActions.loadDetailByIdSuccess({ result: details }),
+              ProjectActions.loadProject({ id: details.id })
+            ];
+          }),
           catchError(err => of(ProjectActions.loadDetailByIdFail({ error: err })))
+        )
+      )
+    )
+  );
+
+  // Update project details & project info
+  updateProjectDetails$ = createEffect(
+    () => this.actions$.pipe(
+    ofType(ProjectActions.updateProjectDetails),
+    withLatestFrom(this.store.pipe(select(fromProjects.selectProject))),
+    mergeMap(([target, currentProject]) =>
+        this.projectService.updateProjectDetails(target.projectDetails).pipe(
+          mergeMap(() => {
+            const updatedProject: IProject = {
+              ...target.projectDetails,
+              deadline: currentProject.deadline
+            };
+
+            return [
+              ProjectActions.updateProjectDetailsSuccess({ projectDetails: target.projectDetails }),
+              ProjectActions.updateProject({ project: updatedProject })
+            ];
+          }),
+          catchError(err => of(ProjectActions.updateProjectDetailsFail({ error: err })))
         )
       )
     )

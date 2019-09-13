@@ -1,5 +1,6 @@
 <div *ngIf="projectDetails$ | async as projectDetails">
   <app-details-edit
-    [details]="projectDetails">
+    [details]="projectDetails"
+    (saveDetails)="update($event)">
   </app-details-edit>
 </div>

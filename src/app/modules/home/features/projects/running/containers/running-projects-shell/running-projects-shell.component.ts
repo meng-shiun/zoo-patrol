@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { Observable, of } from 'rxjs';
@@ -12,7 +12,7 @@ import * as ProjectActions from '../../../store/project.actions';
   templateUrl: './running-projects-shell.component.html',
   styleUrls: ['./running-projects-shell.component.scss']
 })
-export class RunningProjectsShellComponent implements OnInit {
+export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   projects$: Observable<IProject[]>;
   errorMessage$: Observable<string>;
 
@@ -44,4 +44,7 @@ export class RunningProjectsShellComponent implements OnInit {
     console.log('delete project 4');
   }
 
+  ngOnDestroy(): void {
+   this.store.dispatch(ProjectActions.resetProjects());
+  }
 }

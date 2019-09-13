@@ -28,4 +28,8 @@ export class ProjectDetailsShellComponent implements OnInit {
     this.projectDetails$ = this.store.pipe(select(fromProjects.selectProjectDetails));
   }
 
+  update(details: IProjectDetails): void {
+    this.store.dispatch(ProjectActions.updateProjectDetails({ projectDetails: details }));
+  }
+
 }

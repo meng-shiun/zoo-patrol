@@ -61,6 +61,21 @@ export const selectAllProjectsError = createSelector(
   fromAllProjects.getError
 );
 
+export const selectProjectEntities = createSelector(
+  selectAllProjectsState,
+  fromAllProjects.selectProjectEntities
+);
+
+export const selectProjectId = createSelector(
+  selectAllProjectsState,
+  fromAllProjects.getSelectedId
+);
+
+export const selectProject = createSelector(
+  selectProjectEntities,
+  selectProjectId,
+  (entities, id) => entities[id]
+);
 
 /* Create Child Selectors in Project Details */
 export const selectDetailEntities = createSelector(

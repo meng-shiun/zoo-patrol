@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { IProjectDetails } from '@app/shared';
@@ -11,6 +11,7 @@ import { projectManagersData, clientsData, projectStatusData } from '@app/core/d
 })
 export class DetailsEditComponent implements OnInit {
   @Input() details: IProjectDetails;
+  @Output() saveDetails: EventEmitter<IProjectDetails> = new EventEmitter();
 
   clientList: string[] = clientsData.map(client => client.name);
   managerList: string[] = projectManagersData.map(manager => manager.name);
@@ -34,7 +35,24 @@ export class DetailsEditComponent implements OnInit {
   }
 
   save() {
-    console.log('save:', this.editDetailsForm.value);
+    const {
+      client,
+      subClient,
+      name,
+      manager,
+      projectStatus
+    } = this.editDetailsForm.value;
+
+    const updateDetails: IProjectDetails = {
+      id: this.details.id,
+      client,
+      sub_clinet: subClient,
+      name,
+      manager,
+      status: projectStatus
+    };
+
+    this.saveDetails.emit(updateDetails);
   }
 
 }

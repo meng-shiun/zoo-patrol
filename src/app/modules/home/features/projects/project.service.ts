@@ -41,6 +41,11 @@ export class ProjectService {
     );
   }
 
+  updateProject(project: IProject): Observable<IProject> {
+    const url = `${this.projectsUrl}/${project.id}`;
+    return this.http.put<IProject>(url, project, this.httpOptions);
+  }
+
   // Project details will be created once a project is created
   createProjectDetails(project: IProject): Observable<IProjectDetails> {
     const projectDetails: IProjectDetails = {
@@ -55,7 +60,6 @@ export class ProjectService {
     return this.http.post<IProjectDetails>(this.projectsDetailsUrl, projectDetails, this.httpOptions);
   }
 
-  // TODO: when projectDetails is updated, project info also need to be updated
   updateProjectDetails(projectDetails: IProjectDetails): Observable<IProjectDetails> {
     const url = `${this.projectsDetailsUrl}/${projectDetails.id}`;
     return this.http.put<IProjectDetails>(url, projectDetails, this.httpOptions);
