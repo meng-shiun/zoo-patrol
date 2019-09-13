@@ -4,3 +4,4 @@ export * from './details-edit/details-edit.component';
 export * from './budget-list/budget-list.component';
 export * from './budget-list-item/budget-list-item.component';
 export * from './budget-total/budget-total.component';
+export * from './project-create/project-create.component';

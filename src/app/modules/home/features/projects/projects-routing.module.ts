@@ -9,6 +9,7 @@ import {
   RunningProjectsShellComponent,
   ProjectFilterBarComponent,
   ProjectListComponent,
+  ProjectCreateComponent,
   ProjectAccumDetailsShellComponent,
   ProjectDetailsShellComponent,
   ProjectBudgetShellComponent
@@ -23,6 +24,13 @@ const routes: Routes = [
       {
         path: 'running',
         component: RunningProjectsShellComponent,
+        children: [
+          {
+            path: 'newProject',
+            component: ProjectCreateComponent,
+            outlet: 'popup'
+          },
+        ],
         data: { routeId: 0 }
       },
       {
@@ -77,6 +85,7 @@ export class ProjectsRoutingModule {
     ProjectDetailsShellComponent,
     ProjectBudgetShellComponent,
     ProjectFilterBarComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    ProjectCreateComponent
   ];
 }

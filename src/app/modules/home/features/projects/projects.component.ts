@@ -10,27 +10,31 @@ import { slideLeftRight, ITab } from '@app/shared';
   animations: [slideLeftRight]
 })
 export class ProjectsComponent implements OnInit {
-  tabs: ITab[] = [
+  animTabs: ITab[] = [
     { name: 'Running projects', link: 'running' },
     { name: 'My projects', link: 'my_projects' },
     { name: 'Archived projects', link: 'archived' },
-    { name: '+ New projects', link: 'new' }
+    // { name: '+ New projects', link: 'new' }
   ];
+
   activeTab: string;
   animationState: number;
+
+  animal: string;
+  name: string;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     // Update active tab when refreshing page
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd && event.url.includes('/projects')) {
-        this.tabs.map(tab =>
+        this.animTabs.map(tab =>
           event.url.endsWith(tab.link) && (this.activeTab = tab.name)
         );
-        event.url.endsWith('/projects') && (this.activeTab = this.tabs[0].name);
+        event.url.endsWith('/projects') && (this.activeTab = this.animTabs[0].name);
       }
       // Default tab
       if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
-        this.activeTab = this.tabs[0].name;
+        this.activeTab = this.animTabs[0].name;
       }
     });
   }
@@ -40,5 +44,9 @@ export class ProjectsComponent implements OnInit {
 
   onActivate($event) {
     this.animationState = this.route.firstChild.snapshot.data['routeId'];
+  }
+
+  create() {
+    this.router.navigate([{ outlets: { popup: ['newProject']} }], { relativeTo: this.route.parent.parent });
   }
 }
