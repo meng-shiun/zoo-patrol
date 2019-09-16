@@ -35,6 +35,10 @@ const allProjectsReducer = createReducer(
     ...state,
     error: 'Load Projects failed' + error
   })),
+  on(ProjectActions.createProject, (state, { result }) => ({
+    ...state,
+    selectedProjectId: result.id
+  })),
   on(ProjectActions.createProjectSuccess, (state, { result }) => {
     return adapter.addOne(result, {...state, selectedProjectId: result.id });
   }),

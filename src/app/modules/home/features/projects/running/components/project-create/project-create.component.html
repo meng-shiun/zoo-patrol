@@ -1,5 +1,55 @@
 <mat-card>
-  <button mat-fab (click)="close()">
+  <form [formGroup]="projectCreateForm" (submit)="createProject()">
+    <mat-form-field>
+      <label>Client</label>
+      <div class="label-space"></div>
+      <mat-select formControlName="client">
+        <mat-option *ngFor="let client of clientList" [value]="client">
+          {{ client }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Project name</label>
+      <div class="label-space"></div>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Status</label>
+      <div class="label-space"></div>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let statusId of statusList" [value]="statusId">
+          {{ statusId | projectStatus }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Deadline</label>
+      <div class="label-space"></div>
+      <input formControlName="deadline" matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <label>Project manager</label>
+      <div class="label-space"></div>
+      <mat-select formControlName="manager">
+        <mat-option *ngFor="let manager of managerList; index as i " [value]="manager">
+          {{ manager }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="advanced-options">
+      <a>Advanced options</a>
+    </div>
+
+    <button mat-button type="submit" [disabled]="!projectCreateForm.valid">Create project</button>
+  </form>
+
+  <a mat-fab (click)="close()">
     <mat-icon>close</mat-icon>
-  </button>
+  </a>
 </mat-card>

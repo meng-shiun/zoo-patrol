@@ -1,8 +1,45 @@
+@import '~styles/abstracts/variables';
+@import '~styles/abstracts/mixins';
+
 mat-card {
   position: absolute;
   top: 7rem;
   right: 4rem;
   width: 27rem;
-  height: 40rem;
+  height: 38rem;
+  padding: 1rem 2rem 2rem;
   z-index: 1;
+
+  mat-form-field {
+    width: 100%;
+    margin-bottom: -0.5rem;
+
+    label {
+      font-size: .875rem;
+      color: $text-grey-light;
+    }
+
+    .label-space {
+      height: .6rem;
+    }
+  }
+
+  .advanced-options {
+    margin-top: 1rem;
+
+    a {
+      color: $text-grey-light;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    background: $brand-color-red;
+    color: $color-white;
+    padding: .5rem 2rem;
+    margin-top: 3rem;
+    float: right;
+  }
 }
+

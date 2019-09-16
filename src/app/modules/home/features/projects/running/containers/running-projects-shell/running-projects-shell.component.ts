@@ -25,21 +25,6 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
     this.errorMessage$  = this.store.pipe(select(fromProjects.selectAllProjectsError));
   }
 
-  addProject(): void {
-    // TODO: move create projects/projectDetails to sub nav
-    // When a new project is created, details/budget/planning ... are also created
-    const newProject: IProject = {
-      id: null,
-      client: null,
-      name: null,
-      manager: null,
-      status: null,
-      deadline: null
-    };
-
-    this.store.dispatch(ProjectActions.createProject({ result: newProject }));
-  }
-
   deleteProject(id: number) {
     console.log('delete project 4');
   }
