@@ -63,4 +63,9 @@ export class ProjectCreateComponent implements OnInit {
       id => ((!!id) ? this.router.navigateByUrl(`projects/running/${id}`) : null)
     );
   }
+
+  temp(e) {
+    console.log('close', e);
+    console.log('close', e.classList.length);
+  }
 }

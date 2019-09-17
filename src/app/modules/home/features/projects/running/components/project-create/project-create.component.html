@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card appClickOutside (clickOutside)="temp($event)">
   <form [formGroup]="projectCreateForm" (submit)="createProject()">
     <mat-form-field>
       <label>Client</label>
