@@ -5,10 +5,18 @@
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-gap: 1rem;
-  margin-top: 2rem;
+  margin: 2rem 4rem;
   padding: 2rem;
   border-radius: 4px;
   background: $color-white;
+  position: relative;
+
+  .add-new-hint {
+    position: absolute;
+    margin-left: calc(50% - 4rem);
+    margin-top: 7rem;
+    color: $text-grey-light;
+  }
 
   app-budget-list {
     grid-column: 1 / span 6;

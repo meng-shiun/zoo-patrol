@@ -1,8 +1,12 @@
 <div
   *ngIf="projectBudgetField$ | async as projectBudgetField"
   class="budget-budget-shell-container">
-
-  <p>Id: {{ projectBudgetField.id }}</p>
+  
+  <p
+    *ngIf="projectBudgetField.budgetItems.length === 0"
+    class="add-new-hint">
+    Add a new budget
+  </p>
 
   <app-budget-list
     [budgetList]="projectBudgetField.budgetItems"
@@ -14,6 +18,7 @@
 
   <div class="side-container">
     <app-budget-total
+      *ngIf="projectBudgetField.budgetItems.length !== 0"
       [totalHours]="totalHours$ | async"
       [totalBudget]="totalBudget$ | async">
     </app-budget-total>

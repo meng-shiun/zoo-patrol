@@ -1,4 +1,4 @@
-<div *ngIf="projectDetails$ | async as projectDetails">
+<div class="project-detail-container" *ngIf="projectDetails$ | async as projectDetails">
   <app-details-edit
     [details]="projectDetails"
     (saveDetails)="update($event)">
