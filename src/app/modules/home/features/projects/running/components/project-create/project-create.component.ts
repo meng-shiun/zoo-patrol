@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
@@ -40,8 +40,7 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   close(): void {
-    const parentUrl = this.router.url.split('/').slice(0, -1).join('/');
-    this.router.navigate([parentUrl, { outlets: { popup: null }}]);
+    this.router.navigate(['/projects/running', { outlets: { popup: null }}]);
   }
 
   createProject(): void {
@@ -62,10 +61,5 @@ export class ProjectCreateComponent implements OnInit {
     this.store.pipe(select(fromProjects.selectProjectId)).subscribe(
       id => ((!!id) ? this.router.navigateByUrl(`projects/running/${id}`) : null)
     );
-  }
-
-  temp(e) {
-    console.log('close', e);
-    console.log('close', e.classList.length);
   }
 }

@@ -1,4 +1,4 @@
-<mat-card appClickOutside (clickOutside)="temp($event)">
+<mat-card>
   <form [formGroup]="projectCreateForm" (submit)="createProject()">
     <mat-form-field>
       <label>Client</label>
@@ -48,8 +48,6 @@
 
     <button mat-button type="submit" [disabled]="!projectCreateForm.valid">Create project</button>
   </form>
-
-  <a mat-fab (click)="close()">
-    <mat-icon>close</mat-icon>
-  </a>
 </mat-card>
+
+<div class="modal-wrapper" (click)="close()"></div>

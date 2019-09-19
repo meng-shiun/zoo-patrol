@@ -8,8 +8,8 @@ mat-card {
   width: 27rem;
   height: 38rem;
   padding: 1rem 2rem 2rem;
-  z-index: 1;
-
+  z-index: 2;
+  
   mat-form-field {
     width: 100%;
     margin-bottom: -0.5rem;
@@ -41,5 +41,9 @@ mat-card {
     margin-top: 3rem;
     float: right;
   }
+}
+
+.modal-wrapper {
+  @include modal-bg;
 }
 
