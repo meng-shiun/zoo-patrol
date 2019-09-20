@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IBudgetItem } from '@app/shared';
 import { projectTaskTypeData } from '@app/core/data';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-budget-list-item',
   templateUrl: './budget-list-item.component.html',
   styleUrls: ['./budget-list-item.component.scss']
 })
-export class BudgetListItemComponent implements OnInit {
+export class BudgetListItemComponent implements OnInit, OnDestroy {
   @Input() budgetItem: IBudgetItem;
   @Input() itemId: number;
   @Output() delete: EventEmitter<IBudgetItem> = new EventEmitter();
@@ -20,6 +21,8 @@ export class BudgetListItemComponent implements OnInit {
   // TODO: Define edit mode
   taskList: string[] = projectTaskTypeData.map(task => task.type);
   budgetItemForm: FormGroup;
+
+  budgetItemSub: Subscription;
 
   constructor(private fb: FormBuilder) { }
 
@@ -34,7 +37,7 @@ export class BudgetListItemComponent implements OnInit {
   }
 
   onChange(): void {
-    this.budgetItemForm.valueChanges.subscribe((val: IBudgetItem) => {
+    this.budgetItemSub = this.budgetItemForm.valueChanges.subscribe((val: IBudgetItem) => {
       if (val.hours !== this.budgetItem.hours) {
         this.hoursChanged.emit({ pre: this.budgetItem.hours, cur: val.hours });
       }
@@ -47,5 +50,9 @@ export class BudgetListItemComponent implements OnInit {
 
   deleteItem(): void {
     this.delete.emit(this.budgetItem);
+  }
+
+  ngOnDestroy(): void {
+    this.budgetItemSub.unsubscribe();
   }
 }

@@ -2,11 +2,11 @@
   <a mat-tab-link *ngFor="let tab of animTabs"
     (click)="activeTab = tab.name"
     [active]="activeTab == tab.name"
-    [routerLink]="[tab.link]">{{ tab.name }} {{tab.link}}</a>
+    [routerLink]="[tab.link]">{{ tab.name }}</a>
 
-  <a (click)="create()" mat-tab-link class="new-project">
-    <mat-icon class="add">add_circle</mat-icon>
-    <span>New project</span>
+  <a (click)="enableCreateBtn ? create() : delete()" mat-tab-link class="new-project">
+    <mat-icon class="icon">{{ enableCreateBtn ? 'add_circle' : 'delete_outline'}}</mat-icon>
+    <span>{{ enableCreateBtn ? 'New project' : 'Delete project'}}</span>
   </a>
 </nav>
 

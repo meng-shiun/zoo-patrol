@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
@@ -7,6 +7,7 @@ import { IProject } from '@app/shared';
 import { clientsData, projectManagersData, projectStatusData } from '@app/core/data';
 import * as fromProjects from '../../../store';
 import * as ProjectActions from '../../../store/project.actions';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-create',
@@ -58,8 +59,10 @@ export class ProjectCreateComponent implements OnInit {
 
     this.store.dispatch(ProjectActions.createProject({ result: newProject }));
 
-    this.store.pipe(select(fromProjects.selectProjectId)).subscribe(
-      id => ((!!id) ? this.router.navigateByUrl(`projects/running/${id}`) : null)
-    );
+    this.store
+      .pipe(
+        select(fromProjects.selectProjectId),
+        take(1))
+      .subscribe(id => ((!!id) ? this.router.navigateByUrl(`projects/running/${id}`) : null));
   }
 }

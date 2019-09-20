@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Event, NavigationEnd, ParamMap } from '@angular/router';
 
+import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-
 import { ITab, slideLeftRight } from '@app/shared';
 import { ProjectService } from '@app/modules/home/features/projects/project.service';
 
@@ -12,7 +12,9 @@ import { ProjectService } from '@app/modules/home/features/projects/project.serv
   styleUrls: ['./project-accum-details-shell.component.scss'],
   animations: [slideLeftRight]
 })
-export class ProjectAccumDetailsShellComponent implements OnInit {
+export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
+  routerSub: Subscription;
+
   tabs: ITab[] = [
     { name: 'Project details', link: 'details' },
     { name: 'Planning', link: 'planning' },
@@ -27,7 +29,7 @@ export class ProjectAccumDetailsShellComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService) {
     // Update active tab when refreshing page
-    this.router.events.subscribe((event: Event) => {
+    this.routerSub = this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
         this.tabs.map(tab =>
           event.url.endsWith(tab.link) && (this.activeTab = tab.name)
@@ -51,4 +53,7 @@ export class ProjectAccumDetailsShellComponent implements OnInit {
     this.animationState = this.route.firstChild.snapshot.data['routeId'];
   }
 
+  ngOnDestroy() {
+    this.routerSub.unsubscribe();
+  }
 }
