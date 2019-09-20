@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, Event, NavigationEnd, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
+import { Store, select } from '@ngrx/store';
 
 import { Subscription } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { ITab, slideLeftRight } from '@app/shared';
-import { ProjectService } from '@app/modules/home/features/projects/project.service';
+import * as fromProjects from '../../../store';
+import * as ProjectActions from '../../../store/project.actions';
 
 @Component({
   selector: 'app-project-accum-details-shell',
@@ -27,7 +28,7 @@ export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
   // TODO: correct type to Project
   selectedProject$: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService) {
+  constructor(private router: Router, private route: ActivatedRoute, private store: Store<fromProjects.ProjectState>) {
     // Update active tab when refreshing page
     this.routerSub = this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
@@ -41,12 +42,7 @@ export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // TODO: Rewrite: fetch data with NgRx
-    // Fetch default project data (for project-details page)
-    this.selectedProject$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.projectService.getProject(+params.get('id')))
-    );
+    this.selectedProject$ = this.store.pipe(select(fromProjects.selectProject));
   }
 
   onActivate($event) {
