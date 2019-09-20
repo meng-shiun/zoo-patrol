@@ -46,6 +46,11 @@ export class ProjectService {
     return this.http.put<IProject>(url, project, this.httpOptions);
   }
 
+  deleteProject(id: number): Observable<{}> {
+    const url = `${this.projectsUrl}/${id}`;
+    return this.http.delete<IProject>(url, this.httpOptions);
+  }
+
   // Project details will be created once a project is created
   createProjectDetails(project: IProject): Observable<IProjectDetails> {
     const projectDetails: IProjectDetails = {
@@ -73,6 +78,11 @@ export class ProjectService {
     );
   }
 
+  deleteProjectDetails(id: number): Observable<{}> {
+    const url = `${this.projectsDetailsUrl}/${id}`;
+    return this.http.delete<IProjectDetails>(url, this.httpOptions);
+  }
+
   // TODO: Rewrite with NgRx effect
   // TODO: Log error if the id doesn't exist
   getProjectBudgetField(id: number): Observable<IProjectBudgetField> {
@@ -92,6 +102,11 @@ export class ProjectService {
   updateBudgetField(id: number, field: IProjectBudgetField): Observable<IProjectBudgetField> {
     const url = `${this.projectsBudgetUrl}/${id}`;
     return this.http.put<IProjectBudgetField>(url, field, this.httpOptions);
+  }
+
+  deleteBudgetField(id: number): Observable<{}> {
+    const url = `${this.projectsBudgetUrl}/${id}`;
+    return this.http.delete<IProjectBudgetField>(url, this.httpOptions);
   }
 
   // TODO: handleError

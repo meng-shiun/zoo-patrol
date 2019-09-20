@@ -22,6 +22,13 @@ export const loadProjectSuccess = createAction('[Projects] Load Project Success'
 
 export const loadProjectFail = createAction('[Projects] Load Project Fail', props<{ error: string }>());
 
+/* ============= Delete Project ============= */
+export const deleteProject = createAction('[Projects] Delete Project', props<{ id: number }>());
+
+export const deleteProjectSuccess = createAction('[Projects] Delete Project Success', props<{ id: number }>());
+
+export const deleteProjectFail = createAction('[Projects] Delete Project Fail', props<{ error: string }>());
+
 
 /* ============= Load Project detail by ID  ============= */
 export const loadDetailById = createAction('[Project] Load Project Detail By Id', props<{ id: number }>());

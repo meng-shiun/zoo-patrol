@@ -67,7 +67,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   delete() {
     this.store.pipe(
       select(fromProjects.selectProjectId),
-      take(1)).subscribe(id => console.log('delete item id:', id));
+      take(1)).subscribe(id => {
+        if (confirm('Delete this project?')) {
+          this.store.dispatch(ProjectActions.deleteProject({ id }));
+          this.router.navigate(['./'], { relativeTo: this.route });
+        }
+      });
   }
 
   ngOnDestroy() {

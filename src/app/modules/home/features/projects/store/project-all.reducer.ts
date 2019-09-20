@@ -49,6 +49,13 @@ const allProjectsReducer = createReducer(
   on(ProjectActions.loadProjectSuccess, (state, { project }) => {
     return adapter.addOne(project, {...state, selectedProjectId: project.id });
   }),
+  on(ProjectActions.deleteProjectSuccess, (state, { id }) => {
+    return adapter.removeOne(id, state);
+  }),
+  on(ProjectActions.deleteProjectFail, (state, { error }) => ({
+    ...state,
+    error: 'Delete Project failed' + error
+  })),
   on(ProjectActions.resetProjects, state => {
     return adapter.removeAll(state);
   })

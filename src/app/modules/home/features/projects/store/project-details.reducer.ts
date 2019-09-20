@@ -40,7 +40,7 @@ const projectDetailsReducer = createReducer(
     return { ...state, error: error };
   }),
   on(ProjectActions.resetProjectDetails, state => {
-    return adapter.removeAll(state);
+    return adapter.removeAll({...state, selectedProjectId: null});
   })
 );
 

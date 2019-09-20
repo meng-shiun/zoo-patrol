@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { switchMap, map, tap, catchError, withLatestFrom, mergeMap } from 'rxjs/operators';
-import { of, pipe } from 'rxjs';
+import { of, pipe, forkJoin } from 'rxjs';
 
 import { IProject, IProjectDetails, IProjectBudgetField } from '@app/shared';
 import * as fromProjects from './';
@@ -120,6 +120,23 @@ export class ProjectEffects {
           catchError(err => of(ProjectActions.createProjectFail({ error: err })))
         )
       )
+    )
+  );
+
+  // Delete budget details/planning/budgetField... when a project is deleted
+  deleteProject$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.deleteProject),
+      switchMap(action => {
+        return forkJoin([
+          this.projectService.deleteProject(action.id),
+          this.projectService.deleteProjectDetails(action.id),
+          this.projectService.deleteBudgetField(action.id)
+        ]).pipe(
+          map(() => ProjectActions.deleteProjectSuccess({ id: action.id })),
+          catchError(err => of(ProjectActions.deleteProjectFail({ error: err })))
+        );
+      })
     )
   );
 
