@@ -61,6 +61,12 @@ export const updateTotalBudget = createAction(
   '[Project] Update Project BudgetField Total Budget', props<{ preBudget: number, curBudget: number }>());
 
 
+/* ============= Create Project Bundle ============= */
+export const createProjectBundle = createAction(
+  '[Project] Create Project Bundle',
+  props<{ project: IProject, projectDetails: IProjectDetails, budgetField: IProjectBudgetField }>());
+
+
 /* ============= Create Project ============= */
 export const createProject = createAction('[Project] Create Project', props<{ result: IProject }>());
 
@@ -74,7 +80,7 @@ export const updateProject = createAction('[Project] Update Project', props<{ pr
 
 
 /* ============= Create Project Details ============= */
-export const createProjectDetails = createAction('[Project] Create Project Details', props<{ result: IProject }>());
+export const createProjectDetails = createAction('[Project] Create Project Details', props<{ result: IProjectDetails }>());
 
 export const createProjectDetailsSuccess = createAction('[Project] Create Project Details Success', props<{ result: IProjectDetails }>());
 
@@ -95,7 +101,7 @@ export const resetProjectDetails = createAction('[Projects] Reset Project Detail
 
 
 /* ============= Create Budget Field ============= */
-export const createBudgetField = createAction('[Project] Create Budget Field', props<{ id: number }>());
+export const createBudgetField = createAction('[Project] Create Budget Field', props<{ budgetField: IProjectBudgetField }>());
 
 export const createBudgetFieldSuccess = createAction(
   '[Project] Create Budget Field Success', props<{ budgetField: IProjectBudgetField }>());

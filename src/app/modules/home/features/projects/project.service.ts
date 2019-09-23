@@ -52,16 +52,7 @@ export class ProjectService {
   }
 
   // Project details will be created once a project is created
-  createProjectDetails(project: IProject): Observable<IProjectDetails> {
-    const projectDetails: IProjectDetails = {
-      id: project.id,
-      client: project.client,
-      sub_clinet: 'enter sub client',
-      name: project.name,
-      manager: project.manager,
-      status: project.status
-    };
-
+  createProjectDetails(projectDetails: IProjectDetails): Observable<IProjectDetails> {
     return this.http.post<IProjectDetails>(this.projectsDetailsUrl, projectDetails, this.httpOptions);
   }
 
@@ -90,12 +81,7 @@ export class ProjectService {
     return this.http.get<IProjectBudgetField>(url);
   }
 
-  createBudgetField(id: number): Observable<IProjectBudgetField> {
-    const newBudgetField = {
-      id,
-      budgetItems: []
-    };
-
+  createBudgetField(newBudgetField: IProjectBudgetField): Observable<IProjectBudgetField> {
     return this.http.post<IProjectBudgetField>(this.projectsBudgetUrl, newBudgetField, this.httpOptions);
   }
 

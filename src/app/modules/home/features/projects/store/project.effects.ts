@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { switchMap, map, tap, catchError, withLatestFrom, mergeMap } from 'rxjs/operators';
@@ -104,23 +105,37 @@ export class ProjectEffects {
   );
 
   // Create budget details/planning/budgetField... when a project is created
+  createProjectBundle$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.createProjectBundle),
+      switchMap(action => {
+        return [
+          ProjectActions.createProject({ result: action.project }),
+          ProjectActions.createProjectDetails({ result: action.projectDetails }),
+          ProjectActions.createBudgetField({ budgetField: action.budgetField })
+        ];
+      })
+    )
+  );
+
   createProject$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.createProject),
       switchMap(action =>
         this.projectService.createProject(action.result).pipe(
-          switchMap((project: IProject) => {
-            return [
-              ProjectActions.createProjectSuccess({ result: project }),
-              ProjectActions.createProjectDetails({ result: project }),
-              ProjectActions.createBudgetField({ id: project.id })
-              // TODO: Trigger budget/planning...actions
-            ];
-          }),
+          map((project: IProject) => ProjectActions.createProjectSuccess({ result: project })),
           catchError(err => of(ProjectActions.createProjectFail({ error: err })))
         )
       )
     )
+  );
+
+   // Navigate to details page when a project is created successfully
+  createProjectSuccess$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.createProjectSuccess),
+      tap(action => this.router.navigateByUrl(`projects/running/${action.result.id}`))
+    ), { dispatch: false }
   );
 
   // Delete budget details/planning/budgetField... when a project is deleted
@@ -156,7 +171,7 @@ export class ProjectEffects {
     () => this.actions$.pipe(
       ofType(ProjectActions.createBudgetField),
       switchMap(action =>
-        this.projectService.createBudgetField(action.id).pipe(
+        this.projectService.createBudgetField(action.budgetField).pipe(
           map((budgetField: IProjectBudgetField) => ProjectActions.createBudgetFieldSuccess({ budgetField })),
           catchError(err => of(ProjectActions.createBudgetFieldFail({ error: err })))
         )
@@ -210,6 +225,7 @@ export class ProjectEffects {
   constructor(
     private actions$: Actions,
     private projectService: ProjectService,
-    private store: Store<fromProjects.ProjectState>
+    private store: Store<fromProjects.ProjectState>,
+    private router: Router
   ) {}
 }

@@ -77,6 +77,11 @@ export const selectProject = createSelector(
   (entities, id) => entities[id]
 );
 
+export const selectAllProjectIds = createSelector(
+  selectAllProjectsState,
+  fromAllProjects.selectProjectIds
+);
+
 /* Create Child Selectors in Project Details */
 export const selectDetailEntities = createSelector(
   selectProjectDetailState,
