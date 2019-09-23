@@ -1,16 +1,17 @@
 <div class="container">
   <div *ngIf="selectedProject$ | async as selectedProject">
     <h2>{{ selectedProject.id }} - {{ selectedProject.name }}</h2>
+    <nav mat-tab-nav-bar *ngIf="tabs">
+      <a
+        mat-tab-link
+        *ngFor="let tab of tabs"
+        (click)="activeTab = tab.name"
+        [active]="activeTab == tab.name"
+        [routerLink]="[tab.link]">{{ tab.name }}</a>
+    </nav>
   </div>
 
-  <nav mat-tab-nav-bar *ngIf="tabs">
-    <a mat-tab-link *ngFor="let tab of tabs"
-      (click)="activeTab = tab.name"
-      [active]="activeTab == tab.name"
-      [routerLink]="[tab.link]"> {{tab.name}} </a>
-  </nav>
-
   <section [@slide-left-right]="animationState">
-      <router-outlet (activate)="onActivate($event)"></router-outlet>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
   </section>
 </div>

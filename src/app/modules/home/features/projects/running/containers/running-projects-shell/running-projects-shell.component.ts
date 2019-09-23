@@ -26,7 +26,8 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   }
 
   deleteProject(id: number) {
-    console.log('delete project 4');
+    console.log('delete project', id);
+    this.store.dispatch(ProjectActions.deleteProject({ id }));
   }
 
   ngOnDestroy(): void {

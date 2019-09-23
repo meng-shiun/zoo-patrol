@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Event, NavigationEnd } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 
-import { Subscription } from 'rxjs';
-import { ITab, slideLeftRight } from '@app/shared';
+import { Subscription, Observable } from 'rxjs';
+import { ITab, slideLeftRight, IProject } from '@app/shared';
 import * as fromProjects from '../../../store';
 import * as ProjectActions from '../../../store/project.actions';
 
@@ -25,8 +25,7 @@ export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
   activeTab: string;
   animationState: number;
 
-  // TODO: correct type to Project
-  selectedProject$: any;
+  selectedProject$: Observable<IProject>;
 
   constructor(private router: Router, private route: ActivatedRoute, private store: Store<fromProjects.ProjectState>) {
     // Update active tab when refreshing page
@@ -39,6 +38,9 @@ export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
         this.activeTab = this.tabs[0].name;
       }
     });
+
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.store.dispatch(ProjectActions.loadProject({ id }));
   }
 
   ngOnInit() {
