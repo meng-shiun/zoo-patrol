@@ -85,6 +85,14 @@ export class ProjectEffects {
     )
   );
 
+  // Navigate back to details page when project details is updated
+  updateProjectDetailsSuccess$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(ProjectActions.updateProjectDetailsSuccess),
+      tap(action => this.router.navigate(['projects']))
+    ), { dispatch: false }
+  );
+
   // Load budget field / total hours / total budget
   loadProjectBudgetField$ = createEffect(
     () => this.actions$.pipe(
