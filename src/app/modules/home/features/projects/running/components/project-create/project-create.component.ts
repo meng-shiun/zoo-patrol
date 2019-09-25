@@ -23,8 +23,9 @@ export class ProjectCreateComponent implements OnInit {
   managerList: string[] = projectManagersData.map(manager => manager.name);
   statusList: number[] = projectStatusData.map(status => status.id);
 
-  lastId: number;
+  lastRenderId: number;
   projectCreateForm: FormGroup;
+  clicked: boolean;
 
   constructor(
     private store: Store<fromProjects.ProjectState>,
@@ -41,12 +42,14 @@ export class ProjectCreateComponent implements OnInit {
       manager: ['', [Validators.required]]
     });
 
+    this.clicked = false;
+
     this.store
       .pipe(
         select(fromProjects.selectAllProjectIds),
         take(1)
       )
-      .subscribe(x => (this.lastId = +x[0]));
+      .subscribe(x => this.lastRenderId = (x.length > 0) ? +x[0] : 0);
   }
 
   close(): void {
@@ -57,37 +60,37 @@ export class ProjectCreateComponent implements OnInit {
     // TODO: When a new project is created, details/budget/planning ... are also created
     const { client, name, status, deadline, manager } = this.projectCreateForm.value;
 
-    if (!!this.lastId) {
-      const newProject: IProject = {
-        id: this.lastId + 1,
-        client,
-        name,
-        manager,
-        status,
-        deadline
-      };
+    const newProject: IProject = {
+      id: this.lastRenderId + 1,
+      client,
+      name,
+      manager,
+      status,
+      deadline
+    };
 
-      const newProjectDetails: IProjectDetails = {
-        id: this.lastId + 1,
-        client,
-        sub_clinet: '',
-        name,
-        manager,
-        status
-      };
+    const newProjectDetails: IProjectDetails = {
+      id: this.lastRenderId + 1,
+      client,
+      sub_clinet: '',
+      name,
+      manager,
+      status
+    };
 
-      const newBudgetField = {
-        id: this.lastId + 1,
-        budgetItems: []
-      };
+    const newBudgetField = {
+      id: this.lastRenderId + 1,
+      budgetItems: []
+    };
 
-      this.store.dispatch(
-        ProjectActions.createProjectBundle({
-          project: newProject,
-          projectDetails: newProjectDetails,
-          budgetField: newBudgetField
-        })
-      );
-    }
+    this.store.dispatch(
+      ProjectActions.createProjectBundle({
+        project: newProject,
+        projectDetails: newProjectDetails,
+        budgetField: newBudgetField
+      })
+    );
+
+    this.clicked = true;
   }
 }

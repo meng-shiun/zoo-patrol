@@ -19,12 +19,11 @@ export class ProjectDetailsShellComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private store: Store<fromProjects.ProjectState>) {
+      const id = +this.route.parent.snapshot.paramMap.get('id');
+      this.store.dispatch(ProjectActions.loadDetailById({id: id}));
   }
 
   ngOnInit() {
-    const id = +this.route.parent.snapshot.paramMap.get('id');
-    this.store.dispatch(ProjectActions.loadDetailById({id: id}));
-
     this.projectDetails$ = this.store.pipe(select(fromProjects.selectProjectDetails));
   }
 

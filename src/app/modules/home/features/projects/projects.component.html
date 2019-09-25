@@ -4,12 +4,23 @@
     [active]="activeTab == tab.name"
     [routerLink]="[tab.link]">{{ tab.name }}</a>
 
-  <a (click)="enableCreateBtn ? create() : delete()" mat-tab-link class="new-project">
-    <mat-icon class="icon">{{ enableCreateBtn ? 'add_circle' : 'delete_outline'}}</mat-icon>
-    <span>{{ enableCreateBtn ? 'New project' : 'Delete project'}}</span>
+  <a *ngIf="allProjectsLoaded$ | async"
+    (click)="create()"
+    mat-tab-link
+    class="action-btn">
+    <mat-icon class="icon">add_circle</mat-icon>
+    <span>New project</span>
+  </a>
+
+  <a *ngIf="(projectDetailsLoaded$ | async) || (projectBudgetFieldLoaded$ | async)"
+    (click)="delete()"
+    mat-tab-link
+    class="action-btn">
+    <mat-icon class="icon">delete_outline</mat-icon>
+    <span>Delete project</span>
   </a>
 </nav>
 
 <section [@slide-left-right]="animationState">
-    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
 </section>

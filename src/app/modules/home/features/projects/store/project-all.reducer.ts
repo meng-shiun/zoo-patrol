@@ -9,6 +9,7 @@ export interface AllProjectState extends EntityState<IProject> {
   // additional entities state properties
   selectedProjectId: number;
   error: string;
+  loaded: boolean;
 }
 
 export function sortById(a: IProject, b: IProject) {
@@ -22,14 +23,15 @@ export const adapter: EntityAdapter<IProject> = createEntityAdapter<IProject>({
 // Setting the initial state with Entity
 export const initialProjectState: AllProjectState = adapter.getInitialState({
    selectedProjectId: null,
-   error: ''
+   error: '',
+   loaded: false
 });
 
 // Creating the reducer function with Entity
 const allProjectsReducer = createReducer(
   initialProjectState,
   on(ProjectActions.loadAllInfoSuccess, (state, { result }) => {
-    return adapter.addAll(result, state);
+    return adapter.addAll(result, { ...state, loaded: true });
   }),
   on(ProjectActions.loadAllInfoFail, (state, { error }) => ({
     ...state,
@@ -49,6 +51,10 @@ const allProjectsReducer = createReducer(
   on(ProjectActions.loadProjectSuccess, (state, { project }) => {
     return adapter.addOne(project, {...state, selectedProjectId: project.id });
   }),
+  on(ProjectActions.loadProjectFail, (state, { error }) => ({
+    ...state,
+    error: 'Create Project failed' + error
+  })),
   on(ProjectActions.deleteProjectSuccess, (state, { id }) => {
     return adapter.removeOne(id, state);
   }),
@@ -57,15 +63,13 @@ const allProjectsReducer = createReducer(
     error: 'Delete Project failed' + error
   })),
   on(ProjectActions.resetProjects, state => {
-    return adapter.removeAll(state);
+    return adapter.removeAll({ ...state, selectedProjectId: null, loaded: false });
   })
 );
 
 export function projectAllReducer(state: AllProjectState | undefined, action: Action) {
   return allProjectsReducer(state, action);
 }
-
-export const getSelectedProjectId = (state: AllProjectState) => state.selectedProjectId;
 
 // get the selectors
 const {
@@ -87,6 +91,6 @@ export const selectAllProjects = selectAll;
 // select the total project count
 export const selectProjectTotal = selectTotal;
 
-
 export const getSelectedId = (state: AllProjectState) => state.selectedProjectId;
 export const getError = (state: AllProjectState) => state.error;
+export const getLoaded = (state: AllProjectState) => state.loaded;

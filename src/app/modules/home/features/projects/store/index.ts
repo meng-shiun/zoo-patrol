@@ -82,6 +82,12 @@ export const selectAllProjectIds = createSelector(
   fromAllProjects.selectProjectIds
 );
 
+export const selectAllProjectsLoaded = createSelector(
+  selectAllProjectsState,
+  fromAllProjects.getLoaded
+);
+
+
 /* Create Child Selectors in Project Details */
 export const selectDetailEntities = createSelector(
   selectProjectDetailState,
@@ -99,6 +105,11 @@ export const selectProjectDetails = createSelector(
   (entities, id) => entities[id]
 );
 
+export const selectProjectDetailsLoaded = createSelector(
+  selectProjectDetailState,
+  fromProjectDetails.getLoaded
+);
+
 /* Create Child Selectors in Project Budget Field */
 export const getProjectBudgetField = createSelector(
   selectProjectBudgetFieldState,
@@ -113,6 +124,11 @@ export const getBudgetFieldTotalHours = createSelector(
 export const getBudgetFieldTotalBudget = createSelector(
   selectProjectBudgetFieldState,
   (state: fromProjectBudgetField.ProjectBudgetFieldState) => state.totalBudget
+);
+
+export const selectProjectBudgetFieldLoaded = createSelector(
+  selectProjectBudgetFieldState,
+  fromProjectBudgetField.getLoaded
 );
 
 /* ================================================

@@ -49,12 +49,7 @@ export class ProjectEffects {
       ofType(ProjectActions.loadDetailById),
       switchMap(action =>
         this.projectService.getProjectDetails(action.id).pipe(
-          mergeMap((details: IProjectDetails) => {
-            return [
-              ProjectActions.loadDetailByIdSuccess({ result: details }),
-              ProjectActions.loadProject({ id: details.id })
-            ];
-          }),
+          map((details: IProjectDetails) => ProjectActions.loadDetailByIdSuccess({ result: details })),
           catchError(err => of(ProjectActions.loadDetailByIdFail({ error: err })))
         )
       )

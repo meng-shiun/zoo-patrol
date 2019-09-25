@@ -20,15 +20,15 @@ export class ProjectBudgetShellComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromProjects.ProjectState>) { }
+    private store: Store<fromProjects.ProjectState>) {
+      const id = +this.route.parent.snapshot.paramMap.get('id');
+      this.store.dispatch(ProjectActions.loadBudgetFieldById({ id }));
+    }
 
   ngOnInit() {
-    const id = +this.route.parent.snapshot.paramMap.get('id');
-    this.store.dispatch(ProjectActions.loadBudgetFieldById({ id }));
-
-    this.projectBudgetField$ = this.store.pipe(select(fromProjects.getProjectBudgetField));
-    this.totalHours$ = this.store.pipe(select(fromProjects.getBudgetFieldTotalHours));
-    this.totalBudget$ = this.store.pipe(select(fromProjects.getBudgetFieldTotalBudget));
+    this.projectBudgetField$  = this.store.pipe(select(fromProjects.getProjectBudgetField));
+    this.totalHours$          = this.store.pipe(select(fromProjects.getBudgetFieldTotalHours));
+    this.totalBudget$         = this.store.pipe(select(fromProjects.getBudgetFieldTotalBudget));
   }
 
   addBudgetItem(): void {

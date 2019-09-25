@@ -10,6 +10,7 @@ export interface ProjectBudgetFieldState {
   totalBudget: number | null;
   budgetField: IProjectBudgetField;
   error: string;
+  loaded: boolean;
 }
 
 // Setting the initial state
@@ -18,7 +19,8 @@ export const initialBudgetFieldState: ProjectBudgetFieldState = {
   totalHours: 0,
   totalBudget: 0,
   budgetField: null,
-  error: ''
+  error: '',
+  loaded: false
 };
 
 // Creating the reducer function
@@ -28,7 +30,8 @@ const projectBudgetFieldReducer = createReducer(
     ...state,
     projectId: result.id,
     budgetField: result,
-    error: ''
+    error: '',
+    loaded: true
   })),
   on(ProjectActions.loadBudgetFieldByIdFail, (state, { error }) => ({
     ...state,
@@ -117,10 +120,13 @@ const projectBudgetFieldReducer = createReducer(
     totalBudget: state.totalBudget - preBudget + curBudget
   })),
   on(ProjectActions.resetBudgetField, state => ({
-    ...initialBudgetFieldState
+    ...initialBudgetFieldState,
+    loaded: false
   }))
 );
 
 export function budgetFieldReducer(state: ProjectBudgetFieldState | undefined, action: Action) {
   return projectBudgetFieldReducer(state, action);
 }
+
+export const getLoaded = (state: ProjectBudgetFieldState) => state.loaded;

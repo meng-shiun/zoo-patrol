@@ -46,7 +46,7 @@
         <a>Advanced options</a>
       </div>
 
-      <button mat-button type="submit" [disabled]="!projectCreateForm.valid">Create project</button>
+      <button mat-button type="submit" [disabled]="!projectCreateForm.valid || clicked">Create project</button>
     </form>
   </mat-card>
 

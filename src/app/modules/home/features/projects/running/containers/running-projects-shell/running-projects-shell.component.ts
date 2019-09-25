@@ -16,21 +16,24 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   projects$: Observable<IProject[]>;
   errorMessage$: Observable<string>;
 
-  constructor(private store: Store<fromProjects.ProjectState>) { }
+  constructor(private store: Store<fromProjects.ProjectState>) {
+    this.store.dispatch(ProjectActions.resetProjects());
+    this.store.dispatch(ProjectActions.loadAllInfo());
+  }
 
   ngOnInit() {
-    this.store.dispatch(ProjectActions.loadAllInfo());
-
     this.projects$      = this.store.pipe(select(fromProjects.selectAllProjects));
     this.errorMessage$  = this.store.pipe(select(fromProjects.selectAllProjectsError));
   }
 
   deleteProject(id: number) {
-    console.log('delete project', id);
     this.store.dispatch(ProjectActions.deleteProject({ id }));
   }
 
+  deleteAll() {
+    this.store.dispatch(ProjectActions.resetProjects());
+  }
+
   ngOnDestroy(): void {
-   this.store.dispatch(ProjectActions.resetProjects());
   }
 }
