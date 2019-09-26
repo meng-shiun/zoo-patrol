@@ -17,10 +17,10 @@ export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
   routerSub: Subscription;
 
   tabs: ITab[] = [
-    { name: 'Project details', link: 'details' },
-    { name: 'Planning', link: 'planning' },
-    { name: 'Timesheets', link: 'timesheets' },
-    { name: 'Budget', link: 'budget' },
+    { name: 'Project details', link: 'details', icon: 'info' },
+    { name: 'Planning', link: 'planning', icon: 'planning' },
+    { name: 'Timesheets', link: 'timesheets', icon: 'clock' },
+    { name: 'Budget', link: 'budget', icon: 'euro' },
   ];
   activeTab: string;
   animationState: number;

@@ -5,16 +5,18 @@
 </mat-tab-group>
 
 
-<div *ngIf="message$ | async as message">
-  <h1>{{ message }}</h1>
+<div>
+  <div *ngIf="message$ | async as message">
+    <h1>{{ message }}</h1>
+  </div>
+
+  <section *ngIf="info$ | async as info">
+    <b>TODO: Load Project Quantity from Project feature store</b>
+    <hr>
+    <p>Projects: {{ info.projectQty }}</p>
+    <p>Clients: {{ info.clientQty }}</p>
+    <p>Message: {{ info.message }}</p>
+  </section>
+
+  <button mat-button color="primary" (click)="updateMessage()">Update Message</button>
 </div>
-
-<section *ngIf="info$ | async as info">
-  <b>TODO: Load Project Quantity from Project feature store</b>
-  <hr>
-  <p>Projects: {{ info.projectQty }}</p>
-  <p>Clients: {{ info.clientQty }}</p>
-  <p>Message: {{ info.message }}</p>
-</section>
-
-<button mat-button color="primary" (click)="updateMessage()">Update Message</button>

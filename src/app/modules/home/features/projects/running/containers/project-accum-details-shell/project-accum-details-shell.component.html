@@ -7,7 +7,10 @@
         *ngFor="let tab of tabs"
         (click)="activeTab = tab.name"
         [active]="activeTab == tab.name"
-        [routerLink]="[tab.link]">{{ tab.name }}</a>
+        [routerLink]="[tab.link]">
+        <span class="icon"><img src="assets/img/{{tab.icon}}.svg"></span>
+        {{ tab.name }}
+      </a>
     </nav>
   </div>
 

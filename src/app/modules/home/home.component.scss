@@ -3,17 +3,34 @@
 
 mat-toolbar {
   background: $bg-grey-dark;
+  height: 5rem;
+
   button {
     color: $color-white;
+    padding: 1.4rem 1rem;
+    border-radius: 0;
+    font-size: 1rem;
+    font-weight: 400;
   }
 }
 
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
   padding: 0;
   .logo {
     background: $brand-color-red;
-    width: 4rem;
-    height: 4rem;
+    width: 4.5rem;
+    height: 5rem;
     margin-left: -1rem;
+    display: inline-flex;
+    justify-content: center;
+  }
+
+  .logo + button {
+    margin-left: 2rem;
   }
 }

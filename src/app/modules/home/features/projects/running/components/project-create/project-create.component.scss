@@ -2,14 +2,14 @@
 @import '~styles/abstracts/mixins';
 
 mat-card {
-  position: absolute;
-  top: 7rem;
+  position: fixed;
+  top: 8.25rem;
   right: 4rem;
   width: 27rem;
   height: 38rem;
   padding: 1rem 2rem 2rem;
   z-index: 2;
-  
+
   mat-form-field {
     width: 100%;
     margin-bottom: -0.5rem;

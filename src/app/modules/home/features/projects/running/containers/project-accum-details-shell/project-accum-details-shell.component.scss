@@ -12,11 +12,23 @@
   // @include breakpoint($large-screen) {
   //   margin: 2rem 4rem;
   // }
+
   h2 {
-    margin: 2rem 4rem;
+    padding: 2rem 4rem;
+    font-size: 2.25rem;
+    color: $text--grey-dark;
   }
 
   nav {
     margin: 0 4rem;
+    a {
+      font-size: 1rem;
+      font-weight: 400;
+      color: $text--grey-dark;
+
+      .icon {
+        padding: .2rem .75rem 0 0;
+      }
+    }
   }
-}   
+}

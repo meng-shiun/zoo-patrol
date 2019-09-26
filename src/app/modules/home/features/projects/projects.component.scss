@@ -2,14 +2,44 @@
 @import '~styles/abstracts/mixins';
 
 nav {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
   background: $color-white;
+  height: 3.3rem;
+  padding-left: 6rem;
+
+  a {
+    font-size: 1rem;
+    font-weight: 400;
+    padding: .25rem 0 0;
+    color: $text--grey-dark;
+  }
+
   .action-btn {
     position: absolute;
     right: 4rem;
+    color: $text--grey-dark;
+
+    img {
+      padding: 0 .8rem .2rem 0;
+    }
+
+    .delete {
+      color: $btn-delete;
+    }
   }
 
   .icon {
     color: $brand-color-red;
     margin-right: 1rem;
   }
+}
+
+section {
+  position: relative;
+  top: 8.25rem;
 }

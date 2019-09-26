@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { IProject } from '@app/shared';
 import * as fromProjects from '../../../store';
@@ -13,8 +13,9 @@ import * as ProjectActions from '../../../store/project.actions';
   styleUrls: ['./running-projects-shell.component.scss']
 })
 export class RunningProjectsShellComponent implements OnInit, OnDestroy {
-  projects$: Observable<IProject[]>;
-  errorMessage$: Observable<string>;
+  allProjectsLoaded$: Observable<boolean>;
+  projects$:          Observable<IProject[]>;
+  errorMessage$:      Observable<string>;
 
   constructor(private store: Store<fromProjects.ProjectState>) {
     this.store.dispatch(ProjectActions.resetProjects());
@@ -22,8 +23,9 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.projects$      = this.store.pipe(select(fromProjects.selectAllProjects));
-    this.errorMessage$  = this.store.pipe(select(fromProjects.selectAllProjectsError));
+    this.allProjectsLoaded$ = this.store.pipe(select(fromProjects.selectAllProjectsLoaded));
+    this.projects$          = this.store.pipe(select(fromProjects.selectAllProjects));
+    this.errorMessage$      = this.store.pipe(select(fromProjects.selectAllProjectsError));
   }
 
   deleteProject(id: number) {

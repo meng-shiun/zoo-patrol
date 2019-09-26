@@ -46,15 +46,18 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           tab => event.url.endsWith(tab.link) && (this.activeTab = tab.name)
         );
         event.url.endsWith('/projects') && (this.activeTab = this.animTabs[0].name);
+
+        /*
+         * When route into details pages, display delete button
+         * e.g.: projects/running/9/details or projects/running/9/budget
+         * otherwise display create button
+         */
+        const regex = /(projects)+(\/)+(running\/)+(\d)+(\/)*(\w)*/gi;
+        regex.test(event.url) ? this.enableDeleteBtn() : this.enableCeateBtn();
       }
       // Default tab
       if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
         this.activeTab = this.animTabs[0].name;
-
-        // When route into details pages, display delete button
-        // otherwise display create button
-        const regex = /(projects)+(\/)+(running\/)+(\d)+(\/)*(\w)*/gi;
-        regex.test(event.url) ? this.enableDeleteBtn() : this.enableCeateBtn();
       }
 
       if (event instanceof NavigationEnd && event.url.includes('/projects/my_projects')) {

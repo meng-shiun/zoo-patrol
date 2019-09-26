@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="15px" viewBox="0 0 13 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53.2 (72643) - https://sketchapp.com -->
+    <title>4A799DB3-A167-4EE8-9981-2CA24B2A8235@svg</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M11,5 C10.6728519,5 10.3383788,5.11474625 10.1015625,5.3515625 C9.86474625,5.58837875 9.75,5.92285188 9.75,6.25 L9.75,6.875 L6,6.875 L6,8.125 L6.625,8.125 L6.625,18.125 C6.625,19.1528319 7.47216812,20 8.5,20 L16,20 C17.0278319,20 17.875,19.1528319 17.875,18.125 L17.875,8.125 L18.5,8.125 L18.5,6.875 L14.75,6.875 L14.75,6.25 C14.75,5.92285188 14.6352538,5.58837875 14.3984375,5.3515625 C14.1616212,5.11474625 13.8271487,5 13.5,5 L11,5 Z M11,6.25 L13.5,6.25 L13.5,6.875 L11,6.875 L11,6.25 Z M7.875,8.125 L16.625,8.125 L16.625,18.125 C16.625,18.47168 16.34668,18.75 16,18.75 L8.5,18.75 C8.15332062,18.75 7.875,18.47168 7.875,18.125 L7.875,8.125 Z M9.125,10 L9.125,16.875 L10.375,16.875 L10.375,10 L9.125,10 Z M11.625,10 L11.625,16.875 L12.875,16.875 L12.875,10 L11.625,10 Z M14.125,10 L14.125,16.875 L15.375,16.875 L15.375,10 L14.125,10 Z" id="path-1"></path>
+    </defs>
+    <g id="03.-project-detail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01.01.01-lopende-projecten---project-details---home" transform="translate(-1187.000000, -99.000000)">
+            <g id="button/remove" transform="translate(1169.000000, 82.000000)">
+                <g id="label" transform="translate(12.000000, 12.000000)">
+                    <g id="icons/trash">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Shape" fill="#FF3E6F" fill-rule="nonzero" xlink:href="#path-1"></use>
+                        <g id="colours/primary/panda-red" mask="url(#mask-2)" fill="#FF3E6F" fill-rule="evenodd">
+                            <rect id="colours/greys/95" x="0" y="0" width="24" height="24"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

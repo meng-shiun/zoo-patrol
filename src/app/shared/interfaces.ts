@@ -1,6 +1,7 @@
 export interface ITab {
   name: string;
   link: string;
+  icon?: string;
 }
 
 // Meta data of a project
