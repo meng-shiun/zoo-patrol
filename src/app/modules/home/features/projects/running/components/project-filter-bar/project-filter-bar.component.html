@@ -1,1 +1,41 @@
-<b>[project-filter-bar]</b>
+<mat-form-field>
+  <span matPrefix>
+    <mat-icon class="search-icon">search</mat-icon>
+  </span>
+  <input matInput type="text" placeholder="Filter by search term" [(ngModel)]="value">
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Client</mat-label>
+  <mat-select>
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let client of clients" [value]="client">{{client}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Project Manager</mat-label>
+  <mat-select>
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let manager of managers" [value]="manager">{{manager}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Status</mat-label>
+  <mat-select>
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let s of status" [value]="s">{{s}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Sort</mat-label>
+  <mat-select>
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let sort of sortBy" [value]="sort">{{sort}}</mat-option>
+  </mat-select>
+</mat-form-field>
