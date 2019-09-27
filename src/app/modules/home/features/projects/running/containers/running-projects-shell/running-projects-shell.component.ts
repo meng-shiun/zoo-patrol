@@ -17,6 +17,8 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   projects$:          Observable<IProject[]>;
   errorMessage$:      Observable<string>;
 
+  filterTerm = '';
+
   constructor(private store: Store<fromProjects.ProjectState>) {
     this.store.dispatch(ProjectActions.resetProjects());
     this.store.dispatch(ProjectActions.loadAllInfo());
@@ -34,6 +36,11 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
 
   deleteAll() {
     this.store.dispatch(ProjectActions.resetProjects());
+  }
+
+  getSearchTerm(evt) {
+    console.log('get term:', evt);
+    this.filterTerm = evt;
   }
 
   ngOnDestroy(): void {

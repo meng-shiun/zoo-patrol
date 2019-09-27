@@ -1,9 +1,14 @@
+<button mat-flat-button color="accent" (click)="filterSearch('com')">Search term: 'com'</button>
+***
+<button mat-flat-button color="accent" (click)="filterSearch('')">Clear Search</button>
+<br>
+
 <mat-form-field>
   <span matPrefix>
     <mat-icon class="search-icon">search</mat-icon>
   </span>
-  <input matInput type="text" placeholder="Filter by search term" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+  <input matInput type="text" placeholder="Filter by search term" #searchTerm (keyup)="checkChange()">
+  <button mat-button *ngIf="searchTerm.value" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm.value=''">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
