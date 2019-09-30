@@ -17,4 +17,11 @@
     width: 80rem;
     grid-gap: 2rem;
   }
+
+  .not-found {
+    grid-column: 1 / span 3;
+    text-align: center;
+    background: $brand-color-red;
+    color: $color-white;
+  }
 }

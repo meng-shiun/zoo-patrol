@@ -1,5 +1,8 @@
 <section class="list-container">
   <p *ngIf="errorMessage">Load Projects Fail</p>
+
+  <mat-card class="not-found" *ngIf="projects.length === 0">No project found</mat-card>
+
   <app-card
     *ngFor="let project of projects"
     [prop]="project"

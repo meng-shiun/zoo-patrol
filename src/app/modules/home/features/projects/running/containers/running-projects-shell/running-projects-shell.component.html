@@ -16,9 +16,6 @@
     (changeManager)="getSearchManager($event)"
     (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
 
-  <p>Search term: {{ searchName }}</p>
-  <br>
-
   <app-project-list
     [projects]="projects$ | async | projectFilter: searchName: searchClient: searchManager: searchStatus"
     [errorMessage]="errorMessage$ | async"></app-project-list>

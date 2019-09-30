@@ -1,30 +1,37 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-project-filter-bar',
   templateUrl: './project-filter-bar.component.html',
   styleUrls: ['./project-filter-bar.component.scss']
 })
-export class ProjectFilterBarComponent implements OnInit {
-  @ViewChild('searchTerm', { static: true }) searchTerm: ElementRef;
+export class ProjectFilterBarComponent implements OnInit, OnDestroy {
   @Output() changeName:     EventEmitter<string> = new EventEmitter();
   @Output() changeClient:   EventEmitter<string> = new EventEmitter();
   @Output() changeManager:  EventEmitter<string> = new EventEmitter();
   @Output() changeStatus:   EventEmitter<string> = new EventEmitter();
 
-  clients: any[] = ['Watsica LLC', 'Veum Inc', 'Frami-Ledner'];
+  projectNameSub: Subscription;
+  projectName = new FormControl('');
+
+  searchTerm      = '';
+  clients:  any[] = ['Watsica LLC', 'Veum Inc', 'Frami-Ledner'];
   managers: any[] = ['Jordy', 'Kristof', 'Chelsey', 'Tom'];
-  status: any[] = [140, 200, 605];
-  sortBy: any[] = ['new', 'old'];
+  status:   any[] = [140, 200, 605];
+  sortBy:   any[] = ['new', 'old'];
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  selectChange() {
-    console.log('searching:', this.searchTerm.nativeElement.value);
-    // TODO: Add debonce time for searching
+    this.projectNameSub = this.projectName.valueChanges
+      .pipe(
+        debounceTime(1000),
+        distinctUntilChanged()
+      )
+      .subscribe(term => this.changeName.emit(term.trim()));
   }
 
   selectStatus(evt) {
@@ -39,7 +46,11 @@ export class ProjectFilterBarComponent implements OnInit {
     this.changeClient.emit(evt.value);
   }
 
-  filterSearchTemp(term: string) {
-    this.changeName.emit(term);
+  resetInput() {
+    this.projectName.setValue('');
+  }
+
+  ngOnDestroy(): void {
+    this.projectNameSub.unsubscribe();
   }
 }
