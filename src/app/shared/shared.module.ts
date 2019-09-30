@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CustomMaterialModule } from './custom-material.module';
 import { ProjectStatusPipe } from './project-status.pipe';
-import { ProjectFilterPipe } from './filter.pipe';
+import { ProjectFilterPipe } from './project-filter.pipe';
 import { ClickOutsideDirective } from './click-outside.directive';
 
 

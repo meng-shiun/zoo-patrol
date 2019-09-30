@@ -1,13 +1,13 @@
-<button mat-flat-button color="accent" (click)="filterSearch('com')">Search term: 'com'</button>
+<button mat-flat-button color="accent" (click)="filterSearchTemp('com')">Search term: 'com'</button>
 ***
-<button mat-flat-button color="accent" (click)="filterSearch('')">Clear Search</button>
+<button mat-flat-button color="accent" (click)="filterSearchTemp('')">Clear Search</button>
 <br>
 
 <mat-form-field>
   <span matPrefix>
     <mat-icon class="search-icon">search</mat-icon>
   </span>
-  <input matInput type="text" placeholder="Filter by search term" #searchTerm (keyup)="checkChange()">
+  <input matInput type="text" placeholder="Filter by search term" #searchTerm (keyup)="selectChange()">
   <button mat-button *ngIf="searchTerm.value" matSuffix mat-icon-button aria-label="Clear" (click)="searchTerm.value=''">
     <mat-icon>close</mat-icon>
   </button>
@@ -15,25 +15,25 @@
 
 <mat-form-field>
   <mat-label>Client</mat-label>
-  <mat-select>
-    <mat-option>None</mat-option>
+  <mat-select (selectionChange)="selectClient($event)">
+    <mat-option value="">None</mat-option>
     <mat-option *ngFor="let client of clients" [value]="client">{{client}}</mat-option>
   </mat-select>
 </mat-form-field>
 
 <mat-form-field>
   <mat-label>Project Manager</mat-label>
-  <mat-select>
-    <mat-option>None</mat-option>
+  <mat-select (selectionChange)="selectManager($event)">
+    <mat-option value="">None</mat-option>
     <mat-option *ngFor="let manager of managers" [value]="manager">{{manager}}</mat-option>
   </mat-select>
 </mat-form-field>
 
 <mat-form-field>
   <mat-label>Status</mat-label>
-  <mat-select>
-    <mat-option>None</mat-option>
-    <mat-option *ngFor="let s of status" [value]="s">{{s}}</mat-option>
+  <mat-select (selectionChange)="selectStatus($event)">
+    <mat-option value="">None</mat-option>
+    <mat-option *ngFor="let s of status" #searchStatus [value]="s">{{s}}</mat-option>
   </mat-select>
 </mat-form-field>
 

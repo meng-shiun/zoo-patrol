@@ -10,13 +10,17 @@
   <button mat-button (click)="deleteProject(2)">Delete a Project 2</button>
   <button mat-button (click)="deleteProject(1)">Delete a Project 1</button>
   <br>
-  <app-project-filter-bar (filterTerm)="getSearchTerm($event)"></app-project-filter-bar>
+  <app-project-filter-bar
+    (changeName)="getSearchName($event)"
+    (changeClient)="getSearchClient($event)"
+    (changeManager)="getSearchManager($event)"
+    (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
 
-  <p>Search term: {{ filterTerm }}</p>
+  <p>Search term: {{ searchName }}</p>
   <br>
 
   <app-project-list
-    [projects]="projects$ | async | projectFilter: filterTerm"
+    [projects]="projects$ | async | projectFilter: searchName: searchClient: searchManager: searchStatus"
     [errorMessage]="errorMessage$ | async"></app-project-list>
   <br>
   <div>TODO: Project Pagination Component</div>

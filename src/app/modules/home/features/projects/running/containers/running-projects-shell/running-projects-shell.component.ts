@@ -17,7 +17,10 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   projects$:          Observable<IProject[]>;
   errorMessage$:      Observable<string>;
 
-  filterTerm = '';
+  searchName    = '';
+  searchClient  = '';
+  searchManager = '';
+  searchStatus  = '';
 
   constructor(private store: Store<fromProjects.ProjectState>) {
     this.store.dispatch(ProjectActions.resetProjects());
@@ -38,9 +41,20 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
     this.store.dispatch(ProjectActions.resetProjects());
   }
 
-  getSearchTerm(evt) {
-    console.log('get term:', evt);
-    this.filterTerm = evt;
+  getSearchName(evt): void {
+    this.searchName = evt;
+  }
+
+  getSearchClient(evt): void {
+    this.searchClient = evt;
+  }
+
+  getSearchManager(evt): void {
+    this.searchManager = evt;
+  }
+
+  getSearchStatus(evt): void {
+    this.searchStatus = evt;
   }
 
   ngOnDestroy(): void {

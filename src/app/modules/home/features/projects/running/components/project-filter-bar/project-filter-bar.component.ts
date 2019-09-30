@@ -7,7 +7,10 @@ import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output } from '
 })
 export class ProjectFilterBarComponent implements OnInit {
   @ViewChild('searchTerm', { static: true }) searchTerm: ElementRef;
-  @Output() filterTerm: EventEmitter<string> = new EventEmitter();
+  @Output() changeName:     EventEmitter<string> = new EventEmitter();
+  @Output() changeClient:   EventEmitter<string> = new EventEmitter();
+  @Output() changeManager:  EventEmitter<string> = new EventEmitter();
+  @Output() changeStatus:   EventEmitter<string> = new EventEmitter();
 
   clients: any[] = ['Watsica LLC', 'Veum Inc', 'Frami-Ledner'];
   managers: any[] = ['Jordy', 'Kristof', 'Chelsey', 'Tom'];
@@ -19,13 +22,24 @@ export class ProjectFilterBarComponent implements OnInit {
   ngOnInit() {
   }
 
-  checkChange() {
+  selectChange() {
     console.log('searching:', this.searchTerm.nativeElement.value);
     // TODO: Add debonce time for searching
   }
 
-  filterSearch(term: string) {
-    console.log('filter:', term);
-    this.filterTerm.emit(term);
+  selectStatus(evt) {
+    this.changeStatus.emit(evt.value);
+  }
+
+  selectManager(evt) {
+    this.changeManager.emit(evt.value);
+  }
+
+  selectClient(evt) {
+    this.changeClient.emit(evt.value);
+  }
+
+  filterSearchTemp(term: string) {
+    this.changeName.emit(term);
   }
 }
