@@ -1,7 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+import { Subscription, Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged, startWith, map } from 'rxjs/operators';
+
+import { projectsData } from '@app/core/data';
 
 @Component({
   selector: 'app-project-filter-bar',
@@ -17,7 +20,9 @@ export class ProjectFilterBarComponent implements OnInit, OnDestroy {
   projectNameSub: Subscription;
   projectName = new FormControl('');
 
-  searchTerm      = '';
+  projectNameOptions: string[] = projectsData.map(p => p.name);
+  filteredProjectNameOptions: Observable<string[]>;
+
   clients:  any[] = ['Watsica LLC', 'Veum Inc', 'Frami-Ledner'];
   managers: any[] = ['Jordy', 'Kristof', 'Chelsey', 'Tom'];
   status:   any[] = [140, 200, 605];
@@ -32,6 +37,20 @@ export class ProjectFilterBarComponent implements OnInit, OnDestroy {
         distinctUntilChanged()
       )
       .subscribe(term => this.changeName.emit(term.trim()));
+
+
+    // Show autocomplete options
+    this.filteredProjectNameOptions = this.projectName.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterName(value))
+      );
+  }
+
+  private _filterName(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.projectNameOptions.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   selectStatus(evt) {

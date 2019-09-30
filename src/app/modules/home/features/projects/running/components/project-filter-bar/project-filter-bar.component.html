@@ -2,7 +2,12 @@
   <span matPrefix>
     <mat-icon class="search-icon">search</mat-icon>
   </span>
-  <input matInput type="text" placeholder="Filter by search term" [formControl]="projectName" [value]="searchTerm">
+  <input matInput type="text" placeholder="Search project name" [formControl]="projectName" [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let option of filteredProjectNameOptions | async" [value]="option">
+      {{ option }}
+    </mat-option>
+  </mat-autocomplete>
   <button mat-button *ngIf="projectName.value" matSuffix mat-icon-button aria-label="Clear" (click)="resetInput()">
     <mat-icon>cancel</mat-icon>
   </button>
