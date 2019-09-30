@@ -4,7 +4,12 @@ import { FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, startWith, map } from 'rxjs/operators';
 
-import { projectsData } from '@app/core/data';
+import {
+  projectsData,
+  projectStatusData,
+  projectManagersData,
+  clientsData
+} from '@app/core/data';
 
 @Component({
   selector: 'app-project-filter-bar',
@@ -20,13 +25,12 @@ export class ProjectFilterBarComponent implements OnInit, OnDestroy {
   projectNameSub: Subscription;
   projectName = new FormControl('');
 
+  clients:  string[] = clientsData.map(client => client.name);
+  managers: string[] = projectManagersData.map(manager => manager.name);
+  status:   number[] = projectStatusData.map(status => status.id);
+  sortBy:   any[] = ['new', 'old'];
   projectNameOptions: string[] = projectsData.map(p => p.name);
   filteredProjectNameOptions: Observable<string[]>;
-
-  clients:  any[] = ['Watsica LLC', 'Veum Inc', 'Frami-Ledner'];
-  managers: any[] = ['Jordy', 'Kristof', 'Chelsey', 'Tom'];
-  status:   any[] = [140, 200, 605];
-  sortBy:   any[] = ['new', 'old'];
 
   constructor() { }
 
