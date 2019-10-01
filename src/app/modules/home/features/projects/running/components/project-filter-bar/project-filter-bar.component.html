@@ -21,7 +21,7 @@
   </mat-select>
 </mat-form-field>
 
-<mat-form-field>
+<mat-form-field *ngIf="!hideManagerFilter">
   <mat-label>Project Manager</mat-label>
   <mat-select (selectionChange)="selectManager($event)">
     <mat-option value="">None</mat-option>

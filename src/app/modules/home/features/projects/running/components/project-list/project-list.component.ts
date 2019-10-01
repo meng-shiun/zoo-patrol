@@ -11,8 +11,9 @@ import {
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-  @Input() projects: IProject[];
-  @Input() errorMessage: string;
+  @Input() projects:      IProject[];
+  @Input() errorMessage:  string;
+  @Input() lockClick:     boolean;
 
   cardInfo = new Map();
 

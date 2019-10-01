@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectsComponent } from './projects.component';
 
-import { MyProjectsComponent, ArchivedComponent } from '.';
+import { ArchivedComponent } from '.';
 
 import {
   RunningProjectsShellComponent,
@@ -14,6 +14,8 @@ import {
   ProjectDetailsShellComponent,
   ProjectBudgetShellComponent
 } from './running';
+
+import { MyProjectsShellComponent } from './my-projects';
 
 const routes: Routes = [
   {
@@ -62,7 +64,7 @@ const routes: Routes = [
       },
       {
         path: 'my_projects',
-        component: MyProjectsComponent,
+        component: MyProjectsShellComponent,
         data: { routeId: 1 }
       },
       { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
@@ -78,7 +80,6 @@ const routes: Routes = [
 export class ProjectsRoutingModule {
   static components = [
     ProjectsComponent,
-    MyProjectsComponent,
     ArchivedComponent,
     RunningProjectsShellComponent,
     ProjectAccumDetailsShellComponent,
@@ -86,6 +87,7 @@ export class ProjectsRoutingModule {
     ProjectBudgetShellComponent,
     ProjectFilterBarComponent,
     ProjectListComponent,
-    ProjectCreateComponent
+    ProjectCreateComponent,
+    MyProjectsShellComponent
   ];
 }

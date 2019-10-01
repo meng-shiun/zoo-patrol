@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnDestroy, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { Subscription, Observable } from 'rxjs';
@@ -17,6 +17,7 @@ import {
   styleUrls: ['./project-filter-bar.component.scss']
 })
 export class ProjectFilterBarComponent implements OnInit, OnDestroy {
+  @Input() hideManagerFilter: boolean;
   @Output() changeName:     EventEmitter<string> = new EventEmitter();
   @Output() changeClient:   EventEmitter<string> = new EventEmitter();
   @Output() changeManager:  EventEmitter<string> = new EventEmitter();
