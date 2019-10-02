@@ -53,7 +53,10 @@ export class ProjectCreateComponent implements OnInit {
   }
 
   close(): void {
-    this.router.navigate(['/projects/running', { outlets: { popup: null } }]);
+    const sliceId = this.router.url.lastIndexOf('/');
+    const parentUrl = this.router.url.substring(0, sliceId);
+
+    this.router.navigate([`${parentUrl}`, { outlets: { popup: null } }]);
   }
 
   createProject(): void {

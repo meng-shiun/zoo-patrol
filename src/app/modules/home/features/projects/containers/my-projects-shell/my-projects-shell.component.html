@@ -1,6 +1,8 @@
 <div class="container" *ngIf="allProjectsLoaded$ | async">
   <h1>My Projects (Kristof)</h1>
 
+  <router-outlet name="popup"></router-outlet>
+
   <div><b>TODO: Reuse components & shell from Running projects</b></div>
 
   <app-project-filter-bar

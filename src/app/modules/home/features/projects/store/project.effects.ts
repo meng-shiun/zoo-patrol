@@ -137,7 +137,7 @@ export class ProjectEffects {
   createProjectSuccess$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.createProjectSuccess),
-      tap(action => this.router.navigateByUrl(`projects/running/${action.result.id}`))
+      tap(action => this.router.navigateByUrl(`projects/${action.result.id}`))
     ), { dispatch: false }
   );
 

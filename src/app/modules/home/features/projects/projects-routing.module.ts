@@ -36,6 +36,13 @@ const routes: Routes = [
       {
         path: 'my_projects',
         component: MyProjectsShellComponent,
+        children: [
+          {
+            path: 'newProject',
+            component: ProjectCreateComponent,
+            outlet: 'popup'
+          }
+        ],
         data: { routeId: 1 }
       },
       { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
