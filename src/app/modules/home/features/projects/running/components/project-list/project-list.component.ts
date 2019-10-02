@@ -13,7 +13,6 @@ import {
 export class ProjectListComponent implements OnInit {
   @Input() projects:      IProject[];
   @Input() errorMessage:  string;
-  @Input() lockClick:     boolean;
 
   cardInfo = new Map();
 

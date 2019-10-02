@@ -10,7 +10,6 @@
     (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
 
   <app-project-list
-    [lockClick]=true
     [projects]="projects$ | async | projectFilter: searchName: searchClient: 'Kristof': searchStatus"
     [errorMessage]="errorMessage$ | async"></app-project-list>
   <br>

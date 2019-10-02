@@ -7,7 +7,7 @@
     *ngFor="let project of projects"
     [prop]="project"
     [cardInfo]="cardInfo"
-    [routerLink]="lockClick ? null : project.id"
+    [routerLink]="project.id"
     [ngStyle]="{'cursor': 'pointer'}"
     ></app-card>
 </section>
