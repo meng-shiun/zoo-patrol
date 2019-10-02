@@ -30,7 +30,7 @@ export class ProjectAccumDetailsShellComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private route: ActivatedRoute, private store: Store<fromProjects.ProjectState>) {
     // Update active tab when refreshing page
     this.routerSub = this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
+      if (event instanceof NavigationEnd && event.url.includes('/projects')) {
         this.tabs.map(tab =>
           event.url.endsWith(tab.link) && (this.activeTab = tab.name)
         );

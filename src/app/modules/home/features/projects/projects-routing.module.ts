@@ -54,22 +54,22 @@ const routes: Routes = [
           {
             path: 'details',
             component: ProjectDetailsShellComponent,
-            data: { routeId: 0 }
+            data: { routeId: 10 }
           },
           {
             path: 'planning',
             component: ProjectBudgetShellComponent,
-            data: { routeId: 1 }
+            data: { routeId: 11 }
           }, // TODO: Replce with planning component
           {
             path: 'timesheets',
             component: ProjectBudgetShellComponent,
-            data: { routeId: 2 }
+            data: { routeId: 12 }
           }, // TODO: Replce with timesheets component
           {
             path: 'budget',
             component: ProjectBudgetShellComponent,
-            data: { routeId: 3 }
+            data: { routeId: 13 }
           }
         ]
       },
