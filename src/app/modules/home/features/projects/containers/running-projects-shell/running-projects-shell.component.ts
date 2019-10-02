@@ -4,8 +4,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { IProject } from '@app/shared';
-import * as fromProjects from '../../../store';
-import * as ProjectActions from '../../../store/project.actions';
+import * as fromProjects from '../../store';
+import * as ProjectActions from '../../store/project.actions';
 
 @Component({
   selector: 'app-running-projects-shell',

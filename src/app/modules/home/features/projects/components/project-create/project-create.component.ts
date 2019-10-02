@@ -9,8 +9,8 @@ import {
   projectManagersData,
   projectStatusData
 } from '@app/core/data';
-import * as fromProjects from '../../../store';
-import * as ProjectActions from '../../../store/project.actions';
+import * as fromProjects from '../../store';
+import * as ProjectActions from '../../store/project.actions';
 import { take } from 'rxjs/operators';
 
 @Component({

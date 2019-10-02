@@ -2,20 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectsComponent } from './projects.component';
-
-import { ArchivedComponent } from '.';
+import { ArchivedComponent } from './archived.component';
 
 import {
   RunningProjectsShellComponent,
+  MyProjectsShellComponent,
   ProjectFilterBarComponent,
   ProjectListComponent,
   ProjectCreateComponent,
   ProjectAccumDetailsShellComponent,
   ProjectDetailsShellComponent,
   ProjectBudgetShellComponent
-} from './running';
-
-import { MyProjectsShellComponent } from './my-projects';
+} from '.';
 
 const routes: Routes = [
   {
@@ -36,7 +34,13 @@ const routes: Routes = [
         data: { routeId: 0 }
       },
       {
-        path: 'running/:id',
+        path: 'my_projects',
+        component: MyProjectsShellComponent,
+        data: { routeId: 1 }
+      },
+      { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
+      {
+        path: ':id',
         component: ProjectAccumDetailsShellComponent,
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
@@ -62,12 +66,6 @@ const routes: Routes = [
           }
         ]
       },
-      {
-        path: 'my_projects',
-        component: MyProjectsShellComponent,
-        data: { routeId: 1 }
-      },
-      { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
       { path: '**', redirectTo: 'running' }
     ]
   }

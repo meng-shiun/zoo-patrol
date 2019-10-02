@@ -8,7 +8,7 @@ import {
   BudgetListComponent,
   BudgetListItemComponent,
   BudgetTotalComponent
-} from './running';
+} from '.';
 
 /* NgRx */
 import { StoreModule } from '@ngrx/store';

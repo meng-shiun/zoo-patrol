@@ -4,8 +4,8 @@ import { Store, select } from '@ngrx/store';
 
 import { Subscription, Observable } from 'rxjs';
 import { ITab, slideLeftRight, IProject } from '@app/shared';
-import * as fromProjects from '../../../store';
-import * as ProjectActions from '../../../store/project.actions';
+import * as fromProjects from '../../store';
+import * as ProjectActions from '../../store/project.actions';
 
 @Component({
   selector: 'app-project-accum-details-shell',

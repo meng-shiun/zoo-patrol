@@ -34,6 +34,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   activeTab: string;
   animationState: number;
+  currentPage = 'running';
 
   constructor(
     private router: Router,
@@ -49,25 +50,25 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
         /*
          * When route into details pages, display delete button
-         * e.g.: projects/running/9/details or projects/running/9/budget
+         * e.g.: projects/9/details or projects/9/budget
          * otherwise display create button
          */
-        const regex = /(projects)+(\/)+(running\/)+(\d)+(\/)*(\w)*/gi;
+        const regex = /(projects)+(\/)+(\d)+(\/)*(\w)*/gi;
         regex.test(event.url) ? this.enableDeleteBtn() : this.enableCeateBtn();
-      }
-      // Default tab
-      if (event instanceof NavigationEnd && event.url.includes('/projects/running')) {
-        this.activeTab = this.animTabs[0].name;
-      }
 
-      if (event instanceof NavigationEnd && event.url.includes('/projects/my_projects')) {
-        // TODO: When route into my_projects
-        this.resetBtns();
-      }
+        // Default tab
+        if (event instanceof NavigationEnd && event.url.includes('/running')) {
+          this.currentPage = 'running';
+          this.activeTab = this.animTabs[0].name;
+        }
 
-      if (event instanceof NavigationEnd && event.url.includes('/projects/archived')) {
-        // TODO: When route into archived
-        this.resetBtns();
+        if (event instanceof NavigationEnd && event.url.includes('/my_projects')) {
+          this.currentPage = 'my_projects';
+        }
+
+        if (event instanceof NavigationEnd && event.url.includes('/archived')) {
+          this.currentPage = 'archived';
+      }
       }
     });
   }
@@ -104,7 +105,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       .subscribe(id => {
         if (id && confirm('Delete this project?')) {
           this.store.dispatch(ProjectActions.deleteProject({ id }));
-          this.router.navigate(['./'], { relativeTo: this.route });
+          this.router.navigateByUrl(`/projects/${this.currentPage}`);
           this.enableCeateBtn();
         }
       });
