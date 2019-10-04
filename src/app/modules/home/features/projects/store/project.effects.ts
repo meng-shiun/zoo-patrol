@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Store, select } from '@ngrx/store';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { switchMap, map, tap, catchError, withLatestFrom, mergeMap } from 'rxjs/operators';
@@ -80,11 +81,11 @@ export class ProjectEffects {
     )
   );
 
-  // Navigate back to details page when project details is updated
+  // Navigate back to main tabs when project details is updated
   updateProjectDetailsSuccess$ = createEffect(
     () => this.actions$.pipe(
       ofType(ProjectActions.updateProjectDetailsSuccess),
-      tap(action => this.router.navigate(['projects']))
+      tap(action => this.location.back())
     ), { dispatch: false }
   );
 
@@ -229,6 +230,7 @@ export class ProjectEffects {
     private actions$: Actions,
     private projectService: ProjectService,
     private store: Store<fromProjects.ProjectState>,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 }
