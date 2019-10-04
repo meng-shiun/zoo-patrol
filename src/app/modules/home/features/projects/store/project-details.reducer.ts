@@ -32,7 +32,7 @@ const projectDetailsReducer = createReducer(
     return adapter.addOne(result, { ...state, selectedProjectId: result.id, loaded: true });
   }),
   on(ProjectActions.loadDetailByIdFail, (state, { error }) => {
-    return { ...state, error: error };
+    return { ...state, error: error, selectedProjectId: null };
   }),
   on(ProjectActions.updateProjectDetailsSuccess, (state, { projectDetails }) => {
     const changedObj = { ...state, id: state.selectedProjectId, changes: projectDetails };

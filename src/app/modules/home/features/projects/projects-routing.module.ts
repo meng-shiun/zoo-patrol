@@ -12,7 +12,8 @@ import {
   ProjectCreateComponent,
   ProjectAccumDetailsShellComponent,
   ProjectDetailsShellComponent,
-  ProjectBudgetShellComponent
+  ProjectBudgetShellComponent,
+  CanActivateProject
 } from '.';
 
 const routes: Routes = [
@@ -49,6 +50,7 @@ const routes: Routes = [
       {
         path: ':id',
         component: ProjectAccumDetailsShellComponent,
+        canActivate: [CanActivateProject],
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
           {
@@ -70,17 +72,18 @@ const routes: Routes = [
             path: 'budget',
             component: ProjectBudgetShellComponent,
             data: { routeId: 13 }
-          }
+          },
+          { path: '**', redirectTo: 'details' }
         ]
-      },
-      { path: '**', redirectTo: 'running' }
+      }
     ]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [CanActivateProject]
 })
 export class ProjectsRoutingModule {
   static components = [
