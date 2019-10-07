@@ -13,6 +13,7 @@ import {
   ProjectAccumDetailsShellComponent,
   ProjectDetailsShellComponent,
   ProjectBudgetShellComponent,
+  ProjectPlanningShellComponent,
   CanActivateProject
 } from '.';
 
@@ -71,9 +72,9 @@ const routes: Routes = [
           },
           {
             path: 'planning',
-            component: ProjectBudgetShellComponent,
+            component: ProjectPlanningShellComponent,
             data: { routeId: 11 }
-          }, // TODO: Replce with planning component
+          },
           {
             path: 'timesheets',
             component: ProjectBudgetShellComponent,
@@ -105,6 +106,7 @@ export class ProjectsRoutingModule {
     ProjectAccumDetailsShellComponent,
     ProjectDetailsShellComponent,
     ProjectBudgetShellComponent,
+    ProjectPlanningShellComponent,
     ProjectFilterBarComponent,
     ProjectListComponent,
     ProjectCreateComponent
