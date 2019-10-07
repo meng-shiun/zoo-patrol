@@ -7,7 +7,7 @@
 
   <app-project-filter-bar
     [hideStatus]="exludedStatus"
-    [hideManagerFilter]="hideManagers"
+    [hideManagerFilter]="showSoleManager"
     (changeName)="getSearchName($event)"
     (changeClient)="getSearchClient($event)"
     (changeManager)="getSearchManager($event)"

@@ -13,11 +13,11 @@ import * as ProjectActions from '../../store/project.actions';
   styleUrls: ['./main-shell-template.component.scss']
 })
 export class MainShellTemplateComponent implements OnInit {
-  @Input() title:         string;
-  @Input() category:      string;
-  @Input() exludedStatus: number[];
-  @Input() hideManagers:  boolean;
-  @Input() searchManager: string | null;
+  @Input() title:           string;
+  @Input() category:        string;
+  @Input() exludedStatus:   number[];
+  @Input() showSoleManager: string | null;
+  @Input() searchManager:   string | null;
 
   allProjectsLoaded$: Observable<boolean>;
   projects$:          Observable<IProject[]>;

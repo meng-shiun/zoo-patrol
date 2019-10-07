@@ -17,12 +17,12 @@ import {
   styleUrls: ['./project-filter-bar.component.scss']
 })
 export class ProjectFilterBarComponent implements OnInit, OnDestroy {
-  @Input() hideManagerFilter: boolean;
-  @Input() hideStatus: any[];
-  @Output() changeName:     EventEmitter<string> = new EventEmitter();
-  @Output() changeClient:   EventEmitter<string> = new EventEmitter();
-  @Output() changeManager:  EventEmitter<string> = new EventEmitter();
-  @Output() changeStatus:   EventEmitter<string> = new EventEmitter();
+  @Input() hideManagerFilter: string;
+  @Input() hideStatus:        number[];
+  @Output() changeName:       EventEmitter<string> = new EventEmitter();
+  @Output() changeClient:     EventEmitter<string> = new EventEmitter();
+  @Output() changeManager:    EventEmitter<string> = new EventEmitter();
+  @Output() changeStatus:     EventEmitter<string> = new EventEmitter();
 
   projectNameSub: Subscription;
   projectName = new FormControl('');
@@ -40,10 +40,15 @@ export class ProjectFilterBarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.clients  = clientsData.map(client => client.name);
     this.managers = projectManagersData.map(manager => manager.name);
-    this.status = projectStatusData.map(status => status.id)
-      .filter(x => this.hideStatus ? !this.hideStatus.includes(x) : x);
 
-    this.projectNameOptions = projectsData.map(p => p.name);
+    this.status = projectStatusData
+      .map(status => status.id)
+      .filter(id => this.hideStatus ? !this.hideStatus.includes(id) : id);
+
+    this.projectNameOptions = projectsData
+      .filter(p => this.hideStatus ? !this.hideStatus.includes(p.status) : p)
+      .filter(p => this.hideManagerFilter ? p.manager === this.hideManagerFilter : p)
+      .map(p => p.name);
 
     this.projectNameSub = this.projectName.valueChanges
       .pipe(
