@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectsComponent } from './projects.component';
-import { ArchivedComponent } from './archived.component';
 
 import {
   RunningProjectsShellComponent,
   MyProjectsShellComponent,
   ProjectFilterBarComponent,
+  ProjectArchivedShellComponent,
   ProjectListComponent,
   ProjectCreateComponent,
   ProjectAccumDetailsShellComponent,
@@ -46,7 +46,18 @@ const routes: Routes = [
         ],
         data: { routeId: 1 }
       },
-      { path: 'archived', component: ArchivedComponent, data: { routeId: 2 } },
+      {
+        path: 'archived',
+        component: ProjectArchivedShellComponent,
+        children: [
+          {
+            path: 'newProject',
+            component: ProjectCreateComponent,
+            outlet: 'popup'
+          }
+        ],
+        data: { routeId: 2 }
+      },
       {
         path: ':id',
         component: ProjectAccumDetailsShellComponent,
@@ -88,14 +99,14 @@ const routes: Routes = [
 export class ProjectsRoutingModule {
   static components = [
     ProjectsComponent,
-    ArchivedComponent,
     RunningProjectsShellComponent,
+    MyProjectsShellComponent,
+    ProjectArchivedShellComponent,
     ProjectAccumDetailsShellComponent,
     ProjectDetailsShellComponent,
     ProjectBudgetShellComponent,
     ProjectFilterBarComponent,
     ProjectListComponent,
-    ProjectCreateComponent,
-    MyProjectsShellComponent
+    ProjectCreateComponent
   ];
 }

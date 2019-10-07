@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './store/project.effects';
+import { ProjectArchivedShellComponent } from './containers/project-archived-shell/project-archived-shell.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ProjectEffects } from './store/project.effects';
     BudgetTotalComponent,
     MainShellTemplateComponent,
     ProjectFilterPipe,
+    ProjectArchivedShellComponent,
   ],
   imports: [
     SharedModule,
