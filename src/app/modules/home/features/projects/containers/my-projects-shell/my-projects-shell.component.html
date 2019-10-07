@@ -12,7 +12,7 @@
     (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
 
   <app-project-list
-    [projects]="projects$ | async | projectFilter: searchName: searchClient: 'Kristof': searchStatus"
+    [projects]="projects$ | async | projectFilter: 'my_projects': searchName: searchClient: 'Kristof': searchStatus"
     [errorMessage]="errorMessage$ | async"></app-project-list>
   <br>
 </div>

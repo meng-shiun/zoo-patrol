@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { IProject } from './interfaces';
+import { IProject } from '../../../../shared/interfaces';
 
 @Pipe({
   name: 'projectFilter'
@@ -8,6 +8,7 @@ import { IProject } from './interfaces';
 export class ProjectFilterPipe implements PipeTransform {
   transform(
     projects: IProject[],
+    category: string, // Running / My projects / Archived projects
     filterBySearch?: string,
     filterByClient?: string,
     filterByManager?: string,
@@ -17,6 +18,18 @@ export class ProjectFilterPipe implements PipeTransform {
     if (!projects) {
       return [];
     }
+
+    // Initiate projects via category
+    projects = projects.filter(p => {
+      switch (category) {
+        case 'running':
+          return (p.status !== 510 && p.status !== 605);
+        case 'archived':
+          return (p.status === 510 || p.status === 605);
+        default:
+          return p;
+      }
+    });
 
     // Filter by name search
     projects = filterBySearch

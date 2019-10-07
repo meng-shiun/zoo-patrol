@@ -40,7 +40,7 @@ export const projectsData: IProject[] = [
     id: 5,
     client: 'Pacocha, Hintz and Roob',
     name: 'Reverbnation.com',
-    manager: 'Kristof',
+    manager: 'Jordy',
     status: 213,
     deadline: '9/21/2018'
   },
@@ -81,7 +81,7 @@ export const projectsData: IProject[] = [
     client: 'Watsica LLC',
     name: 'Mediafire.com',
     manager: 'Chelsey',
-    status: 605,
+    status: 140,
     deadline: '8/1/2018'
   }
 ];

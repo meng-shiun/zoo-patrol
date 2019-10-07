@@ -21,6 +21,7 @@ export class RunningProjectsShellComponent implements OnInit, OnDestroy {
   searchClient  = '';
   searchManager = '';
   searchStatus  = '';
+  exludedStatus = [510, 605];
 
   constructor(private store: Store<fromProjects.ProjectState>) {
     this.store.dispatch(ProjectActions.resetProjects());

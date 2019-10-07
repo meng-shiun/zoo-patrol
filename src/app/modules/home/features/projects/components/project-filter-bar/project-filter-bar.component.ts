@@ -18,6 +18,7 @@ import {
 })
 export class ProjectFilterBarComponent implements OnInit, OnDestroy {
   @Input() hideManagerFilter: boolean;
+  @Input() hideStatus: any[];
   @Output() changeName:     EventEmitter<string> = new EventEmitter();
   @Output() changeClient:   EventEmitter<string> = new EventEmitter();
   @Output() changeManager:  EventEmitter<string> = new EventEmitter();
@@ -26,16 +27,24 @@ export class ProjectFilterBarComponent implements OnInit, OnDestroy {
   projectNameSub: Subscription;
   projectName = new FormControl('');
 
-  clients:  string[] = clientsData.map(client => client.name);
-  managers: string[] = projectManagersData.map(manager => manager.name);
-  status:   number[] = projectStatusData.map(status => status.id);
+  clients:  string[];
+  managers: string[];
+  status:   number[];
+
   sortBy:   any[] = ['new', 'old'];
-  projectNameOptions: string[] = projectsData.map(p => p.name);
+  projectNameOptions: string[];
   filteredProjectNameOptions: Observable<string[]>;
 
   constructor() { }
 
   ngOnInit() {
+    this.clients  = clientsData.map(client => client.name);
+    this.managers = projectManagersData.map(manager => manager.name);
+    this.status = projectStatusData.map(status => status.id)
+      .filter(x => this.hideStatus ? !this.hideStatus.includes(x) : x);
+
+    this.projectNameOptions = projectsData.map(p => p.name);
+
     this.projectNameSub = this.projectName.valueChanges
       .pipe(
         debounceTime(1000),
