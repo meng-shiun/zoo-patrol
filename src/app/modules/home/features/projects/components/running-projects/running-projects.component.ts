@@ -5,11 +5,11 @@ import * as fromProjects from '../../store';
 import * as ProjectActions from '../../store/project.actions';
 
 @Component({
-  selector: 'app-running-projects-shell',
-  templateUrl: './running-projects-shell.component.html',
-  styleUrls: ['./running-projects-shell.component.scss']
+  selector: 'app-running-projects',
+  templateUrl: './running-projects.component.html',
+  styleUrls: ['./running-projects.component.scss']
 })
-export class RunningProjectsShellComponent implements OnInit {
+export class RunningProjectsComponent implements OnInit {
   constructor(private store: Store<fromProjects.ProjectState>) { }
 
   ngOnInit() {

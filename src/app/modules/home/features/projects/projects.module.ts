@@ -9,7 +9,7 @@ import {
   BudgetListItemComponent,
   BudgetTotalComponent,
   MainShellTemplateComponent,
-  ProjectFilterPipe,
+  ProjectFilterPipe
 } from '.';
 
 /* NgRx */
@@ -17,7 +17,6 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './store/project.effects';
-import { ProjectArchivedShellComponent } from './containers/project-archived-shell/project-archived-shell.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import { ProjectArchivedShellComponent } from './containers/project-archived-she
     BudgetListItemComponent,
     BudgetTotalComponent,
     MainShellTemplateComponent,
-    ProjectFilterPipe,
-    ProjectArchivedShellComponent,
+    ProjectFilterPipe
   ],
   imports: [
     SharedModule,

@@ -5,3 +5,6 @@ export * from './budget-list/budget-list.component';
 export * from './budget-list-item/budget-list-item.component';
 export * from './budget-total/budget-total.component';
 export * from './project-create/project-create.component';
+export * from './running-projects/running-projects.component';
+export * from './my-projects/my-projects.component';
+export * from './project-archived/project-archived.component';

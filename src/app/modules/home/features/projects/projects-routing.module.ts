@@ -4,10 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectsComponent } from './projects.component';
 
 import {
-  RunningProjectsShellComponent,
-  MyProjectsShellComponent,
+  RunningProjectsComponent,
+  MyProjectsComponent,
   ProjectFilterBarComponent,
-  ProjectArchivedShellComponent,
+  ProjectArchivedComponent,
   ProjectListComponent,
   ProjectCreateComponent,
   ProjectAccumDetailsShellComponent,
@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'running', pathMatch: 'full' },
       {
         path: 'running',
-        component: RunningProjectsShellComponent,
+        component: RunningProjectsComponent,
         children: [
           {
             path: 'newProject',
@@ -36,7 +36,7 @@ const routes: Routes = [
       },
       {
         path: 'my_projects',
-        component: MyProjectsShellComponent,
+        component: MyProjectsComponent,
         children: [
           {
             path: 'newProject',
@@ -48,7 +48,7 @@ const routes: Routes = [
       },
       {
         path: 'archived',
-        component: ProjectArchivedShellComponent,
+        component: ProjectArchivedComponent,
         children: [
           {
             path: 'newProject',
@@ -99,9 +99,9 @@ const routes: Routes = [
 export class ProjectsRoutingModule {
   static components = [
     ProjectsComponent,
-    RunningProjectsShellComponent,
-    MyProjectsShellComponent,
-    ProjectArchivedShellComponent,
+    RunningProjectsComponent,
+    MyProjectsComponent,
+    ProjectArchivedComponent,
     ProjectAccumDetailsShellComponent,
     ProjectDetailsShellComponent,
     ProjectBudgetShellComponent,
