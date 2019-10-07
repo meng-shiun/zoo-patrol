@@ -1,0 +1,23 @@
+<div class="container" *ngIf="allProjectsLoaded$ | async">
+  <router-outlet name="popup"></router-outlet>
+
+  <h1>{{ title }}</h1>
+
+  <ng-content select=".del-btns"></ng-content>
+
+  <app-project-filter-bar
+    [hideStatus]="exludedStatus"
+    [hideManagerFilter]="hideManagers"
+    (changeName)="getSearchName($event)"
+    (changeClient)="getSearchClient($event)"
+    (changeManager)="getSearchManager($event)"
+    (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
+
+  <app-project-list
+    [projects]="projects$ | async | projectFilter: category: searchName: searchClient: searchManager: searchStatus"
+    [errorMessage]="errorMessage$ | async"></app-project-list>
+
+  <br>
+
+  <div>TODO: Project Pagination Component</div>
+</div>

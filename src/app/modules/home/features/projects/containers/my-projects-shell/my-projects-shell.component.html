@@ -1,18 +1,5 @@
-<div class="container" *ngIf="allProjectsLoaded$ | async">
-  <h1>My Projects (Kristof)</h1>
-
-  <router-outlet name="popup"></router-outlet>
-
-  <div><b>TODO: Reuse components & shell from Running projects</b></div>
-
-  <app-project-filter-bar
-    [hideManagerFilter]=true
-    (changeName)="getSearchName($event)"
-    (changeClient)="getSearchClient($event)"
-    (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
-
-  <app-project-list
-    [projects]="projects$ | async | projectFilter: 'my_projects': searchName: searchClient: 'Kristof': searchStatus"
-    [errorMessage]="errorMessage$ | async"></app-project-list>
-  <br>
-</div>
+<app-main-shell-template
+  title="My Projects (Kristof)"
+  category="my_projects"
+  hideManagers="true"
+  searchManager="Kristof"></app-main-shell-template>

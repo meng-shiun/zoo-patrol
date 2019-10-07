@@ -8,7 +8,8 @@ import {
   BudgetListComponent,
   BudgetListItemComponent,
   BudgetTotalComponent,
-  ProjectFilterPipe
+  MainShellTemplateComponent,
+  ProjectFilterPipe,
 } from '.';
 
 /* NgRx */
@@ -24,7 +25,8 @@ import { ProjectEffects } from './store/project.effects';
     BudgetListComponent,
     BudgetListItemComponent,
     BudgetTotalComponent,
-    ProjectFilterPipe
+    MainShellTemplateComponent,
+    ProjectFilterPipe,
   ],
   imports: [
     SharedModule,

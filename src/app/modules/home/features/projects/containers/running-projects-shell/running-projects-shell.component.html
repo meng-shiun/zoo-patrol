@@ -1,26 +1,11 @@
-<div class="container" *ngIf="allProjectsLoaded$ | async">
-
-  <router-outlet name="popup"></router-outlet>
-
-  <h1>Running Projects</h1>
-  <hr>
-  <button mat-button (click)="deleteProject(11)">Delete a Project 11</button>
-  <button mat-button (click)="deleteProject(10)">Delete a Project 10</button>
-  <button mat-button (click)="deleteProject(9)">Delete a Project 9</button>
-  <button mat-button (click)="deleteProject(2)">Delete a Project 2</button>
-  <button mat-button (click)="deleteProject(1)">Delete a Project 1</button>
-  <br>
-  <app-project-filter-bar
-    [hideStatus]="exludedStatus"
-    (changeName)="getSearchName($event)"
-    (changeClient)="getSearchClient($event)"
-    (changeManager)="getSearchManager($event)"
-    (changeStatus)="getSearchStatus($event)"></app-project-filter-bar>
-
-  <app-project-list
-    [projects]="projects$ | async | projectFilter: 'running' : searchName: searchClient: searchManager: searchStatus"
-    [errorMessage]="errorMessage$ | async"></app-project-list>
-  <br>
-  <div>TODO: Project Pagination Component</div>
-</div>
-
+<app-main-shell-template
+  title="Running Projects"
+  category="running"
+  exludedStatus="[510, 605]">
+  <div class="del-btns">
+    <button mat-button (click)="deleteProject(11)">Delete a Project 11</button>
+    <button mat-button (click)="deleteProject(10)">Delete a Project 10</button>
+    <button mat-button (click)="deleteProject(1)">Delete a Project 1</button>
+    <br>
+  </div>
+</app-main-shell-template>
