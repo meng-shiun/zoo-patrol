@@ -1,0 +1,24 @@
+.container {
+  background: #fff;
+  width: 20rem;
+  height: 30rem;
+  margin: 2rem auto;
+  font-size: 1rem;
+
+  ul {
+    list-style: none;
+
+    li {
+      background: #776b6d;
+      color: #fff;
+      height: 20px;
+      width: 100%;
+      padding: 1rem 1rem 2rem 2rem;
+      border-bottom: 1px solid #999;
+    }
+    .hightlight {
+      background: #272626;
+      color: #aaa;
+    }
+  }
+}
