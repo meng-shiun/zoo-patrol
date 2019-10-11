@@ -1,13 +1,20 @@
 <div class="container">
-  <ul>
-    <li *ngFor="let item of list; index as i"
-      draggable="true"
-      id={{i}}
-      (dragstart)="dragstart($event, i)"
-      (dragenter)="dragenter($event)"
-      (dragover)="dragover($event)"
-      (dragleave)="dragleave($event)"
-      (drop)="drop($event, i)"
-      (dragend)="dragend($event)">{{ item }}</li>
-  </ul>
+  <h4>TODO: Move the list to dumb components</h4>
+  <h4>(planning-list & planning-list-item)</h4>
+  <br>
+  ID // Task // Responsible
+  <ul appDraggable
+      [list]="list"
+      [previousArrId]="selectArrId"
+      (selectOn)="onSelectOn($event)"
+      (dropOn)="updateList()">
+      <li draggable="true"
+        *ngFor="let item of list"
+        [id]=item.id>
+        <!-- TODO: Use pipe to display planning item via id -->
+        {{ item.id }}
+      </li>
+    </ul>
+
+  <button (click)="addNewItem()">Add a new item</button>
 </div>

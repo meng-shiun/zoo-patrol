@@ -5,12 +5,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomMaterialModule } from './custom-material.module';
 import { ProjectStatusPipe } from './project-status.pipe';
 import { ClickOutsideDirective } from './click-outside.directive';
+import { DraggableDirective } from './draggable.directive';
 
 
 @NgModule({
   declarations: [
     ProjectStatusPipe,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    DraggableDirective
   ],
   imports: [
     CustomMaterialModule,
@@ -23,6 +25,7 @@ import { ClickOutsideDirective } from './click-outside.directive';
     ReactiveFormsModule,
     ProjectStatusPipe,
     ClickOutsideDirective,
+    DraggableDirective,
     CustomMaterialModule.exportModules
   ]
 })

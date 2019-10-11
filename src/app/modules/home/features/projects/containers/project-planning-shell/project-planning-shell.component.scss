@@ -1,6 +1,6 @@
 .container {
   background: #fff;
-  width: 20rem;
+  width: 30rem;
   height: 30rem;
   margin: 2rem auto;
   font-size: 1rem;
@@ -13,8 +13,19 @@
       color: #fff;
       height: 20px;
       width: 100%;
-      padding: 1rem 1rem 2rem 2rem;
+      padding: 1rem 1rem 2rem 3rem;
       border-bottom: 1px solid #999;
+      position: relative;
+
+      &:before {
+        font-family: 'Material Icons';
+        content: 'drag_indicator';
+        font-size: 1.5rem;
+        position: absolute;
+        left: .5rem;
+        top: .7rem;
+        margin-right: 1.2rem;
+      }
     }
     .hightlight {
       background: #272626;
