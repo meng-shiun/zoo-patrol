@@ -4,6 +4,7 @@
   height: 30rem;
   margin: 2rem auto;
   font-size: 1rem;
+  position: relative;
 
   ul {
     list-style: none;
@@ -31,5 +32,11 @@
       background: #272626;
       color: #aaa;
     }
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }

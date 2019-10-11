@@ -2,7 +2,7 @@
   <h4>TODO: Move the list to dumb components</h4>
   <h4>(planning-list & planning-list-item)</h4>
   <br>
-  ID // Task // Responsible
+  (ID): Task - Responsible
   <ul appDraggable
       [list]="list"
       [previousArrId]="selectArrId"
@@ -11,10 +11,11 @@
       <li draggable="true"
         *ngFor="let item of list"
         [id]=item.id>
-        <!-- TODO: Use pipe to display planning item via id -->
-        {{ item.id }}
+        {{ item.id | tableDes: list }}
       </li>
     </ul>
 
-  <button (click)="addNewItem()">Add a new item</button>
+  <button mat-mini-fab color="accent" (click)="addNewItem()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>
